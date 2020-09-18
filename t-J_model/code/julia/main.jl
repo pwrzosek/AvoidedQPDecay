@@ -6,7 +6,7 @@ include("functions.jl")
 
 # Main Function
 function main()
-    systemSize::Int64 = 6
+    systemSize::Int64 = 12
     tunneling::Float64 = 1.0
     couplingJ::Float64 = tunneling * 1.0
     magnonInteraction::Float64 = 1.0

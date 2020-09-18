@@ -23,11 +23,11 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
             # we start by taking bit representation of the state
             bitState::Vector{Bool} = digits(Bool, state, base = 2, pad = systemSize)
 
+            # the rotation is necessary in order to have a proper
+            # definition of magnons in the system,
             # we will include the rotation of the sublattice
             # by grouping the states with respect to staggered
             # magnetization instead of magnetization,
-            # the rotation is necessary in order to have a proper
-            # definition of magnons in the system,
             # we choose the convention that the site at origin
             # (i.e. the lowest bit in binary representation) and its
             # corresponding sublattice is not subject to the rotation
@@ -49,7 +49,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
     # having the basis we want to calculate the matrix for each
     # magnetization subspace
     function calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, subspace)::Array{Float64,2}
-        # we want to be able to apply hamiltonian to a given state,
+        # we want to be able to apply Hamiltonian to a given state,
         # this will produce sum of its adjacent states multiplied
         # by the transition coefficinets (including self-transition),
         # as the input we rather take the position of the state
@@ -78,18 +78,18 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
                 # we take the neighbouring site j with periodic boundaries
                 j = mod1(i + 1, systemSize)
 
-                # we take care of the diagonal cefficient first
+                # we take care of the diagonal coefficient first
                 coefficients[1] += couplingJ * (0.5 * (bitState[i] + bitState[j]) - 0.25 - magnonInteraction * (bitState[i] * bitState[j]))
 
                 # for off-diagonal coefficients there are three possible scenarios
                 # (1) two magnons, (2) two empty sites or,
                 # (3) single magnon either in site i or site j
                 # we care about (1) and (2) only (this comes from the transformation
-                # we use to arrive at the bosonic model, i.e. sublattice rotation
+                # we use to arrive at the bosonic model, i.e. the sublattice rotation)
                 if (bitState[i] & bitState[j]) || ~(bitState[i] || bitState[j])
                     # in Julia all the mutable stucts (including arrays) are
                     # passed by reference so we have to copy bitState,
-                    # note that using simply newBitState = bitState just creats
+                    # note that using simply newBitState = bitState just creates
                     # another reference to the same address in memory and
                     # it would  end up in changing the original bitState
                     # which we do not want to change
@@ -105,8 +105,8 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
                     newPosition = searchsorted(subspace.basis, newState)[1]
 
                     # we check if the new position is already included
-                    # we include it if it is not and we take care of
-                    # incrementing transition coefficients
+                    # if it is not included we include it and we take
+                    # care of incrementing transition coefficients
                     isIncluded = false
                     for it in 1:length(indices)
                         if indices[it] == newPosition
@@ -125,12 +125,11 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
             return (indices, coefficients)
         end
 
-        subspaceSize = length(subspace.basis)
-
         # we initialize the matrix with proper size
         # and we calculate its coeffcients
         # here calculation for each column may be done
-        # in async way by different threads/processes/workers
+        # by different threads/processes/workers [parallel]
+        subspaceSize = length(subspace.basis)
         result = zeros(Float64, subspaceSize, subspaceSize)
         for position in 1:subspaceSize
             indices::Vector{Int64}, coefficients::Vector{Float64} = applyHamiltonian(systemSize, couplingJ, magnonInteraction, subspace, position)
@@ -144,6 +143,8 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
     function diagonalize(basis, isCheckDegeneracy = false)
         # we loop over subspaces and diagonalize them
         # for each we extract its ground state info
+        # each subspace can be diagonalised separately
+        # in different thread/process/worker [parallel]
         states = Vector{StateInfo}(undef, systemSize + 1)
         for (index, subspace) in enumerate(basis)
             factorization = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, subspace))
@@ -184,7 +185,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
 
     # we can also check if the ground state is not
     # degenerated within its own subspace
-    # we define below function just for debuging purpose
+    # we define function below just for debuging purposes
     # to make sure everything looks ok
     function d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo, maxCount = 2)
         eval = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, basis[stateInfo.magnetizationIndex])).values
@@ -204,7 +205,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
     # diagonalize each subspac and return the ground state info
     stateInfo = getGroundStateInfo(diagonalize(basis, true), true)
 
-    # we make sure there is no degeneracy
+    # wmake sure there is no degeneracy
     d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo)
 
     return stateInfo
