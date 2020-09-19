@@ -4,7 +4,7 @@ using LinearAlgebra
 include("functions.jl")
 
 # Structures
-mutable struct StateInfo
+mutable struct HeisenbergState
     magnetizationIndex::Int64
     energy::Float64
     vector::Vector{Float64}

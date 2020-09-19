@@ -1,4 +1,4 @@
-function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDebug = false)::StateInfo
+function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDebug = false)::HeisenbergState
     # construct a full basis -- we do not know if m-m interactions
     # affect the magnetization of the ground state but they could,
     # nevertheless regardels of m-m interactions model conserves
@@ -146,14 +146,14 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDe
         # for each we extract its ground state info,
         # each subspace can be diagonalised separately
         # by different thread/process/worker [parallel]
-        states = Vector{StateInfo}(undef, systemSize + 1)
+        states = Vector{HeisenbergState}(undef, systemSize + 1)
         nSubspaces = length(basis)
         for index in 1:nSubspaces
             factorization = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, basis[index]))
             # we do not expect any subspace having degenerated ground state
             # since states are sorted in ascending order with respect
             # to the energy we take the first one for each subspace
-            states[index] = StateInfo(index, factorization.values[1], factorization.vectors[:, 1])
+            states[index] = HeisenbergState(index, factorization.values[1], factorization.vectors[:, 1])
         end
 
         # here we should not get degeneracy for negative J
@@ -174,8 +174,8 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDe
 
     # having ground states for each subspace we search
     # for the true ground state of the system
-    function getGroundStateInfo(states)
-        result::StateInfo = states[1]
+    function getGroundState(states)
+        result::HeisenbergState = states[1]
         for state in states
             if state.energy < result.energy
                 result = state
@@ -189,13 +189,13 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDe
     # degenerated within its own subspace
     # we define function below just for debuging purposes
     # to make sure everything looks ok
-    function d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo, maxCount = 2)
-        eval = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, basis[stateInfo.magnetizationIndex])).values
+    function d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, heisenbergState, maxCount = 2)
+        eval = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, basis[heisenbergState.magnetizationIndex])).values
         println()
         println("> Degeneracy Check :")
         println(
             ">>> ",
-            [stateInfo.magnetizationIndex],
+            [heisenbergState.magnetizationIndex],
             "\n -> ",
             eval[1:min(length(eval), maxCount)]
         )
@@ -205,15 +205,15 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDe
     basis = constructBasis(systemSize)
 
     # diagonalize each subspace and return the ground state info
-    stateInfo = getGroundStateInfo(diagonalize(basis))
+    groundState = getGroundState(diagonalize(basis, true))
 
     # make sure there is no degeneracy
-    # only for debuging (takes time to run diagonalisation again)
+    # only for debuging (takes time to run diagonalisation)
     if isDebug
-        d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo)
+        d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, groundState)
     end
 
-    return stateInfo
+    return groundState
 end
 
 function getReachableSubspace(systemSize, magnetizationIndex, isRemovedSpinUp = true)::Basis
@@ -292,14 +292,20 @@ function getReachableSubspace(systemSize, magnetizationIndex, isRemovedSpinUp = 
     reachableSubspace = Basis(undef, subspaceSize)
 
     # we want to fill the basis with proper states,
-    # we keep the basis in order treating the hole configuration
-    # as high bits and magnon configuration as low bits
-
-    # we can rewrite rotatin mask as numeric value
-    numRotation::UInt32 = sum([rotationMask[it] * 2^(it-1) for it in 1:systemSize])
-
-    # we remember the position of last assignment
+    # we can keep the basis in order treating the hole configuration
+    # as higher bits and magnon configuration as lower bits
+    # this is a good practice that will later allow
+    # for O(log n) search time instead of O(n)
+    # we will disregard some magnetic configurations on the way
+    # since we are going to remove either spin up or down
+    # and some configurations will simply not fit
+    # thus we shall remember the position of last assignment
+    # to reachable subspace container while looping over
+    # different hole positions and magnon configurations
     last = 0
+
+    # it's also convenient to rewrite rotatin mask into numeric value
+    numRotation::UInt32 = sum([rotationMask[it] * 2^(it-1) for it in 1:systemSize])
 
     # we loop over possible hole positions
     for holePosition in 1:systemSize
