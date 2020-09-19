@@ -172,7 +172,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
 
     # having ground states for each subspace we search
     # the true ground state of the system
-    function getGroundStateInfo(states, isCheckDegeneracy = false)
+    function getGroundStateInfo(states)
         result::StateInfo = states[1]
         for state in states
             if state.energy < result.energy
@@ -202,16 +202,59 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
     # construct the basis,
     basis = constructBasis(systemSize)
 
-    # diagonalize each subspac and return the ground state info
-    stateInfo = getGroundStateInfo(diagonalize(basis, true), true)
+    # diagonalize each subspace and return the ground state info
+    stateInfo = getGroundStateInfo(diagonalize(basis, true))
 
-    # wmake sure there is no degeneracy
+    # make sure there is no degeneracy
+    # only for debuging (takes time to run diagonalisation again)
     d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo)
 
     return stateInfo
 end
 
-function getReachableSubspace(magnetizationSubspace, isRemoveSpinUp = true)
+function getReachableSubspace(systemSize, magnetizationIndex, isRemoveSpinUp = true)::Basis
+    # Heisenberg model conserves magnetization,
+    # this does not change when we add a hole,
+    # therefore we just need to know index
+    # of magnetization subspace of the Heisenberg
+    # model ground state and indicator of removed
+    # spin (i.e. up or down) to construst a basis
+    # of reachable states
+
+    # we start by setting proper number of spins up and down
+    # magnetizationIndex [low -> high] => magnetization [high -> low]
+    nSpinsDown::Int64 = magnetizationIndex - 1
+    nSpinsUp::Int64 = systemSize - nSpinsDown
+    if isRemoveSpinUp
+        nSpinsUp -= 1
+    else
+        nSpinsDown -= 1
+    end
+
+    # from now on we assume to have a single hole
+    # injected to the ground state of the Heisenberg model,
+
+    # we calculate a size of the subspace of reachable states
+    function getSubspaceSize(systemSize::Int64, nSpinsUp::Int64)::Int64
+        return systemSize * binomial(systemSize - 1, nSpinsUp)
+    end
+
+    subspaceSize::Int64 = getSubspaceSize(systemSize, nSpinsUp)
+
+    # we need a way to store information
+    # about positions of holes and magnons,
+    # even if we have a single hole it is convenient
+    # to store the configuration of hole(s) and magnons
+    # than just a position of a hole and configuration
+    # of magnons,
+    # to this end we introduce structure State and define
+    # type alias Basis for vector of States (see ./declarations.jl)
+
+    # now we can initialize the subspace basis with proper size
+    reachableSubspace = Basis(undef, subspaceSize)
+
+
+
 
 end
 

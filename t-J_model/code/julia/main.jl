@@ -1,12 +1,8 @@
-# Dependencies
-using LinearAlgebra
-
-include("structures.jl")
-include("functions.jl")
+include("declarations.jl")
 
 # Main Function
 function main()
-    systemSize::Int64 = 12
+    systemSize::Int64 = 4
     tunneling::Float64 = 1.0
     couplingJ::Float64 = tunneling * 1.0
     magnonInteraction::Float64 = 1.0
@@ -19,11 +15,9 @@ function main()
     heisenbergGroundState::StateInfo = getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)
 
     # Note: the model Hamiltonian (regardels of magnon-magnon interactions) conserves magnetization
-    # reachableSubspace = getReachableSubspace(heisenbergGroundState.magnetizationIndex)
+    reachableSubspace::Basis = getReachableSubspace(systemSize, heisenbergGroundState.magnetizationIndex)
 
     # holeInjectedState::Vector{Float64} = getHoleInjectedState(heisenbergGroundState.vector, reachableSubspace)
-
-    println()
 end
 
 @time test = main()
