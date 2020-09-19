@@ -1,4 +1,4 @@
-function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::StateInfo
+function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDebug = false)::StateInfo
     # construct a full basis -- we do not know if m-m interactions
     # affect the magnetization of the ground state but they could,
     # nevertheless regardels of m-m interactions model conserves
@@ -18,21 +18,21 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
         last = zeros(Int64, systemSize + 1)
         numberOfStates::Int64 = 2 ^ systemSize
 
+        # the rotation is necessary in order to have a proper
+        # definition of magnons in the system,
+        # we will include the rotation of the sublattice
+        # by grouping the states with respect to staggered
+        # magnetization instead of magnetization,
+        # we choose the convention that the site at the origin
+        # (i.e. the lowest bit in binary representation) and its
+        # corresponding sublattice is not subject to the rotation
+        # while the other one sublattice is subject to the rotation
+        rotationMask::Vector{Bool} = Bool.([mod(s, 2) for s in 0:(systemSize-1)])
+
         # for each state find its subspace
         for state in 0:(numberOfStates - 1)
             # we start by taking bit representation of the state
             bitState::Vector{Bool} = digits(Bool, state, base = 2, pad = systemSize)
-
-            # the rotation is necessary in order to have a proper
-            # definition of magnons in the system,
-            # we will include the rotation of the sublattice
-            # by grouping the states with respect to staggered
-            # magnetization instead of magnetization,
-            # we choose the convention that the site at origin
-            # (i.e. the lowest bit in binary representation) and its
-            # corresponding sublattice is not subject to the rotation
-            # while the other one sublattice is subject to the rotation
-            rotationMask::Vector{Bool} = Bool.([mod(s, 2) for s in 0:(systemSize-1)])
 
             # we calculate staggered magnetization using rotation mask
             # and transform it to index of corresponding subspace
@@ -99,14 +99,13 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
                     newBitState[i], newBitState[j] = ~newBitState[i], ~newBitState[j]
 
                     # we calculate new state index in binary basis
-                    newState::Int64 = sum(newBitState[k] * 2^(k-1) for k in 1:systemSize)
+                    newState::Int64 = sum(newBitState[it] * 2^(it-1) for it in 1:systemSize)
 
                     # we search for the new state position in the subspace basis
                     newPosition = searchsorted(subspace.basis, newState)[1]
 
                     # we check if the new position is already included
-                    # if it is not included we include it and we take
-                    # care of incrementing transition coefficients
+                    # and we take care of incrementing coefficients
                     isIncluded = false
                     for it in 1:length(indices)
                         if indices[it] == newPosition
@@ -115,6 +114,8 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
                             break
                         end
                     end
+
+                    # if it is not included we include it
                     if !isIncluded
                         push!(indices, newPosition)
                         push!(coefficients, transitionCoefficient)
@@ -127,7 +128,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
 
         # we initialize the matrix with proper size
         # and we calculate its coeffcients
-        # here calculation for each column may be done
+        # here calculation for each row may be done
         # by different threads/processes/workers [parallel]
         subspaceSize = length(subspace.basis)
         result = zeros(Float64, subspaceSize, subspaceSize)
@@ -141,13 +142,14 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
 
     # then we want to be able to diagonalize the matrix
     function diagonalize(basis, isCheckDegeneracy = false)
-        # we loop over subspaces and diagonalize them
-        # for each we extract its ground state info
+        # we loop over subspaces and diagonalize them,
+        # for each we extract its ground state info,
         # each subspace can be diagonalised separately
-        # in different thread/process/worker [parallel]
+        # by different thread/process/worker [parallel]
         states = Vector{StateInfo}(undef, systemSize + 1)
-        for (index, subspace) in enumerate(basis)
-            factorization = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, subspace))
+        nSubspaces = length(basis)
+        for index in 1:nSubspaces
+            factorization = eigen(calculateSubspaceMatrix(systemSize, couplingJ, magnonInteraction, basis[index]))
             # we do not expect any subspace having degenerated ground state
             # since states are sorted in ascending order with respect
             # to the energy we take the first one for each subspace
@@ -162,7 +164,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
             println(
                 ">>> ",
                 [state.magnetizationIndex for state in states],
-                " -> ",
+                "\n -> ",
                 [state.energy for state in states]
             )
         end
@@ -171,7 +173,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
     end
 
     # having ground states for each subspace we search
-    # the true ground state of the system
+    # for the true ground state of the system
     function getGroundStateInfo(states)
         result::StateInfo = states[1]
         for state in states
@@ -194,7 +196,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
         println(
             ">>> ",
             [stateInfo.magnetizationIndex],
-            " -> ",
+            "\n -> ",
             eval[1:min(length(eval), maxCount)]
         )
     end
@@ -203,16 +205,18 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction)::Sta
     basis = constructBasis(systemSize)
 
     # diagonalize each subspace and return the ground state info
-    stateInfo = getGroundStateInfo(diagonalize(basis, true))
+    stateInfo = getGroundStateInfo(diagonalize(basis))
 
     # make sure there is no degeneracy
     # only for debuging (takes time to run diagonalisation again)
-    d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo)
+    if isDebug
+        d_checkDegeneracy(systemSize, couplingJ, magnonInteraction, basis, stateInfo)
+    end
 
     return stateInfo
 end
 
-function getReachableSubspace(systemSize, magnetizationIndex, isRemoveSpinUp = true)::Basis
+function getReachableSubspace(systemSize, magnetizationIndex, isRemovedSpinUp = true)::Basis
     # Heisenberg model conserves magnetization,
     # this does not change when we add a hole,
     # therefore we just need to know index
@@ -221,18 +225,52 @@ function getReachableSubspace(systemSize, magnetizationIndex, isRemoveSpinUp = t
     # spin (i.e. up or down) to construst a basis
     # of reachable states
 
-    # we start by setting proper number of spins up and down
+    # we start by setting number of spins up and down
     # magnetizationIndex [low -> high] => magnetization [high -> low]
     nSpinsDown::Int64 = magnetizationIndex - 1
     nSpinsUp::Int64 = systemSize - nSpinsDown
-    if isRemoveSpinUp
-        nSpinsUp -= 1
-    else
-        nSpinsDown -= 1
+
+    # we need all the possible magnetic configuration
+    # for specified magnetization index and system size
+    # we exactly know how many such states there is
+    nMagneticStates = binomial(systemSize, nSpinsUp)
+
+    # we initialize magnetic configurations container
+    magneticStates = Vector{UInt32}(undef, nMagneticStates)
+
+    # the rotation is necessary in order to have a proper
+    # definition of magnons in the system,
+    # we include the rotation of the sublattice
+    # by grouping the states with respect to staggered
+    # magnetization instead of magnetization,
+    # we choose the convention that the site at the origin
+    # (i.e. the lowest bit in binary representation) and its
+    # corresponding sublattice is not subject to the rotation
+    # while the other one sublattice is subject to the rotation
+    rotationMask::Vector{Bool} = Bool.([mod(s, 2) for s in 0:(systemSize-1)])
+
+    # now we search for states that belong to specified
+    # magnetic subspace including rotation of the sublattice,
+    last::Int64 = 0
+    numberOfStates::Int64 = 2 ^ systemSize
+    for state::UInt32 in 0:(numberOfStates - 1)
+        # we start by taking bit representation of the state
+        bitState::Vector{Bool} = digits(Bool, state, base = 2, pad = systemSize)
+
+        # we calculate magnetization using rotation mask
+        # and transform it to index of corresponding subspace
+        index::Int64 = sum(bitState .⊻ rotationMask) + 1
+
+        # if the state belong to desired magnetization subspace
+        # we assign it to its position in the basis
+        if index == magnetizationIndex
+            magneticStates[last += 1] = state
+        end
     end
 
-    # from now on we assume to have a single hole
-    # injected to the ground state of the Heisenberg model,
+    # !!! from now on we assume to have a single hole
+    # injected to the ground state of the Heisenberg model
+    isRemovedSpinUp ? nSpinsUp -= 1 : nSpinsDown -= 1
 
     # we calculate a size of the subspace of reachable states
     function getSubspaceSize(systemSize::Int64, nSpinsUp::Int64)::Int64
@@ -243,19 +281,57 @@ function getReachableSubspace(systemSize, magnetizationIndex, isRemoveSpinUp = t
 
     # we need a way to store information
     # about positions of holes and magnons,
-    # even if we have a single hole it is convenient
+    # even if we have a single hole it is more convenient
     # to store the configuration of hole(s) and magnons
     # than just a position of a hole and configuration
     # of magnons,
     # to this end we introduce structure State and define
     # type alias Basis for vector of States (see ./declarations.jl)
 
-    # now we can initialize the subspace basis with proper size
+    # now we can initialize the subspace basis with known size
     reachableSubspace = Basis(undef, subspaceSize)
 
+    # we want to fill the basis with proper states,
+    # we keep the basis in order treating the hole configuration
+    # as high bits and magnon configuration as low bits
 
+    # we can rewrite rotatin mask as numeric value
+    numRotation::UInt32 = sum([rotationMask[it] * 2^(it-1) for it in 1:systemSize])
 
+    # we remember the position of last assignment
+    last = 0
 
+    # we loop over possible hole positions
+    for holePosition in 1:systemSize
+        # we take binary representation of holes as hole configuration
+        holes::UInt32 = 2^(holePosition - 1)
+
+        # we loop over magnetic configurations in desired subspace
+        # that we previously calculated
+        for magnons in magneticStates
+            # we need to know the value of the spin
+            # at the site where we want to make a hole
+            # but magnetic states were subject to rotation
+            # so we have to reverse it
+            spins::UInt32 = magnons ⊻ numRotation
+
+            # we have a following convention:
+            # spin up -> 0 and spin down -> 1
+            # while for holes
+            # hole absent -> 0, hole present -> 1
+            # so we act accordingly
+            # we check if there is a correct spin at site
+            # where we want to put a hole
+            isRemovedSpinUp ? spins = spins : spins = ~spins
+            if (holes & spins) == 0
+                # we increment last assignment position
+                # and assign a state to reachable subspace
+                reachableSubspace[last += 1] = State(holes, magnons)
+            end
+        end
+    end
+
+    return reachableSubspace
 end
 
 function getHoleInjectedState(groundStateVector, reachableSubspace)
