@@ -220,7 +220,7 @@
 #     return groundState
 # end
 
-function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDebug = false)#::HeisenbergState
+function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDebug = false)::HeisenbergState
     # construct a full basis -- we do not know if m-m interactions
     # affect the magnetization of the ground state but they could,
     # nevertheless regardels of m-m interactions model conserves
@@ -581,18 +581,18 @@ function getMomentumSpace(systemSize, magnetizationIndex, isRemovedSpinUp = true
     nMagneticStates = binomial(systemSize, nSpinsUp)
 
     # we initialize magnetic configurations container
-    magneticStates = Vector{Int64}(undef, nMagneticStates)
+    magneticStates = Basis(undef, nMagneticStates)
 
     # now we search for states that belong to specified
-    # magnetic subspace including rotation of the sublattice,
+    # magnetic subspace including rotation of the sublattice
     last::Int64 = 0
     numberOfStates::Int64 = 2 ^ systemSize
     for state in 0:(numberOfStates - 1)
         # we start by taking bit representation of the state
         bitState::Vector{Bool} = digits(Bool, state, base = 2, pad = systemSize)
 
-        # we calculate magnetization
-        # and transform it to index of corresponding subspace
+        # we calculate magnetization and get
+        # the index of corresponding subspace
         index::Int64 = sum(bitState) + 1
 
         # if the state belong to desired magnetization subspace
@@ -606,36 +606,24 @@ function getMomentumSpace(systemSize, magnetizationIndex, isRemovedSpinUp = true
     # injected to the ground state of the Heisenberg model
     isRemovedSpinUp ? nSpinsUp -= 1 : nSpinsDown -= 1
 
-    # we calculate a size of the momentum subspace
+    # we calculate the size of the momentum subspace
     nMomentumStates::Int64 = binomial(systemSize - 1, nSpinsUp)
-
-    # we need a way to store information
-    # about positions of holes and magnons,
-    # even if we have a single hole it is more convenient
-    # to store the configuration of hole(s) and magnons
-    # than just a position of a hole and configuration
-    # of magnons,
-    # to this end we introduce structure State and define
-    # type alias Basis for vector of States (see ./declarations.jl)
 
     # now we can initialize the subspace basis with known size
     momentumSpace = Basis(undef, nMomentumStates)
 
-    # we want to fill the basis with proper states,
-    # we will disregard some magnetic configurations on the way
-    # since we are going to remove either spin up or down
-    # and some configurations will simply not fit
-    # thus we shall remember the position of last assignment
+    # we want to fill the basis with states,
+    # we remember the position of last assignment
     last = 0
 
-    # we loop over magnetic configurations with desited magnetization
+    # we loop over magnetic configurations with desired magnetization
     for spins in magneticStates
         # we check if there is a correct spin at site
         # where we want to put a hole
         if (spins & 1) == (isRemovedSpinUp ? 0 : 1)
             # we increment last assignment position
-            # and assign a state to reachable subspace
-            momentumSpace[last += 1] = State(1, spins)
+            # and assign a state to momentum space
+            momentumSpace[last += 1] = spins
         end
     end
 

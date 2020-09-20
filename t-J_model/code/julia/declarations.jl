@@ -3,6 +3,9 @@ using LinearAlgebra
 
 include("functions.jl")
 
+# Types
+Basis = Vector{Int64}
+
 # Structures
 mutable struct HeisenbergState
     magnetizationIndex::Int64
@@ -12,13 +15,5 @@ end
 
 mutable struct Subspace
     magnetizationIndex::Int64
-    basis::Vector{Int64}
+    basis::Basis
 end
-
-mutable struct State
-    hole::Int64
-    spins::Int64
-end
-
-# Types
-Basis = Vector{State}

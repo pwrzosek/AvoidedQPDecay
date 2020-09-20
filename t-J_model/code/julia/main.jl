@@ -2,7 +2,7 @@ include("declarations.jl")
 
 # Main Function
 function main()
-    systemSize::Int64           = 2
+    systemSize::Int64           = 4
     tunneling::Float64          = 1.0
     couplingJ::Float64          = 1.0
     magnonInteraction::Float64  = 1.0
@@ -14,7 +14,7 @@ function main()
     end
 
     # calculate Heisenberg ground state energy, vector and index of magnetization subspace
-    groundState = getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, true)
+    groundState::HeisenbergState = getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, true)
 
     # # construct basis of reachable states starting from the specified magnetic subspace
     # reachableSubspace::Basis = getReachableSubspace(systemSize, groundState.magnetizationIndex, isRemovedSpinUp)
