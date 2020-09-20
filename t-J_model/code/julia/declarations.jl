@@ -16,8 +16,8 @@ mutable struct Subspace
 end
 
 mutable struct State
-    holes::UInt32
-    magnons::UInt32
+    hole::Int64
+    spins::Int64
 end
 
 # Types
