@@ -396,6 +396,10 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
         # we will have to include sublattice rotation
         rotationMask::Int64 = sum([[mod(s, 2) for s in 0:(systemSize-1)][it] * 2^(it-1) for it in 1:systemSize])
 
+        # some more info for faster dealing with translations
+        highestBit = 2^(systemSize - 1)
+        highestValue = 2^systemSize - 1
+
         # we need to know how to apply the model Hamiltonian
         # to each moemntum state
         # momentum state consists of a sum over translations
@@ -408,7 +412,7 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
         # states back to its own representatives while keeping
         # proper phase factor in the mean time
         function applyHamiltonian(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis, position)::Tuple{Vector{Int64}, Vector{ComplexF64}}
-            # w take the position in the momentum basis
+            # we take the position in the momentum basis
             # as the input paramter,
             # as the output we return tuple of resulting
             # states positions and their corresponding adjacency
@@ -428,52 +432,150 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
             push!(indices, position)
             push!(coefficients, 0)
 
-            transitionCoefficient = couplingJ * 0.5
+            spinFlipCoefficient = couplingJ * 0.5
+            tunnelingCoefficient = -1.0 * tunneling
 
-            # we loop over site i in a state
-            for i in 1:systemSize
-                # we take the neighbouring site j with periodic boundaries
-                j = mod1(i + 1, systemSize)
+            # we start with the site i = 1 containg the hole
+            # and take into consideration its nearest neighbourhood
+            for j in [2, systemSize]
+                i = 1
+                # we take care of the diagonal coefficient first
+                # besides the usual cost of having a magnon
+                # and cost of having a hole
+                # there is only hole-magnon proximity effect to take into
+                # account because hole-hole interaction does not occur when
+                # there is only one hole in the system
+                holeCost = 0.5
+                magnonCost = -0.5 * bitState[j]
+                holeMagnon = -0.5 * bitState[j]
+                coefficients[1] += couplingJ * (holeCost + magnonCost + holeMagnon - 0.25)
+
+                # now we want to take into account hole tunneling
+                newBitState = copy(bitState)
+
+                # if the hole jumps to unoccupied lattice site
+                # it should leave the magnon behind
+                # otherwise the hole should annihilate the magnon
+                # in the lattice site of its arrival,
+                # also we do not erase the spin at site where the hole
+                # is introduced so we have to take care of it
+                # even if it does not play any role it still counts
+                # in proper enumeration of momentum space states
+                newBitState[i], newBitState[j] = ~newBitState[j], ~newBitState[i]
+
+                # we calculate new state index in binary basis
+                # since basis is written without rotation
+                # we rotate back the rotated sublattice
+                newState::Int64 = sum(newBitState[it] * 2^(it-1) for it in 1:systemSize) ⊻ rotationMask
+
+                # position of the hole after jump with respect to the origin
+                r = j - i
+
+                # we translate state back to locate hole at the origin
+                # note thet once we rotated sublattice back we dont have
+                # to flip spins every singla translation
+                for _ in 1:r
+                    newState = bitmov(newState, systemSize, false, hb = highestBit, hv = highestValue)
+                end
+
+                # each state with the hole at the origin
+                # is a representative state, we just need to find
+                # its index in the momentum basis
+                newPosition = searchsorted(momentumBasis, newState)[1]
+
+                # we include phase factor in coefficient
+                coef = tunnelingCoefficient * exp(-im * subspaceMomentum * r)
+
+                # we check if the new position is already included
+                # and we take care of incrementing coefficients
+                isIncluded = false
+                for it in 1:length(indices)
+                    if indices[it] == newPosition
+                        coefficients[it] += coef
+                        isIncluded = true
+                        break
+                    end
+                end
+
+                # if it is not included we include it
+                if !isIncluded
+                    push!(indices, newPosition)
+                    push!(coefficients, coef)
+                end
+            end
+
+            # we loop over remaining sites i in a state
+            for i in 2:(systemSize-1)
+                # we take the neighbouring site j
+                # (we do not have to include periodic boundaries)
+                j = i + 1
 
 # TODO: add logic including tunneling of the hole,
 # the rest should be similar to the Heisenberg model
 # there are only few differences and all of them
 # take place in the proximity of the hole only
 
-                # # we take care of the diagonal coefficient first
-                # coefficients[1] += couplingJ * (0.5 * (bitState[i] + bitState[j]) - 0.25 - magnonInteraction * (bitState[i] * bitState[j]))
-                #
-                # if (bitState[i] & bitState[j]) || ~(bitState[i] || bitState[j])
-                #     newBitState = copy(bitState)
-                #
-                #     # we flip pair of spins (create/annihilate pair of magnons)
-                #     newBitState[i], newBitState[j] = ~newBitState[i], ~newBitState[j]
-                #
-                #     # we calculate new state index in binary basis
-                #     # since basis is written without rotation
-                #     # we rotate back the rotated sublattice
-                #     newState::Int64 = sum(newBitState[it] * 2^(it-1) for it in 1:systemSize) ⊻ rotationMask
-                #
-                #     # we search for the new state position in the subspace basis
-                #     newPosition = searchsorted(subspace.basis, newState)[1]
-                #
-                #     # we check if the new position is already included
-                #     # and we take care of incrementing coefficients
-                #     isIncluded = false
-                #     for it in 1:length(indices)
-                #         if indices[it] == newPosition
-                #             coefficients[it] += transitionCoefficient
-                #             isIncluded = true
-                #             break
-                #         end
-                #     end
-                #
-                #     # if it is not included we include it
-                #     if !isIncluded
-                #         push!(indices, newPosition)
-                #         push!(coefficients, transitionCoefficient)
-                #     end
-                # end
+# the hole is at position 0
+# when it jumps it swaps the position
+# with neighbouring spin
+# in 1D there are two neighbours
+# first at position 1
+# second at position N-1
+# if the hole jumps to position 1
+# we have to rotate the state backward
+# to locate the hole again at position 0
+# when we search for representatives
+# if the hole jumps to po N-1
+# we have to rotate forward
+# each state consists of sum over different
+# hole positions in real space
+# mulitiplied by phase factors exp(-iqr)
+# it means that overlap of the particular
+# state in real space with its corresponding
+# momentum space state is just the phase factor
+# thus when we act with a hamilatonian
+# on particular representative state
+# we know that there are also all these translations
+# with proper phase factors
+# thus after acting with the Hamiltonian on particular
+# representative state we have to loop over all
+# translations and multiply each resulting state
+# by a sum of phase factors
+
+                # we take care of the diagonal coefficient first
+                coefficients[1] += couplingJ * (0.5 * (bitState[i] + bitState[j]) - 0.25 - magnonInteraction * (bitState[i] * bitState[j]))
+
+                if (bitState[i] & bitState[j]) || ~(bitState[i] || bitState[j])
+                    newBitState = copy(bitState)
+
+                    # we flip pair of spins (create/annihilate pair of magnons)
+                    newBitState[i], newBitState[j] = ~newBitState[i], ~newBitState[j]
+
+                    # we calculate new state index in binary basis
+                    # since basis is written without rotation
+                    # we rotate back the rotated sublattice
+                    newState::Int64 = sum(newBitState[it] * 2^(it-1) for it in 1:systemSize) ⊻ rotationMask
+
+                    # we search for the new state position in the subspace basis
+                    newPosition = searchsorted(momentumBasis, newState)[1]
+
+                    # we check if the new position is already included
+                    # and we take care of incrementing coefficients
+                    isIncluded = false
+                    for it in 1:length(indices)
+                        if indices[it] == newPosition
+                            coefficients[it] += transitionCoefficient
+                            isIncluded = true
+                            break
+                        end
+                    end
+
+                    # if it is not included we include it
+                    if !isIncluded
+                        push!(indices, newPosition)
+                        push!(coefficients, transitionCoefficient)
+                    end
+                end
             end
 
             return (indices, coefficients)
