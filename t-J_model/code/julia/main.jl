@@ -16,13 +16,11 @@ function main()
     # calculate Heisenberg ground state energy, vector and index of magnetization subspace
     groundState::HeisenbergState = getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, true)
 
-    # # construct basis of reachable states starting from the specified magnetic subspace
-    # reachableSubspace::Basis = getReachableSubspace(systemSize, groundState.magnetizationIndex, isRemovedSpinUp)
-    #
     # construct momentum space
-    momentumSpace::Basis = getMomentumSpace(systemSize, groundState.magnetizationIndex, isRemovedSpinUp)
+    momentumBasis::Basis = getMomentumSpace(systemSize, groundState.magnetizationIndex, isRemovedSpinUp)
 
-    # holeInjectedState::Vector{Float64} = getHoleInjectedState(heisenbergGroundState.vector, reachableSubspace)
+    # annihilate electron and write result in momentum basis
+    holeState::Vector{ComplexF64} = getSingleHoleState(systemSize, groundState, π/2, π/2, momentumBasis, isRemovedSpinUp)
 end
 
-@time test = main()
+test = main()
