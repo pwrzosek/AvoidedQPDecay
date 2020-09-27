@@ -388,16 +388,16 @@ end
 # ******************************************* #
 # ******************************************* #
 
-function digonalizeMomentumSubspace(systemSize, subspaceMomentum, momentumBasis)
-    # we start by writting down matrix of the t-J model Hamiltonian
-    # in momentum basis for given momentum
-    # we loop over positions of momentum states
-    # since we want to know in the end the indices
-    # for proper coefficient of the subspace matrix
-    nMomentumStates = length(momentumBasis)
-    for it in 1:nMomentumStates
-        momentumState = momentumBasis[it]
+function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteractions, subspaceMomentum, momentumBasis)
+    # we want to write down a matrix of the t-J model
+    # Hamiltonian in momentum basis for given momentum
 
+    function calculateSubspaceMatrix(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
+        # we will have to include sublattice rotation
+        rotationMask::Int64 = sum([[mod(s, 2) for s in 0:(systemSize-1)][it] * 2^(it-1) for it in 1:systemSize])
+
+        # we need to know how to apply the model Hamiltonian
+        # to each moemntum state
         # momentum state consists of a sum over translations
         # of representative state multiplied by phase factors
         # of exp(-iqr),
@@ -407,7 +407,88 @@ function digonalizeMomentumSubspace(systemSize, subspaceMomentum, momentumBasis)
         # of the hole in each state to be able to translate
         # states back to its own representatives while keeping
         # proper phase factor in the mean time
+        function applyHamiltonian(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis, position)::Tuple{Vector{Int64}, Vector{ComplexF64}}
+            # w take the position in the momentum basis
+            # as the input paramter,
+            # as the output we return tuple of resulting
+            # states positions and their corresponding adjacency
+            # we start by taking bit representation of the state
+            # corresponding to given position in the subspace basis
+            # and we also include the rotation as the model
+            # Hamiltonian shall be formally written in terms
+            # of holes and magnons
+            bitState::Vector{Bool} = digits(Bool, momentumBasis[position] ⊻ rotationMask, base = 2, pad = systemSize)
 
+            # a-priori we do not know how many distinct adjacent states
+            # there exists for a chosen state
+            indices = Vector{Int64}(undef, 0)
+            coefficients = Vector{ComplexF64}(undef, 0)
 
+            # we start by pushing the position of the initial state
+            push!(indices, position)
+            push!(coefficients, 0)
+
+            transitionCoefficient = couplingJ * 0.5
+
+            # we loop over site i in a state
+            for i in 1:systemSize
+                # we take the neighbouring site j with periodic boundaries
+                j = mod1(i + 1, systemSize)
+
+# TODO: add logic including tunneling of the hole
+# the rest should be similat to Heisenberg model
+# there are only few differences and all of them
+# happens onyl in the proximity of the hole
+
+                # # we take care of the diagonal coefficient first
+                # coefficients[1] += couplingJ * (0.5 * (bitState[i] + bitState[j]) - 0.25 - magnonInteraction * (bitState[i] * bitState[j]))
+                #
+                # if (bitState[i] & bitState[j]) || ~(bitState[i] || bitState[j])
+                #     newBitState = copy(bitState)
+                #
+                #     # we flip pair of spins (create/annihilate pair of magnons)
+                #     newBitState[i], newBitState[j] = ~newBitState[i], ~newBitState[j]
+                #
+                #     # we calculate new state index in binary basis
+                #     # since basis is written without rotation
+                #     # we rotate back the rotated sublattice
+                #     newState::Int64 = sum(newBitState[it] * 2^(it-1) for it in 1:systemSize) ⊻ rotationMask
+                #
+                #     # we search for the new state position in the subspace basis
+                #     newPosition = searchsorted(subspace.basis, newState)[1]
+                #
+                #     # we check if the new position is already included
+                #     # and we take care of incrementing coefficients
+                #     isIncluded = false
+                #     for it in 1:length(indices)
+                #         if indices[it] == newPosition
+                #             coefficients[it] += transitionCoefficient
+                #             isIncluded = true
+                #             break
+                #         end
+                #     end
+                #
+                #     # if it is not included we include it
+                #     if !isIncluded
+                #         push!(indices, newPosition)
+                #         push!(coefficients, transitionCoefficient)
+                #     end
+                # end
+            end
+
+            return (indices, coefficients)
+        end
+
+        # # since we want to know in the end the indices
+        # # for proper coefficient of the subspace matrix
+        # # we loop over positions of momentum states
+        # nMomentumStates = length(momentumBasis)
+        # for it in 1:nMomentumStates
+        #     momentumState = momentumBasis[it]
+        #
+        #
+        # end
     end
+
+    eigen(subspaceMatrix)
 end
