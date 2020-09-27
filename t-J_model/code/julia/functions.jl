@@ -435,10 +435,10 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
                 # we take the neighbouring site j with periodic boundaries
                 j = mod1(i + 1, systemSize)
 
-# TODO: add logic including tunneling of the hole
-# the rest should be similat to Heisenberg model
+# TODO: add logic including tunneling of the hole,
+# the rest should be similar to the Heisenberg model
 # there are only few differences and all of them
-# happens onyl in the proximity of the hole
+# take place in the proximity of the hole only
 
                 # # we take care of the diagonal coefficient first
                 # coefficients[1] += couplingJ * (0.5 * (bitState[i] + bitState[j]) - 0.25 - magnonInteraction * (bitState[i] * bitState[j]))
