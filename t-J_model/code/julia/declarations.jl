@@ -17,3 +17,9 @@ mutable struct Subspace
     magnetizationIndex::Int64
     basis::Basis
 end
+
+mutable struct Lehmann
+    momentum::Float64
+    energy::Vector{Float64}
+    weight::Vector{Float64}
+end

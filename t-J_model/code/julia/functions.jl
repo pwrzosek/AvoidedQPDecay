@@ -388,7 +388,7 @@ end
 # ******************************************* #
 # ******************************************* #
 
-function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
+function diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
     # we want to write down a matrix of the t-J model
     # Hamiltonian in momentum basis for given momentum
     # and diagonalize it,
@@ -476,9 +476,9 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
                 # account because hole-hole interaction does not occur when
                 # there is only one hole in the system
                 holeCost = 0.5
-                magnonCost = -0.5 * bitState[j]
+                magnonCost = 0.5 * bitState[j]
                 holeMagnon = -0.5 * bitState[j]
-                coefficients[1] += couplingJ * (holeCost + magnonCost + holeMagnon - 0.25)
+                coefficients[1] += couplingJ * (holeCost + magnonCost + holeMagnon)
 
                 # now we want to take into account hole tunneling
                 newBitState = copy(bitState)
@@ -594,4 +594,45 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
 
     # in the end we diagonalize the matrix
     return eigen(calculateSubspaceMatrix(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis))
+end
+
+# ******************************************* #
+# ******************************************* #
+# ******************************************* #
+
+function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp = true)::Vector{Lehmann}
+    if couplingJ <= 0
+        println("Assumed antiferromagnetic J > 0!")
+        return nothing
+    end
+
+    # calculate Heisenberg ground state energy, vector and index of magnetization subspace
+    groundState::HeisenbergState = getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction) #, true)
+
+    # construct momentum space
+    momentumBasis::Basis = getMomentumSpace(systemSize, groundState.magnetizationIndex, isRemovedSpinUp)
+
+    # annihilate electron and write result in momentum basis
+    holeState::Vector{ComplexF64} = getSingleHoleState(systemSize, groundState, π/2, π/2, momentumBasis, isRemovedSpinUp)
+
+    # container for the Green's function of momentum subspaces
+    subspaceResolvedResult = Array{Lehmann}(undef, systemSize + 1, systemSize)
+    step = 2π / systemSize
+    for subspaceMomentum in 0:step:(2π - step)
+        factorization = diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
+        for k in 0:step:2π
+            # TODO: get greens function info
+        end
+    end
+
+    result = Vector{Lehmann}(undef, systemSize + 1)
+    for it in 1:(systemSize + 1)
+        # TODO: merge momentum subspaces
+    end
+
+    return result
+end
+
+function saveLehmannRepresentation(greensFunction)
+
 end
