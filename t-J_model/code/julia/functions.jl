@@ -612,27 +612,67 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
     # construct momentum space
     momentumBasis::Basis = getMomentumSpace(systemSize, groundState.magnetizationIndex, isRemovedSpinUp)
 
-    # annihilate electron and write result in momentum basis
-    holeState::Vector{ComplexF64} = getSingleHoleState(systemSize, groundState, π/2, π/2, momentumBasis, isRemovedSpinUp)
-
-    # container for the Green's function of momentum subspaces
+    # Green's functions for momentum subspaces
     subspaceResolvedResult = Array{Lehmann}(undef, systemSize + 1, systemSize)
-    step = 2π / systemSize
-    for subspaceMomentum in 0:step:(2π - step)
+    for it in 1:systemSize
+        subspaceMomentum = 2π * (it - 1) / systemSize
+
+        # diagonalize momentum subspace for eigenstates and energies
         factorization = diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
-        for k in 0:step:2π
-            # TODO: get greens function info
+        subspaceSize = length(factorization.values)
+
+        for jt in 1:(systemSize + 1)
+            holeMomentum = 2π * (jt - 1) / systemSize
+
+            # annihilate electron and write result in momentum basis
+            holeState::Vector{ComplexF64} = getSingleHoleState(systemSize, groundState, holeMomentum, subspaceMomentum, momentumBasis, isRemovedSpinUp)
+
+            # initialize containers
+            subspaceResolvedResult[jt, it] =
+                Lehmann(
+                    holeMomentum,
+                    Vector{Float64}(undef, subspaceSize),
+                    Vector{Float64}(undef, subspaceSize)
+                )
+
+            # fill in energies
+            subspaceResolvedResult[jt, it].energy .= real.(factorization.values)
+
+            # calculate overlaps
+            for st in 1:subspaceSize
+                subspaceResolvedResult[jt, it].weight[st] = abs(dot(factorization.vectors[:, st], holeState))^2
+            end
         end
     end
 
+    # most of weights is close to 0
+    # we do not want to write them to the file
+    # since they carry no information
+    # thus we shall filter them out
+    cutoff = 10^-20
+
     result = Vector{Lehmann}(undef, systemSize + 1)
     for it in 1:(systemSize + 1)
-        # TODO: merge momentum subspaces
+        # initialize greens function container
+        result[it] =
+            Lehmann(
+                subspaceResolvedResult[it, 1].momentum,
+                Vector{Float64}(undef, 0),
+                Vector{Float64}(undef, 0)
+            )
+        for jt in 1:systemSize
+            indices = findall(x -> x > cutoff, subspaceResolvedResult[it, jt].weight)
+            append!(result[it].energy, subspaceResolvedResult[it, jt].energy[indices])
+            append!(result[it].weight, subspaceResolvedResult[it, jt].weight[indices])
+        end
+        ordering = sortperm(result[it].energy)
+        result[it].energy = result[it].energy[ordering]
+        result[it].weight = result[it].weight[ordering]
     end
 
     return result
 end
 
-function saveLehmannRepresentation(greensFunction)
-
-end
+# function saveLehmannRepresentation(greensFunction::Vector{Lehmann})
+#
+# end

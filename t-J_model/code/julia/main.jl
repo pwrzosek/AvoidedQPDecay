@@ -2,7 +2,7 @@ include("declarations.jl")
 
 # Main Function
 function main()
-    systemSize::Int64           = 4
+    systemSize::Int64           = 16
     tunneling::Float64          = 1.0
     couplingJ::Float64          = 1.0
     magnonInteraction::Float64  = 1.0
@@ -13,7 +13,7 @@ function main()
         calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp)
 
     # save to file
-    saveLehmannRepresentation(greensFunction)
+    # saveLehmannRepresentation(greensFunction)
 end
 
 @time main()
