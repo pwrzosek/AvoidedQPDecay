@@ -212,7 +212,7 @@ function getHeisenbergGroundState(systemSize, couplingJ, magnonInteraction, isDe
     basis = constructBasis(systemSize)
 
     # diagonalize each subspace and return the ground state info
-    groundState = getGroundState(diagonalize(basis, true))
+    groundState = getGroundState(diagonalize(basis)) #, true))
 
     # make sure there is no degeneracy
     # only for debuging (takes time to run diagonalisation)
@@ -388,7 +388,7 @@ end
 # ******************************************* #
 # ******************************************* #
 
-function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteractions, subspaceMomentum, momentumBasis)
+function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
     # we want to write down a matrix of the t-J model
     # Hamiltonian in momentum basis for given momentum
     # and diagonalize it,
