@@ -391,6 +391,8 @@ end
 function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInteractions, subspaceMomentum, momentumBasis)
     # we want to write down a matrix of the t-J model
     # Hamiltonian in momentum basis for given momentum
+    # and diagonalize it,
+    # let us start with writing the matrix first
 
     function calculateSubspaceMatrix(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis)
         # we will have to include sublattice rotation
@@ -434,6 +436,34 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
 
             spinFlipCoefficient = couplingJ * 0.5
             tunnelingCoefficient = -1.0 * tunneling
+
+            # the hole is at position 0
+            # when it jumps it swaps the position
+            # with neighbouring spin,
+            # in 1D there are two neighbours
+            # first at position 1
+            # second at position N-1,
+            # if the hole jumps to position 1
+            # we have to rotate the state backward
+            # to locate the hole again at position 0
+            # when we search for representatives,
+            # if the hole jumps to position N-1
+            # we have to rotate forward,
+            # each state consists of sum over different
+            # hole positions in real space
+            # mulitiplied by phase factors exp(-iqr),
+            # it means that overlap of the particular
+            # state in real space with its corresponding
+            # momentum space state is just the phase factor
+            # thus when we act with a hamilatonian
+            # on particular representative state
+            # we know that there are also all these translations
+            # with proper phase factors
+            # thanks to simple form of momentum states
+            # we don't have to do anything when acting with
+            # H_J part since it does not change the hole
+            # position and therefore does result in another
+            # representative state
 
             # we start with the site i = 1 containg the hole
             # and take into consideration its nearest neighbourhood
@@ -510,38 +540,6 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
                 # (we do not have to include periodic boundaries)
                 j = i + 1
 
-# TODO: add logic including tunneling of the hole,
-# the rest should be similar to the Heisenberg model
-# there are only few differences and all of them
-# take place in the proximity of the hole only
-
-# the hole is at position 0
-# when it jumps it swaps the position
-# with neighbouring spin
-# in 1D there are two neighbours
-# first at position 1
-# second at position N-1
-# if the hole jumps to position 1
-# we have to rotate the state backward
-# to locate the hole again at position 0
-# when we search for representatives
-# if the hole jumps to po N-1
-# we have to rotate forward
-# each state consists of sum over different
-# hole positions in real space
-# mulitiplied by phase factors exp(-iqr)
-# it means that overlap of the particular
-# state in real space with its corresponding
-# momentum space state is just the phase factor
-# thus when we act with a hamilatonian
-# on particular representative state
-# we know that there are also all these translations
-# with proper phase factors
-# thus after acting with the Hamiltonian on particular
-# representative state we have to loop over all
-# translations and multiply each resulting state
-# by a sum of phase factors
-
                 # we take care of the diagonal coefficient first
                 coefficients[1] += couplingJ * (0.5 * (bitState[i] + bitState[j]) - 0.25 - magnonInteraction * (bitState[i] * bitState[j]))
 
@@ -564,7 +562,7 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
                     isIncluded = false
                     for it in 1:length(indices)
                         if indices[it] == newPosition
-                            coefficients[it] += transitionCoefficient
+                            coefficients[it] += spinFlipCoefficient
                             isIncluded = true
                             break
                         end
@@ -573,7 +571,7 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
                     # if it is not included we include it
                     if !isIncluded
                         push!(indices, newPosition)
-                        push!(coefficients, transitionCoefficient)
+                        push!(coefficients, spinFlipCoefficient)
                     end
                 end
             end
@@ -581,16 +579,19 @@ function digonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInte
             return (indices, coefficients)
         end
 
-        # # since we want to know in the end the indices
-        # # for proper coefficient of the subspace matrix
-        # # we loop over positions of momentum states
-        # nMomentumStates = length(momentumBasis)
-        # for it in 1:nMomentumStates
-        #     momentumState = momentumBasis[it]
-        #
-        #
-        # end
+        # once we know how to act with the Hamiltonian
+        # we just have to loob over momentum space states
+        # and calculate the matrix
+        nMomentumStates = length(momentumBasis)
+        result = zeros(ComplexF64, nMomentumStates, nMomentumStates)
+        for position in 1:nMomentumStates
+            indices::Vector{Int64}, coefficients::Vector{ComplexF64} = applyHamiltonian(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis, position)
+            result[indices[:], position] .= coefficients[:]
+        end
+
+        return result
     end
 
-    eigen(subspaceMatrix)
+    # in the end we diagonalize the matrix
+    return eigen(calculateSubspaceMatrix(systemSize, tunneling, couplingJ, magnonInteraction, subspaceMomentum, momentumBasis))
 end
