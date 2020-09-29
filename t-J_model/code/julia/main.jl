@@ -4,7 +4,7 @@ include("declarations.jl")
 function main()
     systemSize::Int64           = 12
     tunneling::Float64          = 1.0
-    couplingJ::Float64          = 1.0
+    couplingJ::Float64          = 0.4
     magnonInteraction::Float64  = 1.0
     isRemovedSpinUp::Bool       = true
 
@@ -13,7 +13,9 @@ function main()
         calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp)
 
     # save to file
-    save(greensFunction)
+    save(greensFunction, systemSize, tunneling, couplingJ, magnonInteraction)
+
+    summary()
 end
 
 @time main()

@@ -673,8 +673,14 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
     return result
 end
 
-function save(greensFunction::Vector{Lehmann})
-    file = open("../../data/output.txt", "w")
+# ******************************************* #
+# ******************************************* #
+# ******************************************* #
+
+function save(greensFunction::Vector{Lehmann}, systemSize, tunneling, couplingJ, magnonInteraction)
+    path = "../../data/"
+    filename = string("lehmann_l=", systemSize, "_t=", tunneling, "_J=", couplingJ, "_m=", magnonInteraction,"_.txt")
+    file = open(string(path, filename), "w")
     tab = "    "
 
     len = length(greensFunction)
@@ -708,4 +714,14 @@ function save(greensFunction::Vector{Lehmann})
     end
 
     close(file)
+end
+
+# ******************************************* #
+# ******************************************* #
+# ******************************************* #
+
+function summary()
+    println()
+    println("Finished : ", Date(now()), " @ ", Time(now()))
+    nothing
 end
