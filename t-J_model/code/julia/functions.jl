@@ -662,7 +662,7 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
             )
         for jt in 1:systemSize
             indices = findall(x -> x > cutoff, subspaceResolvedResult[it, jt].weight)
-            append!(result[it].energy, subspaceResolvedResult[it, jt].energy[indices])
+            append!(result[it].energy, subspaceResolvedResult[it, jt].energy[indices] .- groundState.energy)
             append!(result[it].weight, subspaceResolvedResult[it, jt].weight[indices])
         end
         ordering = sortperm(result[it].energy)
@@ -673,6 +673,39 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
     return result
 end
 
-# function saveLehmannRepresentation(greensFunction::Vector{Lehmann})
-#
-# end
+function save(greensFunction::Vector{Lehmann})
+    file = open("../../data/output.txt", "w")
+    tab = "    "
+
+    len = length(greensFunction)
+    write(file, string(len, "\n\n"))
+    for it in 1:len
+        write(file, "{\n")
+        write(file, string(tab, "{", tab, @sprintf("%3.20f", greensFunction[it].momentum), tab, "}\n"))
+        for jt in 1:length(greensFunction[it].energy)
+            if jt == 1
+                write(file, string(tab, "{", tab))
+            end
+                write(file, string(@sprintf("%3.20f", greensFunction[it].energy[jt])))
+            if jt != length(greensFunction[it].energy)
+                write(file, tab)
+            else
+                write(file, tab, "}\n")
+            end
+        end
+        for jt in 1:length(greensFunction[it].weight)
+            if jt == 1
+                write(file, string(tab, "{", tab))
+            end
+                write(file, string(@sprintf("%3.20f", greensFunction[it].weight[jt])))
+            if jt != length(greensFunction[it].weight)
+                write(file, tab)
+            else
+                write(file, tab, "}\n")
+            end
+        end
+        write(file, "}\n\n")
+    end
+
+    close(file)
+end
