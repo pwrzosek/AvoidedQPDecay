@@ -678,7 +678,7 @@ end
 # ******************************************* #
 
 function save(greensFunction::Vector{Lehmann}, systemSize, tunneling, couplingJ, magnonInteraction)
-    path = "../../data/"
+    path = string(pwd(), "/data/")
     filename = string("lehmann_l=", systemSize, "_t=", tunneling, "_J=", couplingJ, "_m=", magnonInteraction,"_.txt")
     file = open(string(path, filename), "w")
     tab = "    "

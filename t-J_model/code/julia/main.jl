@@ -8,14 +8,18 @@ function main()
     magnonInteraction::Float64  = 1.0
     isRemovedSpinUp::Bool       = true
 
-    # calculate Lehmann's representation of the Green's function
-    greensFunction::Vector{Lehmann} =
-        calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp)
+    # for magnonInteraction in [0.4, 0.3, 0.2, 0.1, 0.0]
 
-    # save to file
-    save(greensFunction, systemSize, tunneling, couplingJ, magnonInteraction)
+        # calculate Lehmann's representation of the Green's function
+        greensFunction::Vector{Lehmann} =
+            calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp)
 
-    summary()
+        # save to file
+        save(greensFunction, systemSize, tunneling, couplingJ, magnonInteraction)
+
+        # print summary
+        summary()
+    # end
 end
 
 @time main()

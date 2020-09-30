@@ -1,14 +1,9 @@
-# Dependencies
 using LinearAlgebra
 using Printf
 using Dates
 
-include("functions.jl")
-
-# Types
 Basis = Vector{Int64}
 
-# Structures
 mutable struct HeisenbergState
     magnetizationIndex::Int64
     energy::Float64
@@ -25,3 +20,5 @@ mutable struct Lehmann
     energy::Vector{Float64}
     weight::Vector{Float64}
 end
+
+include("functions.jl")
