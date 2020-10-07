@@ -2,13 +2,13 @@ include("declarations.jl")
 
 # Main Function
 function main()
-    systemSize::Int64           = 12
+    systemSize::Int64           = 16
     tunneling::Float64          = 1.0
-    couplingJ::Float64          = 0.4
+    couplingJ::Float64          = 1.0
     magnonInteraction::Float64  = 1.0
     isRemovedSpinUp::Bool       = true
 
-    # for magnonInteraction in [0.4, 0.3, 0.2, 0.1, 0.0]
+    for systemSize in [8, 6]
 
         # calculate Lehmann's representation of the Green's function
         greensFunction::Vector{Lehmann} =
@@ -19,7 +19,7 @@ function main()
 
         # print summary
         summary()
-    # end
+    end
 end
 
 @time main()
