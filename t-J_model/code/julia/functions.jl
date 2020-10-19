@@ -403,7 +403,7 @@ function diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInt
         highestValue = 2^systemSize - 1
 
         # we need to know how to apply the model Hamiltonian
-        # to each moemntum state
+        # to each momentum state
         # momentum state consists of a sum over translations
         # of representative state multiplied by phase factors
         # of exp(-iqr),
@@ -435,7 +435,10 @@ function diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInt
             push!(coefficients, 0)
 
             spinFlipCoefficient = couplingJ * 0.5
-            tunnelingCoefficient = -1.0 * tunneling
+
+            # after the transformation to hole language
+            # we get a positive sign -> tΣ...
+            tunnelingCoefficient = 1.0 * tunneling
 
             # the hole is at position 0
             # when it jumps it swaps the position
@@ -462,7 +465,7 @@ function diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInt
             # thanks to simple form of momentum states
             # we don't have to do anything when acting with
             # H_J part since it does not change the hole
-            # position and therefore does result in another
+            # position and therefore results in another
             # representative state
 
             # we start with the site i = 1 containg the hole
@@ -580,7 +583,7 @@ function diagonalizeMomentumSubspace(systemSize, tunneling, couplingJ, magnonInt
         end
 
         # once we know how to act with the Hamiltonian
-        # we just have to loob over momentum space states
+        # we just have to loop over momentum space states
         # and calculate the matrix
         nMomentumStates = length(momentumBasis)
         result = zeros(ComplexF64, nMomentumStates, nMomentumStates)
@@ -622,7 +625,7 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
         subspaceSize = length(factorization.values)
 
         for jt in 1:(systemSize + 1)
-            holeMomentum = 2π * (jt - 1) / systemSize
+            holeMomentum = 2π * (jt - 1) / systemSize - π
 
             # annihilate electron and write result in momentum basis
             holeState::Vector{ComplexF64} = getSingleHoleState(systemSize, groundState, holeMomentum, subspaceMomentum, momentumBasis, isRemovedSpinUp)
@@ -645,11 +648,12 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
         end
     end
 
-    # most of weights is close to 0
+    # typically there is a lot of
+    # weights close to 0
     # we do not want to write them to the file
     # since they carry no information
     # thus we shall filter them out
-    cutoff = 10^-20
+    cutoff = 10^-10
 
     result = Vector{Lehmann}(undef, systemSize + 1)
     for it in 1:(systemSize + 1)
@@ -678,7 +682,7 @@ end
 # ******************************************* #
 
 function save(greensFunction::Vector{Lehmann}, systemSize, tunneling, couplingJ, magnonInteraction)
-    path = string(pwd(), "/data/")
+    path = string("../../data/")
     filename = string("lehmann_l=", lpad(string(systemSize), 2, '0'), "_t=", tunneling, "_J=", couplingJ, "_m=", magnonInteraction,"_.txt")
     file = open(string(path, filename), "w")
     tab = "    "

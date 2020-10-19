@@ -1,25 +1,22 @@
 include("declarations.jl")
 
 # Main Function
-function main()
-    systemSize::Int64           = 16
+function main(inpSystemSize::Int64)
+    systemSize::Int64           = inpSystemSize
     tunneling::Float64          = 1.0
-    couplingJ::Float64          = 1.0
+    couplingJ::Float64          = 0.4
     magnonInteraction::Float64  = 1.0
     isRemovedSpinUp::Bool       = true
 
-    for systemSize in [8, 6]
+    # calculate Lehmann's representation of the Green's function
+    greensFunction::Vector{Lehmann} =
+        calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp)
 
-        # calculate Lehmann's representation of the Green's function
-        greensFunction::Vector{Lehmann} =
-            calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInteraction, isRemovedSpinUp)
+    # save to file
+    save(greensFunction, systemSize, tunneling, couplingJ, magnonInteraction)
 
-        # save to file
-        save(greensFunction, systemSize, tunneling, couplingJ, magnonInteraction)
-
-        # print summary
-        summary()
-    end
+    # print summary
+    summary()
 end
 
-@time main()
+@time main(4)
