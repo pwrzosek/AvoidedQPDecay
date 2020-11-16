@@ -625,7 +625,7 @@ function calculateGreensFunction(systemSize, tunneling, couplingJ, magnonInterac
         subspaceSize = length(factorization.values)
 
         for jt in 1:(systemSize + 1)
-            holeMomentum = 2π * (jt - 1) / systemSize - π
+            holeMomentum = 2π * (jt - 1) / systemSize
 
             # annihilate electron and write result in momentum basis
             holeState::Vector{ComplexF64} = getSingleHoleState(systemSize, groundState, holeMomentum, subspaceMomentum, momentumBasis, isRemovedSpinUp)
