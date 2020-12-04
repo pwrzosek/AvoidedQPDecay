@@ -21,8 +21,8 @@ struct System
     interaction::Float64
 end
 
-"`Basis === Dict{Int64,Int64}`"
-Basis = OrderedDict{Int64,Int64}
+"`Basis === Dict{Int64, Int64}`"
+Basis = OrderedDict{Int64, Int64}
 
 """
     run()
@@ -32,6 +32,7 @@ Runs Heisenberg model diagonalization procedure.
 function run()
     system::System = readInput()
     basis::Basis = makeBasis(system)
+    println(basis)
     # model = makeModel(system)
     # calculate()
     # saveResult()
@@ -39,7 +40,7 @@ end
 
 "Reads `input.json` file and returns `info` structure with input data. It assumes `input.json` is located in the current working directory."
 function readInput()::System
-    input = JSON.parsefile("input.json")
+    input = JSON.parsefile("input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia
     return System(
         input["system size"],
         input["momentum sector"],
@@ -60,13 +61,14 @@ function makeBasis(system::System)::Basis
 
     ### get number of spins up
     nSpinsUp::Int64 = system.magnetization - 1
+    ### note: in the code spin up -> 1, spin down -> 0
 
     ### calculate basis size
     basisSize::Int64 = binomial(system.size, nSpinsUp)
 
     ### get first (lowest) state
     ### note: 1 << n == 2^n, but former is faster
-    state::Int64 = nSpinsUp == 0 ? 0 : sum(n -> 1 << n, 0:(nSpinsUp - 1))
+    state::Int64 = nSpinsUp == 0 ? 0 : sum(n -> 1 << n, 0 : (nSpinsUp - 1))
 
     ### initialize the basis
     basis::Basis = Basis(state => 1)
