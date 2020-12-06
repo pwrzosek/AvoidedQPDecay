@@ -2,4 +2,4 @@
     include("heisenberg.jl")
 # end
 
-@time Main.Heisenberg.run()
+basis = @time Main.Heisenberg.run()
