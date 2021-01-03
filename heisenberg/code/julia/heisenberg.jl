@@ -1,6 +1,7 @@
 module Heisenberg
 
 using OrderedCollections
+using SparseArrays
 using KrylovKit
 using JSON
 
@@ -24,24 +25,38 @@ end
 "`Basis === OrderedDict{Int64, Int64}`"
 Basis = OrderedDict{Int64, Int64}
 
-"`LinearCombination === Dict{Int64, Complex{Float64}}`"
-LinearCombination = Dict{Int64, Complex{Float64}}
+# "`LinearCombination === Dict{Int64, Complex{Float64}}`"
+# LinearCombination = Dict{Int64, Complex{Float64}}
+
+"""
+`mutable struct LinearCombination` desc.:
+# Fields
+*   `state::Int64`: desc.
+*   `coefficient::Vector{Complex{Float64}}`: desc.
+"""
+mutable struct LinearCombination
+    state::Vector{Int64}
+    coefficient::Vector{Complex{Float64}}
+end
+
+"`Model === SparseMatrixCSC{Complex{Float64},Int64}`"
+Model = SparseMatrixCSC{Complex{Float64},Int64}
+
 
 """
     run()
 
-Runs Heisenberg model diagonalization procedure.
+Run Heisenberg model diagonalization procedure.
 """
 function run()
     system::System = readInput()
     basis::Basis = makeBasis(system)
-return (system, basis)
-    # model = makeModel(system)
-    # calculate()
-    # saveResult()
+    model = makeModel(basis, system)
+    factorization = factorize(model)
+    return system, factorization
 end
 
-"Reads `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
+"Read `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
 function readInput()::System
     input = JSON.parsefile("input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia
     return System(
@@ -56,7 +71,7 @@ end
 """
     makeBasis(system::System) -> Basis
 
-Returns `Basis === Dict{Int64, Int64}` dictionary representing basis of given magnetization and momentum sector specified by `system.magnetization` and `system.momentum` respectively. Each index in `Basis` corresponds to state value, and each value in `Basis` corresponds to position in the basis.
+Return `Basis === Dict{Int64, Int64}` dictionary representing basis of given magnetization and momentum sector specified by `system.magnetization` and `system.momentum` respectively. Each index in `Basis` corresponds to state value, and each value in `Basis` corresponds to position in the basis.
 """
 function makeBasis(system::System)::Basis
     if system.magnetization < 1 || system.magnetization > system.size + 1
@@ -103,7 +118,7 @@ end
 """
     hasMomentum(state::Int64, system::System) -> Bool
 
-Returns `True` if `state` belongs to `system.momentum` subspace or returns `False` otherwise.
+Return `True` if `state` belongs to `system.momentum` subspace or returns `False` otherwise.
 """
 function hasMomentum(state::Int64, system::System)::Bool
     ### system.size must divide system.momentum times periodicity
@@ -132,7 +147,7 @@ end
 """
     getRepresentative(state::Int64, system::System) -> Int64
 
-Returns representative state `repState::Int64` of `state::Int64` within given `system::System` parameters.
+Return representative state `repState::Int64` of `state::Int64` within given `system::System` parameters.
 `repState::Int64` is a cyclic translation of `state::Int64` that has smallest possible value.
 """
 function getRepresentative(state::Int64, system::System)::Int64
@@ -163,7 +178,7 @@ end
 """
     getStateInfo(state::Int64, system::System) -> (Int64, Int64)
 
-Combines `hasMomentum` and `getRepresentative` and `getPeriodicity` in one more efficient function. In addition returns distance between `state` and its represantative state calculated in number of translations needed to transform one onto another.
+Combine `hasMomentum` and `getRepresentative` and `getPeriodicity` in one more efficient function. In addition returns distance between `state` and its represantative state calculated in number of translations needed to transform one onto another.
 """
 function getStateInfo(state::Int64, system::System)::Tuple{Bool, Int64, Int64, Int64}
     ### initialize some constants for faster evaluation
@@ -179,11 +194,11 @@ function getStateInfo(state::Int64, system::System)::Tuple{Bool, Int64, Int64, I
     distance::Int64 = 0
     periodicity::Int64 = 1
     while state != (newState = bitmov(newState, l, false, hb = highestBit, hv = highestValue))
-        periodicity += 1
         if representative > newState
             representative = newState
             distance = periodicity
         end
+        periodicity += 1
     end
 
     hasMomentum = rem(system.momentum * periodicity, system.size) == 0
@@ -193,7 +208,7 @@ end
 """
     getNextState(system::System, state::Int64) -> Int64
 
-Returns `newState::Int64` next to `state::Int64` within given magnetization sector specified by `system.magnetization`.
+Return `newState::Int64` next to `state::Int64` within given magnetization sector specified by `system.magnetization`.
 Two states, `state` and `newState`, are next to each other withing given magentization sector if and only if there is no state that has value between `state` and `newState`.
 """
 function getNextState(state::Int64, system::System)::Int64
@@ -248,21 +263,94 @@ Cyclic bit shift for calculationg bit translations with periodic boundary condit
 """
     act(operator::Function, state::Int64, basis::Basis, system::System) -> LinearCombination
 
-Applies `operator` to `state` belonging to `basis` and returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing states with their coefficients.
+Apply `operator` to `state` belonging to `basis` and returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing states with their coefficients.
 """
 function act(operator::Function, state::Int64, basis::Basis, system::System)::LinearCombination
     return operator(state, basis, system)
 end
 
-### TODO: and write description
+# """
+#     hamiltonian(state::Int64, basis::Basis, system::System) -> LinearCombination
+#
+# Apply Hamiltonian to `state` written in Sz momentum `basis` obtained for input `system` parameters. Returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing resulting states with their coefficients.
+# """
+# function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombination
+#     ### initialize result as empty linear combination
+#     result = LinearCombination()
+#
+#     ### check if initial state belongs to basis
+#     if haskey(basis, state)
+#         ### initialize basis with initial state
+#         push!(result, state => 0.0)
+#
+#         ### initialize ik for faster exponent calculations
+#         ik::Complex{Float64} = 2.0 * pi * im * system.momentum / system.size
+#
+#         ### calculate state periodicity
+#         periodicity = getPeriodicity(state, system)
+#
+#         ### loop over lattice sites
+#         for i in 1:system.size
+#             j = mod1(i + 1, system.size)
+#
+#             ### get bit value at i and j bit positions
+#             iValue, jValue = (1 << (i - 1)), (1 << (j - 1))
+#             iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
+#
+#             ## work out diagonal coefficient
+#             result[state] += (iBit - 0.5) * (jBit - 0.5) # 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit # === (iBit - 0.5) * (jBit - 0.5) if interaction == 1.0
+#
+#             ## work out off-diagonal coeffcients
+#             if iBit != jBit
+#                 ### if two neighbouring spins are different then flip those spins
+#                 newState = xor(state, iValue + jValue)
+#
+#                 ### get info about state after spin flip
+#                 hasMomentum, repState, repPeriodicity, distance = getStateInfo(newState, system)
+#
+#                 ### check if it belongs to correct momentum subspace
+#                 ### if it does not, then it will cancel out with other terms
+#                 ### after summing over all the sites
+#                 if hasMomentum
+#                     ### calculate matrix coefficient
+#                     coefficient = 0.5 * exp(ik * distance) * sqrt(periodicity / repPeriodicity)
+#
+#                     ### if corresponding representative state is already included
+#                     ### add the coeffcient to existing one, else create a new entry
+#                     ### in linear combination initialized with the coeffcient
+#                     if haskey(result, repState)
+#                         result[repState] += coefficient
+#                     else
+#                         push!(result, repState => coefficient)
+#                     end
+#                 end
+#             end
+#         end
+#
+#         ### multiply the result by coupling constant
+#         for (key, _) in result
+#             result[key] *= system.coupling
+#         end
+#     end
+#
+#     ### return resulting linear combination
+#     return result
+# end
+
+"""
+    hamiltonian(state::Int64, basis::Basis, system::System) -> LinearCombination
+
+Apply Hamiltonian to `state` written in Sz momentum `basis` obtained for input `system` parameters. Returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing resulting states with their coefficients.
+"""
 function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombination
     ### initialize result as empty linear combination
-    result = LinearCombination()
+    result = LinearCombination([],[])
 
     ### check if initial state belongs to basis
     if haskey(basis, state)
         ### initialize basis with initial state
-        push!(result, state => 0.0)
+        push!(result.state, state)
+        push!(result.coefficient, 0.0)
 
         ### initialize ik for faster exponent calculations
         ik::Complex{Float64} = 2.0 * pi * im * system.momentum / system.size
@@ -279,7 +367,7 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
             iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
 
             ## work out diagonal coefficient
-            result[state] += (iBit - 0.5) * (jBit - 0.5)
+            result.coefficient[1] += (iBit - 0.5) * (jBit - 0.5) # 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit # === (iBit - 0.5) * (jBit - 0.5) if interaction == 1.0
 
             ## work out off-diagonal coeffcients
             if iBit != jBit
@@ -299,23 +387,81 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                     ### if corresponding representative state is already included
                     ### add the coeffcient to existing one, else create a new entry
                     ### in linear combination initialized with the coeffcient
-                    if haskey(result, repState)
-                        result[repState] += coefficient
-                    else
-                        push!(result, repState => coefficient)
-                    end
+                    push!(result.state, repState)
+                    push!(result.coefficient, coefficient)
                 end
             end
         end
 
         ### multiply the result by coupling constant
-        for (key, _) in result
-            result[key] *= system.coupling
-        end
+        result.coefficient .*= system.coupling
     end
 
     ### return resulting linear combination
     return result
 end
+
+# """
+#     makeModel(basis::Basis, system::System) -> Model
+#
+# Calculate dense matrix of the `model` Hamiltonian. Returns `Model === Array{Complex{Float64},2}`.
+# """
+# function makeModel(basis::Basis, system::System)::Model
+#     subspaceSize = length(basis)
+#     result = spzeros(Complex{Float64}, subspaceSize, subspaceSize)
+#     for (state, index) in basis
+#         linearCombination::LinearCombination = act(hamiltonian, state, basis, system)
+#         for (adjacentState, coefficient) in linearCombination
+#             result[index, basis[adjacentState]] += coefficient
+#         end
+#     end
+#     return result
+# end
+
+"""
+    makeModel(basis::Basis, system::System) -> Model
+
+Calculate dense matrix of the `model` Hamiltonian. Returns `Model === Array{Complex{Float64},2}`.
+"""
+function makeModel(basis::Basis, system::System)::Model
+    subspaceSize = length(basis)
+    result = spzeros(Complex{Float64}, subspaceSize, subspaceSize)
+    for (state, index) in basis
+        linearCombination::LinearCombination = act(hamiltonian, state, basis, system)
+        for it in 1:length(linearCombination.state)
+            result[basis[linearCombination.state[it]], index] += linearCombination.coefficient[it]
+        end
+    end
+    return result
+end
+
+"""
+    factorize(model::Model, [howmany = 1, which = :SR])
+
+Compute eigenvalues (by default with smallest real part) and thais corresponding eigenvector.
+"""
+function factorize(model::Model; howmany = 1, which = :SR)
+    return eigsolve(model, howmany, which, ishermitian = true)
+end
+
+"""
+    saveResult(factorization)
+
+Take output of the `factorize(model::Model)` and write file with convergance info, norm of ritz resudual for smallest eigenvalue, smallest eigenvalue and its corresponding eigenvector.
+"""
+function saveResult(factorization)
+    vals, vecs, info = factorization
+    file = open("result.txt", "w")
+    write(file, string("Converged:", "\n", info.converged, "\n\n"))
+    write(file, string("Norm of Residual:", "\n", info.normres[1], "\n\n"))
+    write(file, string("Eigenvalue:", "\n", vals[1], "\n\n"))
+    write(file, string("Eigenvector:", "\n"))
+    for coeff in vecs[1]
+        write(file, string(coeff, "\n"))
+    end
+    close(file)
+end
+
+
 
 end
