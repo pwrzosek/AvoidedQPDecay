@@ -42,7 +42,7 @@ println("\n", "Ground state found for momentum: ", k, " π")
 println("Ground state energy: ", E)
 
 
-# @time sys, fc = Main.Heisenberg.run()
+@time sys, fc = Main.Heisenberg.run()
 
 ### !Important note:
 ### for system.size = 4l        -> GS @ k = 0

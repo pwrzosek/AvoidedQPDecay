@@ -1,4 +1,4 @@
-module Heisenberg
+module tJmodel
 
 using OrderedCollections
 using SparseArrays
@@ -25,14 +25,11 @@ end
 "`Basis === OrderedDict{Int64, Int64}`"
 Basis = OrderedDict{Int64, Int64}
 
-# "`LinearCombination === Dict{Int64, Complex{Float64}}`"
-# LinearCombination = Dict{Int64, Complex{Float64}}
-
 """
-`mutable struct LinearCombination` desc.:
+`mutable struct LinearCombination`: structure for storing result of operators action on states belonging to `basis::Basis`
 # Fields
-*   `state::Int64`: desc.
-*   `coefficient::Vector{Complex{Float64}}`: desc.
+*   `state::Int64`: spin configuration in binary representation written as decimal number
+*   `coefficient::Vector{Complex{Float64}}`: coeffcient multiplying state in the linear combination
 """
 mutable struct LinearCombination
     state::Vector{Int64}
@@ -41,7 +38,6 @@ end
 
 "`Model === SparseMatrixCSC{Complex{Float64},Int64}`"
 Model = SparseMatrixCSC{Complex{Float64},Int64}
-
 
 """
     run()
@@ -53,12 +49,13 @@ function run()
     basis::Basis = makeBasis(system)
     model = makeModel(basis, system)
     factorization = factorize(model)
-    return system, factorization
+    return (system, basis, factorization)
 end
 
 "Read `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
 function readInput()::System
-    input = JSON.parsefile("input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia
+    path = "./tJ_single_hole/code/julia/"
+    input = JSON.parsefile(path * "input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia
     return System(
         input["system size"],
         input["momentum sector"],
@@ -78,12 +75,27 @@ function makeBasis(system::System)::Basis
         error("Wrong magnetization sector in the input file!")
     end
 
+    ### shall not affect calculations but it is good to check
+    ### if results agree for the two possible options
+    spinAtHolePosition = 0  # 0 or false -> no spin | 1 or true -> spin present
+    ### comment: when electron is removed from the Heisenberg GS
+    ### then spin carried by the electron is removed too
+    ### (but we can still remember in the code which spin it had)
+    ### on the other hand in particular one can  assume spin was down
+    ### since it should not affect results at all
+
+    ### offset to set system.size position with desired spin
+    offset = 2^(system.size - 1) * spinAtHolePosition
+    ### comment: we assume in the code hole is located
+    ### at system.size position in momentum basis
+
+
     ### get number of spins up
     nSpinsUp::Int64 = system.magnetization - 1
     ### note: in the code `spin up === 1`, `spin down === 0`
 
     ### calculate magnetic subspace size
-    subspaceSize::Int64 = binomial(system.size, nSpinsUp)
+    subspaceSize::Int64 = binomial(system.size - 1, nSpinsUp)
 
     ### get first state (i.e. with lowest index in binary basis)
     ### note: `1 << n == 2^n`, but former is faster
@@ -95,114 +107,13 @@ function makeBasis(system::System)::Basis
     index = 0
     ### iterate over states within given magnetization subspace
     for _ in 1:subspaceSize
-
-        ### check if state belongs to requested momentum subspace
-        if hasMomentum(state, system)
-            ### pick representative state
-            repState = getRepresentative(state, system)
-
-            ### check if repState is already included
-            if get(basis, repState, nothing) === nothing
-                ### if not then add repState to basis
-                push!(basis, repState => (index += 1))
-            end
-        end
-
+        ### add state to basis
+        push!(basis, state + offset => (index += 1)) #push!(basis, state + 2^(system.size-1) => (index += 1))
         ### get next state
         state = getNextState(state, system)
     end
 
     return basis
-end
-
-"""
-    hasMomentum(state::Int64, system::System) -> Bool
-
-Return `True` if `state` belongs to `system.momentum` subspace or returns `False` otherwise.
-"""
-function hasMomentum(state::Int64, system::System)::Bool
-    ### system.size must divide system.momentum times periodicity
-    return rem(system.momentum * getPeriodicity(state, system), system.size) == 0
-end
-
-function getPeriodicity(state::Int64, system::System)::Int64
-    ### initialize some constants for faster evaluation
-    l::Int = system.size
-    highestBit::Int = 1 << (l - 1)
-    highestValue::Int = (1 << l) - 1
-
-    ### initialize state translation
-    stateTranslation = state
-
-    ### periodicity is smallest positive number of translations
-    ### that transform state onto itself
-    periodicity::Int64 = 1
-    while state != (stateTranslation = bitmov(stateTranslation, l, false, hb = highestBit, hv = highestValue))
-        periodicity += 1
-    end
-
-    return periodicity
-end
-
-"""
-    getRepresentative(state::Int64, system::System) -> Int64
-
-Return representative state `repState::Int64` of `state::Int64` within given `system::System` parameters.
-`repState::Int64` is a cyclic translation of `state::Int64` that has smallest possible value.
-"""
-function getRepresentative(state::Int64, system::System)::Int64
-    ### initialize some constants for faster evaluation
-    l::Int = system.size
-    highestBit::Int = 1 << (l - 1)
-    highestValue::Int = (1 << l) - 1
-
-    ### initialize result as state
-    result = state
-
-    ### loop over translations of state
-    newState = state
-    while state != (newState = bitmov(newState, l, false, hb = highestBit, hv = highestValue))
-        ### replace returned state if translation has lower value
-        if result > newState
-            result = newState
-        end
-    end
-
-    ### returned value is so called representative state
-    ### i.e. it is the same state as initial one (with respect
-    ### to cyclic translation) but it has smallest possible
-    ### value within the familly of translations of initial state
-    return result
-end
-
-"""
-    getStateInfo(state::Int64, system::System) -> (Int64, Int64)
-
-Combine `hasMomentum` and `getRepresentative` and `getPeriodicity` in one more efficient function. In addition returns distance between `state` and its represantative state calculated in number of translations needed to transform one onto another.
-"""
-function getStateInfo(state::Int64, system::System)::Tuple{Bool, Int64, Int64, Int64}
-    ### initialize some constants for faster evaluation
-    l::Int = system.size
-    highestBit::Int = 1 << (l - 1)
-    highestValue::Int = (1 << l) - 1
-
-    ### initialize representative as state
-    representative = state
-
-    ### loop over translations of state
-    newState = state
-    distance::Int64 = 0
-    periodicity::Int64 = 1
-    while state != (newState = bitmov(newState, l, false, hb = highestBit, hv = highestValue))
-        if representative > newState
-            representative = newState
-            distance = periodicity
-        end
-        periodicity += 1
-    end
-
-    hasMomentum = rem(system.momentum * periodicity, system.size) == 0
-    return (hasMomentum, representative, periodicity, distance)
 end
 
 """
@@ -280,6 +191,11 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
 
     ### check if initial state belongs to basis
     if haskey(basis, state)
+        ### initialize some constants for faster evaluation
+        l::Int = system.size
+        highestBit::Int = 1 << (l - 1)
+        highestValue::Int = (1 << l) - 1
+
         ### initialize basis with initial state
         push!(result.state, state)
         push!(result.coefficient, 0.0)
@@ -287,12 +203,12 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
         ### initialize ik for faster exponent calculations
         ik::Complex{Float64} = 2.0 * pi * im * system.momentum / system.size
 
-        ### calculate state periodicity
-        periodicity = getPeriodicity(state, system)
+        ### state periodicity
+        periodicity = system.size
 
-        ### loop over lattice sites
-        for i in 1:system.size
-            j = mod1(i + 1, system.size)
+        ### loop over lattice sites without hole
+        for i in 1:(system.size - 2)
+            j = i + 1
 
             ### get bit value at i and j bit positions
             iValue, jValue = (1 << (i - 1)), (1 << (j - 1))
@@ -306,23 +222,47 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                 ### if two neighbouring spins are different then flip those spins
                 newState = xor(state, iValue + jValue)
 
-                ### get info about state after spin flip
-                hasMomentum, repState, repPeriodicity, distance = getStateInfo(newState, system)
+                ### calculate matrix coefficient
+                coefficient = 0.5   # there is no exponantial since distance to representative is 0
 
-                ### check if it belongs to correct momentum subspace
-                ### if it does not, then it will cancel out with other terms
-                ### after summing over all the sites
-                if hasMomentum
-                    ### calculate matrix coefficient
-                    coefficient = 0.5 * exp(ik * distance) * sqrt(periodicity / repPeriodicity)
-
-                    ### if corresponding representative state is already included
-                    ### add the coeffcient to existing one, else create a new entry
-                    ### in linear combination initialized with the coeffcient
-                    push!(result.state, repState)
-                    push!(result.coefficient, coefficient)
-                end
+                ### create a new entry in linear combination
+                ### and set its corresponding coeffcient
+                push!(result.state, newState)
+                push!(result.coefficient, coefficient)
             end
+        end
+
+        ### workout sites/bonds around the hole
+        i = system.size # hole position
+        for j in [1, system.size - 1]
+            ### get bit value at i and j bit positions
+            iValue, jValue = (1 << (i - 1)), (1 << (j - 1))
+            iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
+
+            newState = state
+            ## work out off-diagonal coeffcients
+            if iBit != jBit
+                ### if two neighbouring spins are different then flip those spins
+                newState = xor(state, iValue + jValue)
+            end
+            ### calculate matrix coefficient
+            coefficient = 0.5   # there is no exponantial since distance to representative is 0
+            if i - j > 1    # i - j > 1 -> j === 1 (we jump forward)
+                ### so we translate backward
+                ### and exp is taken with positive coeffcient exp(+)
+                newState = bitmov(newState, l, false, hb = highestBit, hv = highestValue)
+                coefficient *= exp(ik)
+            else
+                ### else hole is at system.size-1 position (we jum backward)
+                ### so we translate forward and we have exp(-)
+                newState = bitmov(newState, l, true, hb = highestBit, hv = highestValue)
+                coefficient *= exp(-ik)
+            end
+
+            ### create a new entry in linear combination
+            ### and set its corresponding coeffcient
+            push!(result.state, newState)
+            push!(result.coefficient, coefficient)
         end
 
         ### multiply the result by coupling constant

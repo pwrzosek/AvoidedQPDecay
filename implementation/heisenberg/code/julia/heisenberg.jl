@@ -25,14 +25,11 @@ end
 "`Basis === OrderedDict{Int64, Int64}`"
 Basis = OrderedDict{Int64, Int64}
 
-# "`LinearCombination === Dict{Int64, Complex{Float64}}`"
-# LinearCombination = Dict{Int64, Complex{Float64}}
-
 """
-`mutable struct LinearCombination` desc.:
+`mutable struct LinearCombination`: structure for storing result of operators action on states belonging to `basis::Basis`
 # Fields
-*   `state::Int64`: desc.
-*   `coefficient::Vector{Complex{Float64}}`: desc.
+*   `state::Int64`: spin configuration in binary representation written as decimal number
+*   `coefficient::Vector{Complex{Float64}}`: coeffcient multiplying state in the linear combination
 """
 mutable struct LinearCombination
     state::Vector{Int64}
@@ -41,7 +38,6 @@ end
 
 "`Model === SparseMatrixCSC{Complex{Float64},Int64}`"
 Model = SparseMatrixCSC{Complex{Float64},Int64}
-
 
 """
     run()
@@ -58,7 +54,8 @@ end
 
 "Read `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
 function readInput()::System
-    input = JSON.parsefile("input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia
+    path = "./heisenberg/code/julia/"
+    input = JSON.parsefile(path * "input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia
     return System(
         input["system size"],
         input["momentum sector"],
@@ -125,6 +122,12 @@ function hasMomentum(state::Int64, system::System)::Bool
     return rem(system.momentum * getPeriodicity(state, system), system.size) == 0
 end
 
+
+"""
+    getPeriodicity(state::Int64, system::System) -> Int64
+
+Return periodicity of the `state` within given `system` parameters.
+"""
 function getPeriodicity(state::Int64, system::System)::Int64
     ### initialize some constants for faster evaluation
     l::Int = system.size
@@ -316,9 +319,8 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                     ### calculate matrix coefficient
                     coefficient = 0.5 * exp(ik * distance) * sqrt(periodicity / repPeriodicity)
 
-                    ### if corresponding representative state is already included
-                    ### add the coeffcient to existing one, else create a new entry
-                    ### in linear combination initialized with the coeffcient
+                    ### create a new entry in linear combination
+                    ### and set its corresponding coeffcient
                     push!(result.state, repState)
                     push!(result.coefficient, coefficient)
                 end
