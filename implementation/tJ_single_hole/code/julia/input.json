@@ -2,6 +2,7 @@
  "system size": 16,
  "momentum sector": 0,
  "magnetization sector": 9,
- "coupling constant": 1.0,
- "magnon interaction": 0.0
+ "coupling constant": 0.4,
+ "magnon interaction": 1.0,
+ "hopping constant": 1.0
 }

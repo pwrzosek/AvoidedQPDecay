@@ -12,7 +12,7 @@ using JSON
 *   `momentum::Int64`: index in range `1:size` indicating which momentum sector should be calculated. Range `1:size` corresponds to momenta `k` in `0:2π/size:(2π - 2π/size)`.
 *   `magnetization::Int64`: index in range `1:(size + 1)` indicating which magnetization sector should be calculated. Range `1:(size + 1)` corresponds to magnetization in `-size/2:size/2`.
 *   `coupling::Float64`: value of the coupling constant J. For ferromagnet `coupling < 0`, while for antiferromagnet `coupling > 0`.
-*   `interaction::FLoat64`: parameters for scaling magnon-magnon interactions. For pure Heisenberg model `interaction = 1.0`.
+*   `interaction::FLoat64`: parameter for scaling magnon-magnon interactions. For pure Heisenberg model `interaction = 1.0`.
 """
 struct System
     size::Int64
@@ -49,7 +49,7 @@ function run()
     basis::Basis = makeBasis(system)
     model = makeModel(basis, system)
     factorization = factorize(model)
-    return system, factorization
+    return system, basis, factorization
 end
 
 "Read `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
@@ -264,6 +264,18 @@ Cyclic bit shift for calculationg bit translations with periodic boundary condit
 @inline bitmov(s::Int, l::Int, f::Bool = false; hb::Int = 1 << (l - 1), hv::Int = (1 << l) - 1) = f ? 2s - div(s, hb) * hv : div(s, 2) + rem(s, 2) * hb
 
 """
+    sublatticeRotation(state::Int64, system::System) -> Int64
+
+Reverse every second bit starting with lowest bit. Example:
+`sublatticeRotation(1, system) = 0` where `system.size == 1` (or `2`)
+`sublatticeRotation(6, system) = 3` where `system.size == 3` (or `4`)
+"""
+function sublatticeRotation(state::Int64, system::System)::Int64
+    mask = sum(1 << k for k in 0:2:(system.size - 1))
+    return xor(state, mask)
+end
+
+"""
     act(operator::Function, state::Int64, basis::Basis, system::System) -> LinearCombination
 
 Apply `operator` to `state` belonging to `basis` and returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing states with their coefficients.
@@ -275,23 +287,22 @@ end
 """
     hamiltonian(state::Int64, basis::Basis, system::System) -> LinearCombination
 
-Apply Hamiltonian to `state` written in Sz momentum `basis` obtained for input `system` parameters. Returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing resulting states with their coefficients.
+Apply Hamiltonian to `state` written in hole-magnon momentum `basis` obtained for input `system` parameters. Returns `LinearCombination` structure representing resulting states with their coefficients.
 """
 function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombination
     ### initialize result as empty linear combination
-    result = LinearCombination([],[])
+    result = LinearCombination(fill(state, system.size + 1), zeros(Complex{Float64}, system.size + 1))
 
     ### check if initial state belongs to basis
     if haskey(basis, state)
-        ### initialize basis with initial state
-        push!(result.state, state)
-        push!(result.coefficient, 0.0)
-
         ### initialize ik for faster exponent calculations
         ik::Complex{Float64} = 2.0 * pi * im * system.momentum / system.size
 
         ### calculate state periodicity
         periodicity = getPeriodicity(state, system)
+
+        ### apply sublattice rotation (for AFM case)
+        rotatedState = sublatticeRotation(state, system)
 
         ### loop over lattice sites
         for i in 1:system.size
@@ -299,12 +310,9 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
 
             ### get bit value at i and j bit positions
             iValue, jValue = (1 << (i - 1)), (1 << (j - 1))
-            iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
-
-            ## work out diagonal coefficient
-            result.coefficient[1] += 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit # === (iBit - 0.5) * (jBit - 0.5) if interaction == 1.0
 
             ## work out off-diagonal coeffcients
+            iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
             if iBit != jBit
                 ### if two neighbouring spins are different then flip those spins
                 newState = xor(state, iValue + jValue)
@@ -321,9 +329,18 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
 
                     ### create a new entry in linear combination
                     ### and set its corresponding coeffcient
-                    push!(result.state, repState)
-                    push!(result.coefficient, coefficient)
+                    result.state[i + 1] = repState
+                    result.coefficient[i + 1] = coefficient
                 end
+            end
+
+            ## work out diagonal coefficient
+            if system.coupling > 0.0 # AFM case
+                ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
+                iBit, jBit = div(rotatedState & iValue, iValue), div(rotatedState & jValue, jValue)
+                result.coefficient[1] -= 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
+            else # FM case
+                result.coefficient[1] += 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
             end
         end
 
@@ -342,10 +359,11 @@ Calculate dense matrix of the `model` Hamiltonian. Returns `Model === Array{Comp
 """
 function makeModel(basis::Basis, system::System)::Model
     subspaceSize = length(basis)
+    linearCombinationLength = system.size + 1
     result = spzeros(Complex{Float64}, subspaceSize, subspaceSize)
     for (state, index) in basis
         linearCombination::LinearCombination = act(hamiltonian, state, basis, system)
-        for it in 1:length(linearCombination.state)
+        for it in 1:linearCombinationLength
             result[basis[linearCombination.state[it]], index] += linearCombination.coefficient[it]
         end
     end
@@ -358,7 +376,11 @@ end
 Compute eigenvalues (by default with smallest real part) and their corresponding eigenvectors.
 """
 function factorize(model::Model; howmany = 1, which = :SR)
-    return eigsolve(model, howmany, which, ishermitian = true)
+    if length(model) != 0
+        return eigsolve(model, howmany, which, ishermitian = true)
+    else
+        return (missing, missing, missing)
+    end
 end
 
 """
