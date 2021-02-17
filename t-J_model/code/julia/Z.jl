@@ -25,8 +25,8 @@ function mainZ()
     # magnonInteraction::Float64  = 1.0
     isRemovedSpinUp::Bool       = true
 
-    systemSizeRange::Vector{Int64} = [L for L in 2:2:14]
-    couplingJRange::Vector{Float64} = [0.4, 1.0]
+    systemSizeRange::Vector{Int64} = [L for L in 2:2:12]
+    couplingJRange::Vector{Float64} = [1.0]
     magnonInteractionRange::Vector{Float64} = [m for m in 0.0:0.1:1.0]
 
     for couplingJ in couplingJRange
@@ -43,6 +43,6 @@ function mainZ()
     end
 
     # print summary
-    summary()
+    # summary()
 
 end

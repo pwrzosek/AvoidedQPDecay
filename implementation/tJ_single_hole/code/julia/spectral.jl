@@ -2,25 +2,20 @@ module SpectralFunction
 
 using LinearAlgebra
 using SparseArrays
-
-"""
-    Desc.
-"""
-mutable struct LehmansRepresentation
-    pole
-    residue
-end
+using KrylovKit
 
 struct Krylov
-    dimension
+    dimension::Int64
 end
 
 "`Model === SparseMatrixCSC{Complex{Float64},Int64}`"
 Model = SparseMatrixCSC{Complex{Float64},Int64}
 
-function run(ωRange::Vector{Float64}, initialState::Vector{Complex{Float64}}, model::Model)
-    krylov = Krylov(100)
-    greensFunctionTmp = getGreensFunctionTemplate(initialState, model, krylov)
+function run(ωRange::Vector{Float64}, iDelta::Complex{Float64}, initialState::Vector{Complex{Float64}}, model::Model, krylovDimension::Int64 = 400)
+    krylov = Krylov(krylovDimension)
+    diagonal, offDiagonal, size = calculateLanczos(initialState, model::Model, krylov::Krylov)
+    spectrum = spectralFunction(ωRange, iDelta, initialState, diagonal, offDiagonal, size)
+    return spectrum
 end
 
 function calculateLanczos(initialState::Vector{Complex{Float64}}, model::Model, krylov::Krylov)
@@ -40,7 +35,7 @@ function calculateLanczos(initialState::Vector{Complex{Float64}}, model::Model, 
 
     maxDimension = min(krylov.dimension, length(initialState))
 
-    printProgressBar(krylovSpaceDimensions, maxDimension)
+    # printProgressBar(krylovSpaceDimensions, maxDimension)
     while krylovSpaceDimensions < maxDimension
 
         state1 .*= -offDiagonal[end]
@@ -53,39 +48,36 @@ function calculateLanczos(initialState::Vector{Complex{Float64}}, model::Model, 
         push!(offDiagonal, Float64(norm(state2)))
 
         krylovSpaceDimensions += 1
-        printProgressBar(krylovSpaceDimensions, maxDimension)
+        # printProgressBar(krylovSpaceDimensions, maxDimension)
     end
 
-    (diagonal, offDiagonal, krylovSpaceDimensions)
+    (diagonal, offDiagonal[1:(end-1)], krylovSpaceDimensions)
+end
+
+
+"""
+    Desc.
+"""
+function greensFunction(ω, initialState, diagonal, offDiagonal, size)
+    result = ω - diagonal[size]
+    for it in (size - 1):-1:1
+        result = ω - diagonal[it] - offDiagonal[it]^2 / result
+    end
+    return dot(initialState, initialState) / result
 end
 
 """
     Desc.
 """
-function getGreensFunctionTemplate(initialState::Vector{Complex{Float64}}, model::Model, krylov::Krylov)
-    ### assumptions: initial state is normalized
-    ### initial state is calculated for given k
-    ### momentum of the basis subspace is ~system.momentum
-    diagonal, offDiagonal, size = calculateLanczos(initialState, model::Model, krylov::Krylov)
-    tridiagonalMatrix = SymTridiagonal(diagonal, offDiagonal[1:(end-1)])
-    eigenvalues, eigenvectors = eigen(tridiagonalMatrix)
-    pole = eigenvalues
-    residue = abs.(eigenvectors[1, :]).^2
-    greensFunctionTemplate = LehmansRepresentation(pole, residue)
-    try
-        greensFunctionTemplate
-    catch
-        greensFunctionTemplate = LehmansRepresentation([0.0], [0.0])
+function spectralFunction(ωRange::Vector{Float64}, iDelta::Complex{Float64}, initialState::Vector{Complex{Float64}}, diagonal::Vector{Float64}, offDiagonal::Vector{Float64}, size::Int64)
+    result = Vector{Float64}(undef, length(ωRange))
+    for (it, ω) in enumerate(ωRange)
+        result[it] = -imag(greensFunction(ω + iDelta, initialState, diagonal, offDiagonal, size)) / π
     end
-    return greensFunctionTemplate
+    return result
 end
 
-"""
-    Desc.
-"""
-function spectralFunction(ωRange, iDelta, initialState, model::Model)
 
-end
 
 function printProgressBar(currentIteration, maxIteration)
     progress = div(100 * currentIteration, maxIteration)
@@ -106,7 +98,7 @@ function printProgressBar(currentIteration, maxIteration)
     if currentIteration < maxIteration
         print("\r", "    [", bar, "] ", round(Int, 100 * currentIteration / maxIteration), "% ")
     else
-        println("\r", "    [*************************] 100%")
+        println("\r", "    [:::::::::::::::::::::::::] 100%")
     end
     nothing
 end

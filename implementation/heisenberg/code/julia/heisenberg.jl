@@ -44,10 +44,20 @@ Model = SparseMatrixCSC{Complex{Float64},Int64}
 
 Run Heisenberg model diagonalization procedure.
 """
-function run()
-    system::System = readInput()
+function run(input::Union{Missing, OrderedDict} = missing)
+    system::System = if input === missing
+        readInput()
+    else
+        System(
+            input["system size"],
+            input["momentum sector"],
+            input["magnetization sector"],
+            input["coupling constant"],
+            input["magnon interaction"]
+        )
+    end
     basis::Basis = makeBasis(system)
-    model = makeModel(basis, system)
+    model::Model = makeModel(basis, system)
     factorization = factorize(model)
     return system, basis, factorization
 end

@@ -22,11 +22,8 @@ for momentum in 0:(n-1)
         "coupling constant" => J,
         "magnon interaction" => β
     )
-    file = open("heisenberg/code/julia/input.json", "w")
-    JSON.print(file, input, 1)
-    close(file)
     print(">>> ")
-    @time system, bs, fc = Main.Heisenberg.run()
+    @time system, bs, fc = Main.Heisenberg.run(input)
     vals, vecs, info = fc
     if info !== missing
         if info.converged == 0

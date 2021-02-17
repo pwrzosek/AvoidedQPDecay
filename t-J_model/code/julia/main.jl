@@ -16,7 +16,7 @@ function main(inpSystemSize::Int64)
     save(greensFunction, systemSize, tunneling, couplingJ, magnonInteraction)
 
     # print summary
-    summary()
+    # summary()
 end
 
 @time main(4)

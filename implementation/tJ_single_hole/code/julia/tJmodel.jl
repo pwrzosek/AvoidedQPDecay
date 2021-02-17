@@ -45,12 +45,23 @@ Model = SparseMatrixCSC{Complex{Float64},Int64}
 
 Run Heisenberg model diagonalization procedure.
 """
-function run()
-    system::System = readInput()
+function run(input::Union{Missing, OrderedDict} = missing)
+    system::System = if input === missing
+        readInput()
+    else
+        System(
+            input["system size"],
+            input["momentum sector"],
+            input["magnetization sector"],
+            input["coupling constant"],
+            input["magnon interaction"],
+            input["hopping constant"]
+        )
+    end
     basis::Basis = makeBasis(system)
     model::Model = makeModel(basis, system)
-    # factorization = factorize(model)
-    return (system, basis, model)
+    factorization = factorize(model)
+    return system, basis, model, factorization
 end
 
 "Read `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
@@ -77,6 +88,9 @@ function makeBasis(system::System)::Basis
         error("Wrong magnetization sector in the input file!")
     end
 
+    ### Note: in the calculated basis representative states
+    ###       have hole placed at site = system.size
+
     ### shall not affect calculations but it is good to check
     ### if results agree for the two possible options
     spinAtHolePosition = 0  # 0 or false -> spin down | 1 or true -> spin up
@@ -88,9 +102,6 @@ function makeBasis(system::System)::Basis
 
     ### offset to set system.size position with desired spin
     offset = 2^(system.size - 1) * spinAtHolePosition
-    ### comment: we assume in the code hole is located
-    ### at system.size position in momentum basis
-
 
     ### get number of spins up
     nSpinsUp::Int64 = system.magnetization - 1
@@ -200,7 +211,7 @@ end
 Apply Hamiltonian to `state` written in Sz momentum `basis` obtained for input `system` parameters. Returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing resulting states with their coefficients.
 """
 function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombination
-    ### initialize result as empty linear combination
+    ### initialize result as linear combination
     result = LinearCombination(fill(state, system.size + 1), zeros(Complex{Float64}, system.size + 1))
 
     ### check if initial state belongs to basis
@@ -216,7 +227,7 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
         ### state periodicity
         periodicity = system.size
 
-        ### apply sublattice rotation (for AFM case)
+        ### apply sublattice rotation (needed only for AFM case)
         rotatedState = sublatticeRotation(state, system)
 
         ### loop over lattice sites without hole
@@ -235,21 +246,23 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                 ### calculate matrix coefficient
                 coefficient = 0.5   # there is no exponantial since distance to representative is 0
 
-                ### create a new entry in linear combination
-                ### and set its corresponding coeffcient
+                ### put new state in linear combination
+                ### and set its corresponding coefficient
                 result.state[i + 1] = newState
                 result.coefficient[i + 1] = coefficient
             end
 
             ## work out diagonal coefficient
             if system.coupling > 0.0 # AFM case
-                ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
                 iBit, jBit = div(rotatedState & iValue, iValue), div(rotatedState & jValue, jValue)
+                ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
                 result.coefficient[1] -= 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
             else # FM case
                 result.coefficient[1] += 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
             end
         end
+        ### hole cost due to absent electrons (~ n_i n_j)
+        result.coefficient[1] += 0.5
 
         ### multiply the result by coupling constant
         result.coefficient .*= system.coupling
@@ -268,14 +281,14 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                 newState = xor(state, iValue + jValue)
             end
             ### calculate matrix coefficient
-            coefficient = 0.5   # there is no exponantial since distance to representative is 0
+            coefficient = 1.0   # there is no exponantial since distance to representative is 0
             if i - j > 1    # i - j > 1 -> j === 1 (we jump forward)
                 ### so we translate backward
                 ### and exp is taken with positive coeffcient exp(+)
                 newState = bitmov(newState, l, false, hb = highestBit, hv = highestValue)
                 coefficient *= exp(ik)
             else
-                ### else hole is at system.size-1 position (we jum backward)
+                ### else hole is at system.size-1 position (we jumped backward)
                 ### so we translate forward and we have exp(-)
                 newState = bitmov(newState, l, true, hb = highestBit, hv = highestValue)
                 coefficient *= exp(-ik)
