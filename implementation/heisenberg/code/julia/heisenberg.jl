@@ -62,7 +62,7 @@ function run(input::Union{Missing, OrderedDict} = missing)
     return system, basis, factorization
 end
 
-"Read `input.json` file and returns `System` structure with input data. It requires `input.json` file to be located in the current working directory."
+"Read `input.json` file and return `System` structure with input data. It requires `input.json` file to be located in the current working directory."
 function readInput()::System
     path = "./heisenberg/code/julia/"
     input = JSON.parsefile(path * "input.json", use_mmap = false) # use_mmap = false is a workaroud to ensure one can change JSON file without restarting Julia

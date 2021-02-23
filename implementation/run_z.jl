@@ -1,7 +1,7 @@
 using OrderedCollections
 using LinearAlgebra
 using Dates
-using Plots
+using Plots, Plots.Measures
 
 ### upload needed libaries
 
@@ -17,6 +17,7 @@ include(dir["tJModel"] * "spectral.jl")
 struct QP
     energy::Float64
     weight::Float64
+    gap::Float64
     size::Int64
     momentum::Int64
     interaction::Float64
@@ -87,13 +88,13 @@ function run_z(parameters::Parameters)
     pole = tJGSE - GSE
     residue = abs(dot(tJGSV, initialState))^2
 
-    iDelta = 0.01im
+    iDelta = 0.02im
     ωRange = collect(-3:0.001:7)
     spectrum = Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
     println("\n-- DONE @ ", string(Time(now()), " (", today(), ")"), " --\n")
 
-    return (QP(pole[1], residue[1], n, k, β, J, t), ωRange, spectrum)
+    return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum)
 end
 
 function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
@@ -126,9 +127,9 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 end
 
 t = 1.0
-J = 1.0
-nRange = [4, 8, 12, 16, 20]
-βRange = [1.0, 0.9, 0.5]
+J = 0.4
+nRange = [n for n in 4:4:24]
+βRange = [1.0, 0.5, 0.0]
 
 parameters = Vector{Parameters}()
 for n in nRange
@@ -147,43 +148,75 @@ end
 
 function zPlots(data, kRange, nRange, βRange)
     nMax = nRange[end]
-    plots = [plot() for _ in kRange]
+    zplots = [plot() for _ in kRange]
+    splots = [plot() for _ in kRange]
+    eplots = [plot() for _ in kRange]
     points = Array{Float64, 3}(undef, length(kRange), length(nRange), length(βRange))
+    gaps = Array{Float64, 3}(undef, length(kRange), length(nRange), length(βRange))
     spectra = Array{Vector{Vector{Float64}}, 2}(undef, length(βRange), length(kRange))
     poles = Array{Float64, 2}(undef, length(βRange), length(kRange))
     for (qp, ωRange, spectrum) in data
-        kIndex = findall(x -> x == 2π * qp.momentum / qp.size, kRange)[1]
+        kIndex = findall(x -> x == qp.momentum, round.(qp.size * kRange / 2π))[1]
         nIndex = findall(x -> x == qp.size, nRange)[1]
         βIndex = findall(x -> x == qp.interaction, βRange)[1]
         points[kIndex, nIndex, βIndex] = qp.weight
+        gaps[kIndex, nIndex, βIndex] = qp.gap
         if qp.size == nMax
             spectra[βIndex, kIndex] = [ωRange, spectrum]
             poles[βIndex, kIndex] = qp.energy
         end
     end
     for ik in 1:length(kRange)
-        plots[ik] = plot(1 ./ nRange, points[ik, :, :],
-            xlim = (0, 0.32), ylim = (0,1.0),
-            labels = permutedims(string.(βRange)),
+        zplots[ik] = plot(1 ./ nRange,
+            points[ik, :, :],
+            xlim = (0, 0.27), ylim = (0, 0.5),
+            legend = :none,
             frame = :box,
-            xlabel = "1/L", ylabel = "z",
+            xlabel = "1 / L", ylabel = "z",
             markershape = :circle,
-            markersize = 3.6,
-            title = string("k = ", round(kRange[ik] / π, digits = 1), "π")
+            markersize = 5,
+            linewidth = 2,
+            grid = false,
+            title = string("J = ", J, "t   ") * string("k = ", round(kRange[ik] / π, digits = 1), "π")
+        )
+            eplots[ik] = plot(1 ./ nRange,
+            gaps[ik, :, :],
+            xlim = (0, 0.27), ylim = (0, 1.0),
+            labels = permutedims(string.(βRange)),
+            legend = (0.84, 0.3),
+            frame = :box,
+            xlabel = "1 / L", ylabel = "ΔE / t",
+            markershape = :circle,
+            markersize = 5,
+            linewidth = 2,
+            grid = false
+        )
+        splots[ik] = plot([spectra[ib, ik][1] for ib in 1:length(βRange)],
+            [π * 0.02 * spectra[ib, ik][2] for ib in 1:length(βRange)],
+            frame = :box,
+            legend = :none,
+            yrange = (-0.01, 0.5),
+            xlabel = ["ω / t" "ω / t" "ω / t"], ylabel = ["A(ω) × πδ" "" ""],
+            layout = (1, 3),
+            linewidth = 2,
+            grid = false,
+            title = permutedims([string("β = ", round(β, digits = 1)) for β in βRange])
         )
         # display(plot(spectra[1, ik][1], spectra[1, ik][2], title = string(poles[1, ik])))
     end
-    return plots, spectra
+    return zplots, splots, eplots
 end
 
 kRange = [π/2]
-p, s = zPlots(data, kRange, nRange, βRange)
+p, s, e = zPlots(data, kRange, nRange, βRange)
 
 for ik in 1:length(kRange)
-    display(p[ik])
+    pe = plot(p[ik], e[ik], layout = (2, 1))
+    pes = plot(pe, s[ik], layout = grid(1, 2, widths = [0.36, 0.64]), size = (1400, 600), margin = 5mm, dpi = 300)
+    display(pes)
     kName = string(round(kRange[ik] / π, digits = 1), "π")
-    name = "plots/z/" * string(nRange[end]) * "_zgs_k=" * kName * ".png"
-    png(p[ik], name)
+    name = "plots/z/" * string(nRange[end]) * "_z_J=" * string(J) * "_k=" * kName * ".png"
+    png(pes, name)
 end
 
 # function ΔPlots(data, kRange, nRange, βRange)

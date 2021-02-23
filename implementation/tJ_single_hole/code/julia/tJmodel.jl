@@ -60,7 +60,7 @@ function run(input::Union{Missing, OrderedDict} = missing)
     end
     basis::Basis = makeBasis(system)
     model::Model = makeModel(basis, system)
-    factorization = factorize(model)
+    factorization = factorize(model, howmany = 4)
     return system, basis, model, factorization
 end
 
