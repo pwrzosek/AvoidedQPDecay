@@ -117,7 +117,7 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 end
 
 t = 1.0
-J = 1.0
+J = 0.4
 nRange = [n for n in 8:2:20]
 βRange = [1.0, 0.9, 0.5, 0.0]
 kDiv2pi = [0, 1/4, 1/2]
