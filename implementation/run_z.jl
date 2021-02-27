@@ -1,7 +1,7 @@
 using OrderedCollections
 using LinearAlgebra
 using Dates
-using Plots, Plots.Measures
+# using Plots, Plots.Measures
 
 ### upload needed libaries
 
@@ -89,7 +89,7 @@ function run_z(parameters::Parameters)
     residue = abs(dot(tJGSV, initialState))^2
 
     iDelta = 0.02im
-    ωRange = collect(-3:0.001:7)
+    ωRange = collect(-6:0.001:10)
     spectrum = Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
     println("\n-- DONE @ ", string(Time(now()), " (", today(), ")"), " --\n")
@@ -128,7 +128,7 @@ end
 
 t = 1.0
 J = 0.4
-nRange = [n for n in 4:4:24]
+nRange = [n for n in 12:4:16]
 βRange = [1.0, 0.5, 0.0]
 
 parameters = Vector{Parameters}()
@@ -145,6 +145,7 @@ data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}}(undef, length(paramet
 for it in 1:length(parameters)
     data[it] = run_z(parameters[it])
 end
+
 
 function zPlots(data, kRange, nRange, βRange)
     nMax = nRange[end]

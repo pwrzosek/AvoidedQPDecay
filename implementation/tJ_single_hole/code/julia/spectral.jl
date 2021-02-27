@@ -77,30 +77,28 @@ function spectralFunction(ωRange::Vector{Float64}, iDelta::Complex{Float64}, in
     return result
 end
 
-
-
-function printProgressBar(currentIteration, maxIteration)
-    progress = div(100 * currentIteration, maxIteration)
-    dot = progress % 4
-    progress = div(progress - dot, 4)
-    bar = ""
-    for colon in 1 : progress
-        bar *= ":"
-    end
-    if dot > 1
-        bar *= "."
-    else
-        bar *= " "
-    end
-    for space in 2 : (25 - progress)
-        bar *= " "
-    end
-    if currentIteration < maxIteration
-        print("\r", "    [", bar, "] ", round(Int, 100 * currentIteration / maxIteration), "% ")
-    else
-        println("\r", "    [:::::::::::::::::::::::::] 100%")
-    end
-    nothing
-end
+# function printProgressBar(currentIteration, maxIteration)
+#     progress = div(100 * currentIteration, maxIteration)
+#     dot = progress % 4
+#     progress = div(progress - dot, 4)
+#     bar = ""
+#     for colon in 1 : progress
+#         bar *= ":"
+#     end
+#     if dot > 1
+#         bar *= "."
+#     else
+#         bar *= " "
+#     end
+#     for space in 2 : (25 - progress)
+#         bar *= " "
+#     end
+#     if currentIteration < maxIteration
+#         print("\r", "    [", bar, "] ", round(Int, 100 * currentIteration / maxIteration), "% ")
+#     else
+#         println("\r", "    [:::::::::::::::::::::::::] 100%")
+#     end
+#     nothing
+# end
 
 end
