@@ -5,6 +5,11 @@ using JSON
 
 ### upload needed libaries
 
+### Needed due to a bug in libopenblas64_.dll in Julia-1.5.0
+if Sys.iswindows()
+    LinearAlgebra.BLAS.set_num_threads(1)
+end
+
 dir = Dict(
     "heisenberg" => "heisenberg/code/julia/",
     "tJModel" => "tJ_single_hole/code/julia/",
@@ -117,7 +122,7 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 end
 
 t = 1.0
-J = 0.4
+J = 1.0
 nRange = [n for n in 8:2:20]
 βRange = [1.0, 0.9, 0.5, 0.0]
 kDiv2pi = [0, 1/4, 1/2]
@@ -136,6 +141,9 @@ data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}}(undef, length(paramet
 Threads.@threads for it in 1:length(parameters)
     data[it] = run_z(parameters[it])
 end
+# for it in 1:length(parameters)
+#     data[it] = run_z(parameters[it])
+# end
 
 function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}})
     qpData = Vector{OrderedDict{String, Union{Int64, Float64}}}(undef, length(data))
