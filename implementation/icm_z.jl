@@ -122,8 +122,8 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 end
 
 t = 1.0
-J = 1.0
-nRange = [n for n in 8:2:20]
+J = 0.4
+nRange = [n for n in 8:2:22]
 βRange = [1.0, 0.9, 0.5, 0.0]
 kDiv2pi = [0, 1/4, 1/2]
 parameters = Vector{Parameters}()
@@ -141,9 +141,6 @@ data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}}(undef, length(paramet
 Threads.@threads for it in 1:length(parameters)
     data[it] = run_z(parameters[it])
 end
-# for it in 1:length(parameters)
-#     data[it] = run_z(parameters[it])
-# end
 
 function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}})
     qpData = Vector{OrderedDict{String, Union{Int64, Float64}}}(undef, length(data))

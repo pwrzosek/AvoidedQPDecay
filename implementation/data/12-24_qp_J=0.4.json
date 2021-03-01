@@ -1,0 +1,722 @@
+[
+ {
+  "energy": -0.9018315685050884,
+  "weight": 0.16374509362324857,
+  "gap": 0.14054582659318227,
+  "size": 12,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9004155338373234,
+  "weight": 0.16377617631378832,
+  "gap": 0.1372999280821774,
+  "size": 12,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.7098418044014592,
+  "weight": 0.1349846530304533,
+  "gap": 0.13550468072601118,
+  "size": 12,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.34499795041434256,
+  "weight": 0.16469092573613447,
+  "gap": 0.144871523545141,
+  "size": 12,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.3511456419667516,
+  "weight": 0.1706209670881914,
+  "gap": 0.4154067602921092,
+  "size": 12,
+  "momentum": 0.5,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.3399559003460206,
+  "weight": 0.17199154705126174,
+  "gap": 0.41867295353665046,
+  "size": 12,
+  "momentum": 0.5,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.1051768535818787,
+  "weight": 0.15157984019501686,
+  "gap": 0.4216542994608399,
+  "size": 12,
+  "momentum": 0.5,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.6880409217173136,
+  "weight": 0.17700626332671768,
+  "gap": 0.37954396177489924,
+  "size": 12,
+  "momentum": 0.5,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8269410275884086,
+  "weight": 5.549847919539026e-31,
+  "gap": 0.1162940714173244,
+  "size": 12,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8219476828037009,
+  "weight": 0.0005669794767435975,
+  "gap": 0.10637529203549834,
+  "size": 12,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.6197138680392369,
+  "weight": 0.01862615453298261,
+  "gap": 0.07696045132965956,
+  "size": 12,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.25190078830332396,
+  "weight": 0.14156664453724743,
+  "gap": 0.04921113944359767,
+  "size": 12,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9144115720388597,
+  "weight": 0.14110285676814238,
+  "gap": 0.17999411024863088,
+  "size": 14,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9193636476187694,
+  "weight": 0.13859641170205597,
+  "gap": 0.1735379247971216,
+  "size": 14,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.679804572484674,
+  "weight": 0.10572329521922462,
+  "gap": 0.16642607179744928,
+  "size": 14,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.24620283445107027,
+  "weight": 0.1982493579078461,
+  "gap": 0.15661275768319882,
+  "size": 14,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8293396230572516,
+  "weight": 6.34822742494047e-32,
+  "gap": 0.09727196159921458,
+  "size": 14,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8297429171826223,
+  "weight": 0.0006224017319840339,
+  "gap": 0.0891522366069637,
+  "size": 14,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5814047528576878,
+  "weight": 0.031625157455446695,
+  "gap": 0.06868035783405668,
+  "size": 14,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.1872822004626047,
+  "weight": 0.20336014340127284,
+  "gap": 0.11804117623884958,
+  "size": 14,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9108967593528878,
+  "weight": 0.15197977106974547,
+  "gap": 0.12015529825567972,
+  "size": 16,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9212935055246656,
+  "weight": 0.14902405833484364,
+  "gap": 0.11726609812384359,
+  "size": 16,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.632778826921899,
+  "weight": 0.11002966695577042,
+  "gap": 0.12377176141881607,
+  "size": 16,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.17344969413908462,
+  "weight": 0.2724662612397564,
+  "gap": 0.20017596392739323,
+  "size": 16,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.381495397662976,
+  "weight": 0.1502394635918179,
+  "gap": 0.2885953977534377,
+  "size": 16,
+  "momentum": 0.5,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.3808857022301746,
+  "weight": 0.15042691914586787,
+  "gap": 0.2926392458728575,
+  "size": 16,
+  "momentum": 0.5,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.0445563687629686,
+  "weight": 0.12341252175343193,
+  "gap": 0.29805795739602337,
+  "size": 16,
+  "momentum": 0.5,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5162169174129683,
+  "weight": 0.21628447878640036,
+  "gap": 0.3215675029081666,
+  "size": 16,
+  "momentum": 0.5,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.84358312682027,
+  "weight": 6.653569126313242e-30,
+  "gap": 0.08380821625868551,
+  "size": 16,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8507883676529429,
+  "weight": 0.0005000953238606454,
+  "gap": 0.07703735893194663,
+  "size": 16,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5574601544682669,
+  "weight": 0.03878669454553297,
+  "gap": 0.06136245436318033,
+  "size": 16,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.14870572509843427,
+  "weight": 0.24034204065192208,
+  "gap": 0.18345253408141327,
+  "size": 16,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9141916398996557,
+  "weight": 0.14418141885266225,
+  "gap": 0.13688337339024637,
+  "size": 18,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9305359247068372,
+  "weight": 0.13940354785975817,
+  "gap": 0.13516604042147717,
+  "size": 18,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5950574164161613,
+  "weight": 0.10423960377691706,
+  "gap": 0.14159648765585153,
+  "size": 18,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.13839614684429513,
+  "weight": 0.3133320360433388,
+  "gap": 0.24705455419769207,
+  "size": 18,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.84872430109461,
+  "weight": 4.411840268284617e-31,
+  "gap": 0.0731257665076468,
+  "size": 18,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.861821329433456,
+  "weight": 0.00045572793718052704,
+  "gap": 0.06770902915096322,
+  "size": 18,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5299370909354386,
+  "weight": 0.05249731889845345,
+  "gap": 0.06805582538640786,
+  "size": 18,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.1290140700770981,
+  "weight": 0.26523603416842895,
+  "gap": 0.26085347384632573,
+  "size": 18,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9137564646907697,
+  "weight": 0.1477853593793732,
+  "gap": 0.109940497567238,
+  "size": 20,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9352657914122315,
+  "weight": 0.14191632263731907,
+  "gap": 0.10751670299330485,
+  "size": 20,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5579725801826476,
+  "weight": 0.11010914960208114,
+  "gap": 0.1296846105980407,
+  "size": 20,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.12743534533998702,
+  "weight": 0.3278150828883984,
+  "gap": 0.3234765940603168,
+  "size": 20,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.3981740734140162,
+  "weight": 0.13587249668180126,
+  "gap": 0.219906630933143,
+  "size": 20,
+  "momentum": 0.5,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.4078920639084092,
+  "weight": 0.13440634594203732,
+  "gap": 0.22395216128336948,
+  "size": 20,
+  "momentum": 0.5,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9805061242804656,
+  "weight": 0.11400543649463421,
+  "gap": 0.23785733010856758,
+  "size": 20,
+  "momentum": 0.5,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.43018071624938603,
+  "weight": 0.24484930453774412,
+  "gap": 0.39756163375196385,
+  "size": 20,
+  "momentum": 0.5,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8558870242485779,
+  "weight": 8.0911607496979e-31,
+  "gap": 0.06485010864243002,
+  "size": 20,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8747873972572702,
+  "weight": 0.00035970096207704717,
+  "gap": 0.06054660814093804,
+  "size": 20,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5082240156261713,
+  "weight": 0.06318871583329608,
+  "gap": 0.07741015317600697,
+  "size": 20,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.12401466220089263,
+  "weight": 0.2786683416270534,
+  "gap": 0.3240067163185767,
+  "size": 20,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9148402542821921,
+  "weight": 0.14516802724702346,
+  "gap": 0.11785802587782612,
+  "size": 22,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.941046050564613,
+  "weight": 0.13757073968720582,
+  "gap": 0.11619460926938086,
+  "size": 22,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.527164447056125,
+  "weight": 0.11719973648468482,
+  "gap": 0.14314046679000736,
+  "size": 22,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.13087561644668533,
+  "weight": 0.3284005689237859,
+  "gap": 0.37321612656598635,
+  "size": 22,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8604000303840444,
+  "weight": 6.876051381420731e-31,
+  "gap": 0.05808038025769502,
+  "size": 22,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8842217627949189,
+  "weight": 0.00028657600170378645,
+  "gap": 0.05490172731846865,
+  "size": 22,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.490593253847567,
+  "weight": 0.07382209663525466,
+  "gap": 0.09560112875331139,
+  "size": 22,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.12961593958017215,
+  "weight": 0.2837870564177733,
+  "gap": 0.3710602146861235,
+  "size": 22,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9150078295869051,
+  "weight": 0.14610022841896503,
+  "gap": 0.10423665624028544,
+  "size": 24,
+  "momentum": 0.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9449787952560018,
+  "weight": 0.13674792224489604,
+  "gap": 0.1023700444257889,
+  "size": 24,
+  "momentum": 0.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.5027858321145642,
+  "weight": 0.12828471195854144,
+  "gap": 0.15361858431361908,
+  "size": 24,
+  "momentum": 0.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.1432288046936514,
+  "weight": 0.32254341664113734,
+  "gap": 0.410197317260542,
+  "size": 24,
+  "momentum": 0.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.408701576586524,
+  "weight": 0.12500420651595293,
+  "gap": 0.17732841374763542,
+  "size": 24,
+  "momentum": 0.5,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -1.4262704304958427,
+  "weight": 0.12094078813182621,
+  "gap": 0.18124148971245457,
+  "size": 24,
+  "momentum": 0.5,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.9294674601534201,
+  "weight": 0.11600930712278838,
+  "gap": 0.21905729231504134,
+  "size": 24,
+  "momentum": 0.5,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.4035745576056735,
+  "weight": 0.24837619492912807,
+  "gap": 0.48408262402511326,
+  "size": 24,
+  "momentum": 0.5,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8649239235055477,
+  "weight": 2.6784235934616363e-31,
+  "gap": 0.05254589512840635,
+  "size": 24,
+  "momentum": 1.0,
+  "interaction": 1.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.8929074962990668,
+  "weight": 0.00020939389853062335,
+  "gap": 0.050368993586142885,
+  "size": 24,
+  "momentum": 1.0,
+  "interaction": 0.9,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.47805363819610847,
+  "weight": 0.08364983107750934,
+  "gap": 0.11669460811146148,
+  "size": 24,
+  "momentum": 1.0,
+  "interaction": 0.5,
+  "coupling": 0.4,
+  "hopping": 1.0
+ },
+ {
+  "energy": -0.14275651567891234,
+  "weight": 0.28338356781041285,
+  "gap": 0.4046700798836018,
+  "size": 24,
+  "momentum": 1.0,
+  "interaction": 0.0,
+  "coupling": 0.4,
+  "hopping": 1.0
+ }
+]
