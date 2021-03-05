@@ -58,9 +58,10 @@ function run(input::Union{Missing, OrderedDict} = missing)
             input["hopping constant"]
         )
     end
-    basis::Basis = makeBasis(system)
-    model::Model = makeModel(basis, system)
-    factorization = factorize(model, howmany = 4)
+    println()
+    @time basis::Basis = makeBasis(system)
+    @time model::Model = makeModel(basis, system)
+    @time factorization = factorize(model, howmany = 2)
     return system, basis, model, factorization
 end
 
@@ -311,17 +312,33 @@ end
 
 Calculate dense matrix of the `model` Hamiltonian. Returns `Model === Array{Complex{Float64},2}`.
 """
+# function makeModel(basis::Basis, system::System)::Model
+#     subspaceSize = length(basis)
+#     linearCombinationLength = system.size + 1
+#     result = spzeros(Complex{Float64}, subspaceSize, subspaceSize)
+#     for (state, index) in basis
+#         linearCombination::LinearCombination = act(hamiltonian, state, basis, system)
+#         for it in 1:linearCombinationLength
+#             result[basis[linearCombination.state[it]], index] += linearCombination.coefficient[it]
+#         end
+#     end
+#     return result
+# end
 function makeModel(basis::Basis, system::System)::Model
     subspaceSize = length(basis)
     linearCombinationLength = system.size + 1
-    result = spzeros(Complex{Float64}, subspaceSize, subspaceSize)
+    I = Vector{Int64}(undef, linearCombinationLength * subspaceSize)
+    J = Vector{Int64}(undef, linearCombinationLength * subspaceSize)
+    V = Vector{Complex{Float64}}(undef, linearCombinationLength * subspaceSize)
     for (state, index) in basis
         linearCombination::LinearCombination = act(hamiltonian, state, basis, system)
         for it in 1:linearCombinationLength
-            result[basis[linearCombination.state[it]], index] += linearCombination.coefficient[it]
+            I[(index - 1) * linearCombinationLength + it] = index
+            J[(index - 1) * linearCombinationLength + it] = basis[linearCombination.state[it]]
+            V[(index - 1) * linearCombinationLength + it] = linearCombination.coefficient[it]
         end
     end
-    return result
+    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +); trim = false)
 end
 
 """

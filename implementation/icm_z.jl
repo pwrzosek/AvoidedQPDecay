@@ -55,7 +55,8 @@ function run_z(parameters::Parameters)
     )
 
     ### Calculate Heisenberg GS
-    hSystem, hBasis, hFactorization = Main.Heisenberg.run(input)
+    println()
+    @time hSystem, hBasis, hFactorization = Main.Heisenberg.run(input)
 
     vals, vecs, info = hFactorization
 
@@ -87,7 +88,7 @@ function run_z(parameters::Parameters)
 
     iDelta = 0.02im
     ωRange = collect(-6:0.001:10)
-    spectrum = Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
+    @time spectrum = ωRange #Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
     return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum)
 end
@@ -122,8 +123,8 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 end
 
 t = 1.0
-J = 0.4
-nRange = [n for n in 8:2:22]
+J = 0.6
+nRange = [n for n in 12:2:26]
 βRange = [1.0, 0.9, 0.5, 0.0]
 kDiv2pi = [0, 1/4, 1/2]
 parameters = Vector{Parameters}()
@@ -138,7 +139,7 @@ for n in nRange
 end
 
 data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}}(undef, length(parameters))
-Threads.@threads for it in 1:length(parameters)
+for it in 1:length(parameters)
     data[it] = run_z(parameters[it])
 end
 
