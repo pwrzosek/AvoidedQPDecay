@@ -17,13 +17,13 @@ include(dir["tJModel"] * "tJmodel.jl")
 include(dir["tJModel"] * "spectral.jl")
 
 ### System Parameters
-n = 20
+n = 24
 t = 1.0
 J = 0.4
 β = 0.0
 
 ωRange = collect(-3:0.005:7)
-βRange = collect(0.0:0.1:0.0)
+βRange = collect(0.0:0.1:1.0)
 # nRange = collect(12:2:24)
 kRange = (2 / n) .* collect(0:n)
 frames = Vector{Any}(undef, length(βRange))

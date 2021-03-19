@@ -90,7 +90,7 @@ function run_z(parameters::Parameters)
     ωRange = collect(-6:0.001:10)
     @time spectrum = ωRange #Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
-    return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum)
+    return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum, tJGSV)
 end
 
 function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
@@ -123,9 +123,9 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 end
 
 t = 1.0
-J = 0.6
-nRange = [n for n in 12:2:26]
-βRange = [1.0, 0.9, 0.5, 0.0]
+J = 0.4
+nRange = [n for n in 24:2:24]
+βRange = [x for x in 1.0:-0.1:0.0]
 kDiv2pi = [0, 1/4, 1/2]
 parameters = Vector{Parameters}()
 for n in nRange
@@ -138,14 +138,15 @@ for n in nRange
     end
 end
 
-data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}}(undef, length(parameters))
+data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vector{Complex{Float64}}}}(undef, length(parameters))
 for it in 1:length(parameters)
     data[it] = run_z(parameters[it])
 end
 
-function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}})
+function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vector{Complex{Float64}}}})
     qpData = Vector{OrderedDict{String, Union{Int64, Float64}}}(undef, length(data))
     sData = Array{Float64, 2}(undef, length(data[1][2]), length(data) + 1)
+    gsData = Vector{OrderedDict{String, Union{Int64, Float64, Vector{Complex{Float64}}}}}(undef, length(data))
 
     sData[:, 1] = data[1][2]
     for it in 1:length(data)
@@ -160,15 +161,28 @@ function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}}})
             "hopping" => data[it][1].hopping
         )
         sData[:, it + 1] = data[it][3]
+        gsData[it] = OrderedDict(
+            "size" => data[it][1].size,
+            "momentum" => 2 * data[it][1].momentum / data[it][1].size,
+            "interaction" => data[it][1].interaction,
+            "coupling" => data[it][1].coupling,
+            "hopping" => data[it][1].hopping,
+            "ground state" => data[it][4]
+
+        )
     end
 
-    file = open(string("./data/s_J=", J, ".txt"), "w")
-    writedlm(file, sData)
-    close(file)
-
-    file = open(string("./data/qp_J=", J, ".json"), "w")
+    file = open(string("./data/", nRange[1], "-", nRange[end], "_qp_J=", J, ".json"), "w")
     JSON.print(file, qpData, 1)
     close(file)
+
+    # file = open(string("./data/", nRange[1], "-", nRange[end], "_s_J=", J, ".txt"), "w")
+    # writedlm(file, sData)
+    # close(file)
+
+    # file = open(string("./data/", nRange[1], "-", nRange[end], "_gs_J=", J, ".json"), "w")
+    # JSON.print(file, gsData, 1)
+    # close(file)
 
     return nothing
 end
