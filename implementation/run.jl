@@ -23,15 +23,15 @@ J = 0.4
 β = 0.0
 
 ωRange = collect(-3:0.005:7)
-βRange = collect(0.0:0.1:1.0)
-# nRange = collect(12:2:24)
+βRange = collect(0.0:0.1:0.0)
+nRange = collect(24:-2:8)
 kRange = (2 / n) .* collect(0:n)
-frames = Vector{Any}(undef, length(βRange))
+frames = Vector{Any}(undef, length(nRange))
 
-for it in 1:length(βRange)
-    # n = nRange[it]
-    β = βRange[it]
-    # kRange = (2 / n) .* collect(0:n)
+for it in 1:length(nRange)
+    n = nRange[it]
+    β = 0.0 # βRange[it]
+    kRange = (2 / n) .* collect(0:n)
     q = 0 + div(n, 2) * div(mod(n, 4), 2)
 
     ### Heisenberg Ground State
@@ -118,10 +118,10 @@ function heatgif(A::AbstractArray, nRange, ωRange, titles; kwargs...)
     return anim
 end
 
-titles = [string("β = ", @sprintf "%.2f" β) for β in βRange]
-# titles = [string("n = ", @sprintf "%.0f" x) for x in nRange]
-# anim = heatgif(frames, nRange, ωRange, titles, clim = (0, 1), colorbar = true, xlabel = "k / π", ylabel = "ω / t")
-# gif(anim, "gap.gif", fps = 1)
+# titles = [string("β = ", @sprintf "%.2f" β) for β in βRange]
+titles = [string("n = ", @sprintf "%.0f" x) for x in nRange]
+anim = heatgif(frames, nRange, ωRange, titles, clim = (0, 1), colorbar = true, xlabel = "k / π", ylabel = "ω / t")
+gif(anim, "gap.gif", fps = 1)
 
 
 h = [heatmap(kRange, ωRange, frames[it], clim = (0, 1), colorbar = true, title = titles[it], xlabel = "k / π", ylabel = "ω / t")

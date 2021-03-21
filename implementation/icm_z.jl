@@ -87,7 +87,7 @@ function run_z(parameters::Parameters)
     residue = abs(dot(tJGSV, initialState))^2
 
     iDelta = 0.02im
-    ωRange = collect(-6:0.001:10)
+    ωRange = collect(-3:0.005:7)
     @time spectrum = ωRange #Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
     return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum, tJGSV)
@@ -122,10 +122,102 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
     return initialState
 end
 
+function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vector{Complex{Float64}}}})
+    qpData = Vector{OrderedDict{String, Union{Int64, Float64}}}(undef, length(data))
+    sData = Vector{OrderedDict{String, Union{Int64, Float64, Vector{Vector{Float64}}}}}(undef, length(data))
+    gsData = Vector{OrderedDict{String, Union{Int64, Float64}}}(undef, length(data))
+
+    # calculate overlaps
+    overlaps = Vector{Float64}(undef, length(data))
+    referenceIndices = findall(x -> x[1].interaction == 1.0, data)
+
+    doOverlaps = false
+    if length(referenceIndices) > 0
+        doOverlaps = true
+    end
+
+    if doOverlaps
+        for it in referenceIndices
+            matchingIndices = findall(x ->
+                (x[1].size == data[it][1].size) &&
+                (x[1].momentum == data[it][1].momentum) &&
+                (x[1].coupling == data[it][1].coupling) &&
+                (x[1].hopping == data[it][1].hopping),
+            data)
+            for jt in matchingIndices
+                overlaps[jt] = abs(dot(data[it][4], data[jt][4]))^2
+            end
+        end
+    end
+
+    for it in 1:length(data)
+        qpData[it] = OrderedDict(
+            "energy" => data[it][1].energy,
+            "weight" => data[it][1].weight,
+            "gap" => data[it][1].gap,
+            "size" => data[it][1].size,
+            "momentum" => 2 * data[it][1].momentum / data[it][1].size,
+            "interaction" => data[it][1].interaction,
+            "coupling" => data[it][1].coupling,
+            "hopping" => data[it][1].hopping
+        )
+        sData[it] = OrderedDict(
+            "spectrum" => [data[it][2], data[it][3]],
+            "size" => data[it][1].size,
+            "momentum" => 2 * data[it][1].momentum / data[it][1].size,
+            "interaction" => data[it][1].interaction,
+            "coupling" => data[it][1].coupling,
+            "hopping" => data[it][1].hopping
+        )
+        if doOverlaps
+            gsData[it] = OrderedDict(
+                "overlap" => overlaps[it],
+                "size" => data[it][1].size,
+                "momentum" => 2 * data[it][1].momentum / data[it][1].size,
+                "interaction" => data[it][1].interaction,
+                "coupling" => data[it][1].coupling,
+                "hopping" => data[it][1].hopping
+            )
+        end
+    end
+
+    tail = prod(["_" * replace(arg, ":" => "-") for arg in ARGS])
+
+    file = open(string("./data/qp", tail, ".json"), "w")
+    JSON.print(file, qpData, 1)
+    close(file)
+
+    file = open(string("./data/s", tail, ".json"), "w")
+    JSON.print(file, sData, 1)
+    close(file)
+
+    if doOverlaps
+        file = open(string("./data/gs", tail, ".json"), "w")
+        JSON.print(file, gsData, 1)
+        close(file)
+    end
+
+    return nothing
+end
+
 t = 1.0
 J = 0.4
-nRange = [n for n in 24:2:24]
-βRange = [x for x in 1.0:-0.1:0.0]
+nRange = [n for n in 16:2:16]
+βRange = [x for x in 0.0:1.0:1.0]
+
+if length(ARGS) > 0
+    t = eval(Meta.parse(ARGS[1]))
+end
+if length(ARGS) > 1
+    J = eval(Meta.parse(ARGS[2]))
+end
+if length(ARGS) > 2
+    nRange = [n for n in eval(Meta.parse(ARGS[3]))]
+end
+if length(ARGS) > 3
+    βRange = [x for x in eval(Meta.parse(ARGS[4]))]
+end
+
 kDiv2pi = [0, 1/4, 1/2]
 parameters = Vector{Parameters}()
 for n in nRange
@@ -141,50 +233,6 @@ end
 data = Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vector{Complex{Float64}}}}(undef, length(parameters))
 for it in 1:length(parameters)
     data[it] = run_z(parameters[it])
-end
-
-function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vector{Complex{Float64}}}})
-    qpData = Vector{OrderedDict{String, Union{Int64, Float64}}}(undef, length(data))
-    sData = Array{Float64, 2}(undef, length(data[1][2]), length(data) + 1)
-    gsData = Vector{OrderedDict{String, Union{Int64, Float64, Vector{Complex{Float64}}}}}(undef, length(data))
-
-    sData[:, 1] = data[1][2]
-    for it in 1:length(data)
-        qpData[it] = OrderedDict(
-            "energy" => data[it][1].energy,
-            "weight" => data[it][1].weight,
-            "gap" => data[it][1].gap,
-            "size" => data[it][1].size,
-            "momentum" => 2 * data[it][1].momentum / data[it][1].size,
-            "interaction" => data[it][1].interaction,
-            "coupling" => data[it][1].coupling,
-            "hopping" => data[it][1].hopping
-        )
-        sData[:, it + 1] = data[it][3]
-        gsData[it] = OrderedDict(
-            "size" => data[it][1].size,
-            "momentum" => 2 * data[it][1].momentum / data[it][1].size,
-            "interaction" => data[it][1].interaction,
-            "coupling" => data[it][1].coupling,
-            "hopping" => data[it][1].hopping,
-            "ground state" => data[it][4]
-
-        )
-    end
-
-    file = open(string("./data/", nRange[1], "-", nRange[end], "_qp_J=", J, ".json"), "w")
-    JSON.print(file, qpData, 1)
-    close(file)
-
-    # file = open(string("./data/", nRange[1], "-", nRange[end], "_s_J=", J, ".txt"), "w")
-    # writedlm(file, sData)
-    # close(file)
-
-    # file = open(string("./data/", nRange[1], "-", nRange[end], "_gs_J=", J, ".json"), "w")
-    # JSON.print(file, gsData, 1)
-    # close(file)
-
-    return nothing
 end
 
 saveData(data)
