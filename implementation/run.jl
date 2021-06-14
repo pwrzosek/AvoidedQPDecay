@@ -17,7 +17,7 @@ include(dir["tJModel"] * "tJmodel.jl")
 include(dir["tJModel"] * "spectral.jl")
 
 ### System Parameters
-n = 24
+n = 16
 t = 1.0
 J = 0.4
 β = 0.0

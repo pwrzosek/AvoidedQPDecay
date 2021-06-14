@@ -3,8 +3,6 @@ using LinearAlgebra
 using DelimitedFiles
 using JSON
 
-### upload needed libaries
-
 ### Needed due to a bug in libopenblas64_.dll in Julia-1.5.0
 if Sys.iswindows()
     LinearAlgebra.BLAS.set_num_threads(1)
@@ -86,9 +84,9 @@ function run_z(parameters::Parameters)
     pole = tJGSE - GSE
     residue = abs(dot(tJGSV, initialState))^2
 
-    iDelta = 0.02im
+    iDelta = 0.05im
     ωRange = collect(-3:0.005:7)
-    @time spectrum = ωRange #Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
+    @time spectrum = Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
     return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum, tJGSV)
 end
