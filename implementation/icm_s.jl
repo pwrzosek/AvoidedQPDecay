@@ -45,13 +45,13 @@ function run_s(parameters::Parameters)
     ωRange = collect(-3:0.005:7)
 
     kRange = (2 / n) .* collect(0:n) ### k range in π
-    q = 0 + div(n, 2) * div(mod(n, 4), 2)
+    q = 0 # in rotating momentum basis Heisenberg GS always at q = 0
 
     ### Heisenberg Ground State
     input = OrderedDict(
         "system size" => n,
         "momentum sector" => q,
-        "magnetization sector" => 1 + div(n, 2),
+        "magnetization sector" => 0,
         "coupling constant" => J,
         "magnon interaction" => β
     )
@@ -73,18 +73,16 @@ function run_s(parameters::Parameters)
         input = OrderedDict(
             "system size" => n,
             "momentum sector" => p,
-            "magnetization sector" => 1 + div(n, 2),
+            "magnetization sector" => 0,
             "coupling constant" => J,
             "magnon interaction" => β,
             "hopping constant" => t
         )
 
-        @time tJSystem, tJBasis, tJModel, tJFactorization = Main.tJmodel.run(input)
+        @time tJSystem, tJBasis, tJModel = Main.tJmodel.run(input, factorize = false)
 
         initialState = getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
-        # println(initialState)
-        # println(abs.(GSV).^2)
-        # println(hBasis)
+
         ### lanczos method for spectral function
         @time spectrum[:, k + 1] .= Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
@@ -94,7 +92,7 @@ function run_s(parameters::Parameters)
     return SPC(n, β, J, t, kRange, ωRange, spectrum)
 end
 
-function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
+function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)::Vector{Complex{Float64}}
     l::Int = hSystem.size
     highestBit::Int = 1 << (l - 1)
     highestValue::Int = (1 << l) - 1
@@ -102,22 +100,50 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
     q = hSystem.momentum
     p = tJSystem.momentum
 
+    ### not proved
+    k = mod(p - q, hSystem.size)
+
+    ### spin of removed electron: 1 -> up, 0 -> down
+    removedSpin = 0
+
+    ### set sublattice rotation masks
+    mask = sum(1 << site for site in 0:2:(hSystem.size - 1))
+
+    # ### calculate initial state (symmetric eye case)
+    # initialState = zeros(Complex{Float64}, length(tJBasis))
+    # for (state, coordinate) in hBasis
+    #     spinState = xor(state, mask)
+    #     for position in 1:l
+    #         R = position - 1
+    #         RValue = 1 << R
+    #         ## 0 for spin down; != for spin up
+    #         if div(state & RValue, RValue) == removedSpin # ifelse(R % 2 == 0, 1 - removedSpin, removedSpin)
+    #             repState = state
+    #             for _ in 1:position
+    #                 repState = Main.Heisenberg.bitmov(repState, l, false, hb = highestBit, hv = highestValue)
+    #             end
+    #             phase = exp(2π * im * q * R / l) * exp(2π * im * p / l)
+    #             periodicity = Main.Heisenberg.getPeriodicity(repState, hSystem)
+    #             coefficient = GSV[coordinate] * phase * sqrt(periodicity / l^2)
+    #             initialState[tJBasis[repState]] += coefficient
+    #         end
+    #     end
+    # end
     ### calculate initial state
     initialState = zeros(Complex{Float64}, length(tJBasis))
     for (state, coordinate) in hBasis
+        spinState = xor(state, mask)
         for position in 1:l
             R = position - 1
             RValue = 1 << R
-            if (state & RValue) == 0 ## == 0 for spin down annihilation or != for spin up (second one not implemented yet)
-                repState = state
-                for _ in 1:position
-                    repState = Main.Heisenberg.bitmov(repState, l, false, hb = highestBit, hv = highestValue)
-                end
-                phase = exp(2π * im * q * R / l) * exp(2π * im * p / l)
-                periodicity = Main.Heisenberg.getPeriodicity(repState, hSystem)
-                coefficient = GSV[coordinate] * phase * sqrt(periodicity / l^2)
-                initialState[tJBasis[repState]] += coefficient
+            repState = state
+            for _ in 1:position
+                repState = Main.Heisenberg.bitmov(repState, l, false, hb = highestBit, hv = highestValue)
             end
+            phase = exp(2π * im * q * R / l) * exp(2π * im * p / l)
+            periodicity = Main.Heisenberg.getPeriodicity(repState, hSystem)
+            coefficient = sqrt(0.5) * GSV[coordinate] * phase * sqrt(periodicity / l^2)
+            initialState[tJBasis[repState]] += coefficient
         end
     end
     return initialState
@@ -149,9 +175,9 @@ end
 
 ### System Parameters
 t = 1.0
-J = 1.0
-nRange = [n for n in 4:2:4]
-βRange = [-1.0]
+J = 0.4
+nRange = [n for n in 16:2:16]
+βRange = [-1.0, 0.0, 1.0]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

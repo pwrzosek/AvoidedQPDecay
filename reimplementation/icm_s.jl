@@ -79,7 +79,7 @@ function run_s(parameters::Parameters)
             "hopping constant" => t
         )
 
-        @time tJSystem, tJBasis, tJModel, tJFactorization = Main.tJmodel.run(input)
+        @time tJSystem, tJBasis, tJModel = Main.tJmodel.run(input, factor = false)
 
         initialState = getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
 
@@ -175,9 +175,9 @@ end
 
 ### System Parameters
 t = 1.0
-J = 0.4
+J = 0.001
 nRange = [n for n in 16:2:16]
-βRange = [-1.0, 0.0, 1.0]
+βRange = [1.0]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

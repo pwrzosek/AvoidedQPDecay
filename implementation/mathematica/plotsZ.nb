@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    153933,       2998]
-NotebookOptionsPosition[    152274,       2965]
-NotebookOutlinePosition[    152627,       2981]
-CellTagsIndexPosition[    152584,       2978]
+NotebookDataLength[    106354,       2037]
+NotebookOptionsPosition[    104694,       2004]
+NotebookOutlinePosition[    105047,       2020]
+CellTagsIndexPosition[    105004,       2017]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,7 +40,7 @@ implementation\\\\\>\"", "]"}], ",", "\[IndentingNewLine]",
   3.829316857310934*^9}, {3.829915346153401*^9, 3.8299153843344173`*^9}, {
   3.8299155470591097`*^9, 3.829915561412344*^9}},
  CellLabel->
-  "In[380]:=",ExpressionUUID->"9750f5a9-f756-4508-b30e-e11cab3fd343"],
+  "In[2402]:=",ExpressionUUID->"9750f5a9-f756-4508-b30e-e11cab3fd343"],
 
 Cell[BoxData["\<\"/Users/pwrzosek/Documents/GitHub/AvoidedQP/reimplementation\
 \"\>"], "Output",
@@ -88,9 +88,19 @@ Cell[BoxData["\<\"/Users/pwrzosek/Documents/GitHub/AvoidedQP/reimplementation\
    3.829919199404187*^9, 3.829919348966344*^9, 3.8299195342320747`*^9, 
    3.829927444962336*^9, 3.829927549882*^9, 3.8320533738969917`*^9, 
    3.832053404218917*^9, 3.832053511724369*^9, {3.8320535543642282`*^9, 
-   3.8320536059299593`*^9}},
+   3.8320536059299593`*^9}, {3.8399382428623323`*^9, 3.839938318215461*^9}, 
+   3.839938356702841*^9, {3.839938465148334*^9, 3.8399385024714622`*^9}, {
+   3.839939179952406*^9, 3.8399392046464663`*^9}, 3.839943468308654*^9, {
+   3.8399434996929693`*^9, 3.8399435107993593`*^9}, {3.839943572238038*^9, 
+   3.839943595699814*^9}, {3.839944525977166*^9, 3.8399446622299623`*^9}, {
+   3.839944831666654*^9, 3.839944844017098*^9}, {3.8399449206117563`*^9, 
+   3.839945021917026*^9}, {3.8399450683441963`*^9, 3.839945081404928*^9}, {
+   3.839945130665512*^9, 3.839945152065331*^9}, {3.839945338501358*^9, 
+   3.839945372808446*^9}, 3.839945428372726*^9, 3.8399461770713177`*^9, 
+   3.8399916674412613`*^9, {3.839991730662653*^9, 3.83999177523825*^9}, {
+   3.8399918433695393`*^9, 3.839991853799861*^9}},
  CellLabel->
-  "Out[380]=",ExpressionUUID->"c5f8ebbf-bd3f-498e-87ad-413da3f88b49"]
+  "Out[2402]=",ExpressionUUID->"5fd22b35-43eb-49e4-a11f-17d8fa9d9602"]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -102,7 +112,7 @@ Cell[BoxData[{
   RowBox[{"<<", "CustomTicks`"}], ";"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{3.829915564457882*^9},
  CellLabel->
-  "In[381]:=",ExpressionUUID->"8119b744-4ce8-4ed8-bc9f-28f81d40bb99"],
+  "In[2403]:=",ExpressionUUID->"8119b744-4ce8-4ed8-bc9f-28f81d40bb99"],
 
 Cell[BoxData[
  RowBox[{
@@ -144,7 +154,7 @@ Cell[BoxData[
    3.8253458364933043`*^9, 3.8253458394940557`*^9}, 3.825431455630252*^9, {
    3.825440900845037*^9, 3.825440970078066*^9}},
  CellLabel->
-  "In[383]:=",ExpressionUUID->"2f566782-39d4-4ae2-a0e6-d7fcb44a549b"],
+  "In[2405]:=",ExpressionUUID->"2f566782-39d4-4ae2-a0e6-d7fcb44a549b"],
 
 Cell[BoxData[
  RowBox[{
@@ -197,7 +207,7 @@ Cell[BoxData[
    3.825414012354992*^9, 3.8254140714895678`*^9}, {3.825414180579986*^9, 
    3.825414239474763*^9}, 3.8254314525197897`*^9},
  CellLabel->
-  "In[384]:=",ExpressionUUID->"e4b15072-2bf4-47d3-ba51-410df2c733c0"],
+  "In[2406]:=",ExpressionUUID->"e4b15072-2bf4-47d3-ba51-410df2c733c0"],
 
 Cell[BoxData[
  RowBox[{
@@ -228,7 +238,9 @@ Cell[BoxData[
     RowBox[{"If", "[", 
      RowBox[{"invX", ",", 
       RowBox[{"x", "=", 
-       RowBox[{"1", "/", "x"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"1", "/", 
+        RowBox[{"Sqrt", "[", "x", "]"}]}]}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
     RowBox[{"result", "=", 
      RowBox[{"Table", "[", 
       RowBox[{
@@ -251,9 +263,9 @@ Cell[BoxData[
   3.825431038211529*^9, 3.82543112078483*^9}, {3.825431154226533*^9, 
   3.825431440425671*^9}, {3.825432160889208*^9, 3.825432269299906*^9}, {
   3.825432302100356*^9, 3.8254323029440403`*^9}, {3.825439263278102*^9, 
-  3.825439264158247*^9}},
+  3.825439264158247*^9}, {3.839938238994088*^9, 3.8399382410607557`*^9}},
  CellLabel->
-  "In[385]:=",ExpressionUUID->"d85a7243-072d-447f-b6b4-4f582f9983f3"],
+  "In[2407]:=",ExpressionUUID->"d85a7243-072d-447f-b6b4-4f582f9983f3"],
 
 Cell[BoxData[
  RowBox[{
@@ -279,7 +291,7 @@ Cell[BoxData[
   3.825427798940413*^9, 3.8254278781996613`*^9}, {3.825428239881592*^9, 
   3.825428301425393*^9}, {3.8254283392153254`*^9, 3.825428372371471*^9}},
  CellLabel->
-  "In[386]:=",ExpressionUUID->"2d4eaadc-6ac5-4f76-b8e6-c911f6e77c5e"],
+  "In[2408]:=",ExpressionUUID->"2d4eaadc-6ac5-4f76-b8e6-c911f6e77c5e"],
 
 Cell[BoxData[
  RowBox[{
@@ -310,7 +322,7 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{
           RowBox[{"{", 
-           RowBox[{"0", ",", "0.1"}], "}"}], ",", 
+           RowBox[{"0", ",", "0.3001"}], "}"}], ",", 
           RowBox[{"{", 
            RowBox[{"0", ",", "0.5"}], "}"}]}], "}"}]}], ",", 
        RowBox[{"ImageSize", "\[Rule]", "240"}], ",", "\[IndentingNewLine]", 
@@ -318,73 +330,69 @@ Cell[BoxData[
        RowBox[{"Axes", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
        RowBox[{"FrameStyle", "\[Rule]", 
         RowBox[{"Directive", "[", 
-         RowBox[{"Black", ",", "14", ",", 
+         RowBox[{"Black", ",", "18", ",", 
           RowBox[{"FontFamily", "\[Rule]", "\"\<Bookman Old Style\>\""}]}], 
          "]"}]}], ",", "\[IndentingNewLine]", 
        RowBox[{"PlotMarkers", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"\"\<\[FilledCircle]\>\"", ",", " ", "10"}], "}"}]}], ",", 
        "\[IndentingNewLine]", 
-       RowBox[{"PlotLegends", "\[Rule]", 
-        RowBox[{"Placed", "[", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"PlotLegends", "\[Rule]", 
+          RowBox[{"Placed", "[", "\[IndentingNewLine]", 
            RowBox[{
-            RowBox[{"Style", "[", 
+            RowBox[{"PointLegend", "[", 
              RowBox[{
-              RowBox[{"StringJoin", "[", 
-               RowBox[{"\"\<\[Lambda] = \>\"", ",", 
-                RowBox[{"ToString", "[", 
-                 RowBox[{"NumberForm", "[", 
-                  RowBox[{"B", ",", 
-                   RowBox[{"{", 
+              RowBox[{"Table", "[", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                  RowBox[{"StringJoin", "[", 
+                   RowBox[{"\"\<\[Lambda] = \>\"", ",", 
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"NumberForm", "[", 
+                    RowBox[{"B", ",", 
+                    RowBox[{"{", 
                     RowBox[{"2", ",", "1"}], "}"}]}], "]"}], "]"}]}], "]"}], 
-              ",", "12", ",", 
-              RowBox[{"FontFamily", "\[Rule]", "\"\<BookmanOldStyle\>\""}]}], 
-             "]"}], ",", "\[IndentingNewLine]", 
+                  ",", "16", ",", 
+                  RowBox[{
+                  "FontFamily", "\[Rule]", "\"\<BookmanOldStyle\>\""}]}], 
+                 "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"B", ",", 
+                  RowBox[{
+                   RowBox[{"qpAvail", "[", "\"\<interaction\>\"", "]"}], "//",
+                    "Normal"}]}], "}"}]}], "]"}], ",", 
+              RowBox[{"Spacings", "\[Rule]", "0.3"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"{", 
-             RowBox[{"B", ",", 
-              RowBox[{
-               RowBox[{"qpAvail", "[", "\"\<interaction\>\"", "]"}], "//", 
-               "Normal"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
-          RowBox[{"{", 
-           RowBox[{"0.80", ",", "0.80"}], "}"}]}], "]"}]}], ",", 
+             RowBox[{"0.75", ",", "0.80"}], "}"}]}], "]"}]}], ","}], "*)"}], 
        "\[IndentingNewLine]", 
        RowBox[{"Epilog", "\[Rule]", 
         RowBox[{"Text", "[", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"Style", "[", 
            RowBox[{
-            RowBox[{"StringJoin", "[", 
-             RowBox[{"\"\<J = \>\"", ",", 
-              RowBox[{"ToString", "[", 
-               RowBox[{"NumberForm", "[", 
-                RowBox[{"J", ",", 
-                 RowBox[{"{", 
-                  RowBox[{"2", ",", "1"}], "}"}]}], "]"}], "]"}], ",", 
-              "\"\<t\\n p = \>\"", ",", 
-              RowBox[{"ToString", "[", 
-               RowBox[{"NumberForm", "[", 
-                RowBox[{"k", ",", 
-                 RowBox[{"{", 
-                  RowBox[{"2", ",", "1"}], "}"}]}], "]"}], "]"}], ",", 
-              "\"\<\[Pi]\>\""}], "]"}], ",", "Black", ",", "15", ",", 
+            RowBox[{"StringJoin", "[", "\"\<(d)  p = 0\>\"", "]"}], ",", 
+            "Black", ",", "18", ",", 
             RowBox[{"FontFamily", "\[Rule]", "\"\<Bookman Old Style\>\""}]}], 
            "]"}], ",", "\[IndentingNewLine]", 
           RowBox[{"{", 
-           RowBox[{"0.02", ",", "0.4"}], "}"}]}], "]"}]}], ",", 
+           RowBox[{"0.075", ",", "0.44"}], "}"}]}], "]"}]}], ",", 
        "\[IndentingNewLine]", 
        RowBox[{"FrameLabel", "\[Rule]", 
         RowBox[{"{", 
-         RowBox[{
+         RowBox[{"(*", 
           RowBox[{"Style", "[", 
            RowBox[{
-           "\"\<\!\(\*SuperscriptBox[\(L\), \(-1\)]\)\>\"", ",", "Black", ",",
-             "14", ",", 
+           "\"\<\!\(\*SuperscriptBox[\(L\), \(\(-1\)/2\)]\)\>\"", ",", 
+            "Black", ",", "18", ",", 
             RowBox[{"FontFamily", "\[Rule]", "\"\<Bookman Old Style\>\""}]}], 
-           "]"}], ",", 
+           "]"}], "*)"}], 
+         RowBox[{"None", ",", 
           RowBox[{"Style", "[", 
-           RowBox[{"\"\<z\>\"", ",", "Black", ",", "15", ",", 
+           RowBox[{"\"\<z\>\"", ",", "Black", ",", "18", ",", 
             RowBox[{"FontFamily", "\[Rule]", "\"\<Bookman Old Style\>\""}]}], 
            "]"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
        RowBox[{"LabelStyle", "\[Rule]", 
@@ -393,7 +401,6 @@ Cell[BoxData[
        RowBox[{"PlotStyle", "\[Rule]", "pltStyle"}], ",", 
        "\[IndentingNewLine]", 
        RowBox[{"AspectRatio", "\[Rule]", ".75"}], ",", "\[IndentingNewLine]", 
-       
        RowBox[{"FrameTicks", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{
@@ -401,10 +408,15 @@ Cell[BoxData[
            RowBox[{"LinTicks", ",", 
             RowBox[{"StripTickLabels", "[", "LinTicks", "]"}]}], "}"}], ",", 
           RowBox[{"{", 
-           RowBox[{"LinTicks", ",", 
-            RowBox[{"StripTickLabels", "[", "LinTicks", "]"}]}], "}"}]}], 
-         "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";", 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"LinTicks", "[", 
+             RowBox[{"0", ",", "0.3", ",", "0.1", ",", " ", "10"}], "]"}], 
+            ",", 
+            RowBox[{"StripTickLabels", "[", 
+             RowBox[{"LinTicks", "[", 
+              RowBox[{"0", ",", "0.3", ",", "0.1", ",", " ", "5"}], "]"}], 
+             "]"}]}], "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";",
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"fits", "=", 
      RowBox[{"makeFits", "[", 
       RowBox[{"data", ",", "func", ",", "arg", ",", "points"}], "]"}]}], ";", 
@@ -413,8 +425,7 @@ Cell[BoxData[
      RowBox[{"Plot", "[", 
       RowBox[{"fits", ",", 
        RowBox[{"{", 
-        RowBox[{"x", ",", "0", ",", 
-         RowBox[{"1", "/", "10"}]}], "}"}], ",", 
+        RowBox[{"x", ",", "0", ",", "0.3"}], "}"}], ",", 
        RowBox[{"PlotStyle", "\[Rule]", "pltStyle"}]}], "]"}]}], ";", 
     "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"Show", "[", 
@@ -449,9 +460,20 @@ Cell[BoxData[
    3.8299274283253613`*^9, 3.829927441569543*^9}, {3.829927544545438*^9, 
    3.829927547905362*^9}, {3.832053367977758*^9, 3.832053371303804*^9}, {
    3.832053506873869*^9, 3.832053510581493*^9}, {3.832053600008273*^9, 
-   3.832053604591346*^9}},
+   3.832053604591346*^9}, {3.839938261476706*^9, 3.839938316870801*^9}, {
+   3.8399383547454243`*^9, 3.839938355000483*^9}, 3.839938408849965*^9, {
+   3.839938472983515*^9, 3.839938501045439*^9}, {3.8399391787439423`*^9, 
+   3.83993920351219*^9}, {3.839943455369385*^9, 3.839943510062059*^9}, {
+   3.839943566700316*^9, 3.839943593926591*^9}, {3.839944518773136*^9, 
+   3.839944660833843*^9}, {3.839944829948749*^9, 3.839944842722843*^9}, {
+   3.839944910488201*^9, 3.839945019963019*^9}, {3.8399450596867533`*^9, 
+   3.839945080488119*^9}, {3.839945123481357*^9, 3.8399451509120417`*^9}, {
+   3.8399453348417177`*^9, 3.839945371757568*^9}, {3.839945418408039*^9, 
+   3.8399454269120703`*^9}, {3.8399461510573797`*^9, 3.8399461757207947`*^9}, 
+   3.839991665332519*^9, {3.839991724765214*^9, 3.839991774172325*^9}, {
+   3.839991839153311*^9, 3.8399918528174953`*^9}},
  CellLabel->
-  "In[387]:=",ExpressionUUID->"5bd1480f-a443-47fd-ae5b-508df22184f0"],
+  "In[2409]:=",ExpressionUUID->"5bd1480f-a443-47fd-ae5b-508df22184f0"],
 
 Cell[BoxData[
  RowBox[{
@@ -521,8 +543,7 @@ Cell[BoxData[
         RowBox[{
          RowBox[{"qpAvail", "[", "\"\<coupling\>\"", "]"}], "//", 
          "Normal"}]}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", "plots"}], "\[IndentingNewLine]", ")"}]}]], "Input",\
-
+    "\[IndentingNewLine]", "plots"}], "\[IndentingNewLine]", ")"}]}]], "Input",
  CellChangeTimes->{{3.825432716287167*^9, 3.82543286431367*^9}, {
    3.8254335639167633`*^9, 3.8254335654065313`*^9}, {3.825433910906868*^9, 
    3.8254339481264687`*^9}, {3.825433994793648*^9, 3.8254339969584427`*^9}, {
@@ -554,7 +575,7 @@ Cell[BoxData[
    3.8320534016123323`*^9, 3.832053402658328*^9}, {3.832053574303465*^9, 
    3.8320535747480497`*^9}},
  CellLabel->
-  "In[388]:=",ExpressionUUID->"cae0cf65-9274-4113-be62-7cc9431dbe59"],
+  "In[2410]:=",ExpressionUUID->"cae0cf65-9274-4113-be62-7cc9431dbe59"],
 
 Cell[CellGroupData[{
 
@@ -593,7 +614,6 @@ Cell[BoxData[{
      RowBox[{"AppendTo", "[", 
       RowBox[{"zPlots", ",", 
        RowBox[{"makePlotsZ", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
-     
      RowBox[{"kDim", "=", 
       RowBox[{"Length", "[", 
        RowBox[{"qpAvail", "[", "\"\<momentum\>\"", "]"}], "]"}]}], ";", 
@@ -690,7 +710,7 @@ Cell[BoxData[{
    3.8320532498272448`*^9, 3.832053250128148*^9}, {3.832053354123126*^9, 
    3.8320533548105297`*^9}},
  CellLabel->
-  "In[389]:=",ExpressionUUID->"79f1820b-ace8-47bd-8dcb-815128ecc7dc"],
+  "In[2411]:=",ExpressionUUID->"79f1820b-ace8-47bd-8dcb-815128ecc7dc"],
 
 Cell[CellGroupData[{
 
@@ -736,2109 +756,1118 @@ Cell[BoxData[
    3.829919091504744*^9, 3.82991916184879*^9}, 3.829919199706891*^9, 
    3.8299193492794657`*^9, 3.829919534469048*^9, 3.829927445197834*^9, 
    3.82992755010721*^9, 3.832053374112154*^9, 3.83205340445326*^9, 
-   3.832053511955361*^9, {3.832053554610458*^9, 3.8320536061565*^9}},
+   3.832053511955361*^9, {3.832053554610458*^9, 3.8320536061565*^9}, {
+   3.839938243142251*^9, 3.839938318475087*^9}, 3.839938356936407*^9, {
+   3.839938465382107*^9, 3.839938502706558*^9}, {3.839939180180966*^9, 
+   3.8399392048578577`*^9}, 3.8399434685345716`*^9, {3.83994349992745*^9, 
+   3.839943511028017*^9}, {3.8399435725150948`*^9, 3.839943595945347*^9}, {
+   3.83994452621775*^9, 3.839944662483388*^9}, {3.839944831947654*^9, 
+   3.839944844275436*^9}, {3.839944920872527*^9, 3.839945022153791*^9}, {
+   3.839945068589451*^9, 3.839945081679459*^9}, {3.839945130890831*^9, 
+   3.839945152334095*^9}, {3.83994533876504*^9, 3.839945373058975*^9}, 
+   3.8399454286219063`*^9, 3.83994617732018*^9, 3.839991667785116*^9, {
+   3.839991730965107*^9, 3.8399917754799623`*^9}, {3.839991843615744*^9, 
+   3.839991854081623*^9}},
  CellLabel->
   "During evaluation of \
-In[389]:=",ExpressionUUID->"2014bbcc-62cf-4ede-8653-5cec974c8dd1"],
+In[2411]:=",ExpressionUUID->"a98363f8-0f83-44cb-99bf-f6311598afbc"],
 
 Cell[BoxData[
  TagBox[GridBox[{
     {
-     TagBox[
-      GraphicsBox[{{{{}, {
-           {RGBColor[0, 0, 1], AbsolutePointSize[6], AbsoluteThickness[1.6], 
-            Opacity[0.7], Dashing[{Small, Small}], 
-            GeometricTransformationBox[InsetBox[
-              StyleBox["\<\"\[FilledCircle]\"\>",
-               StripOnInput->False,
-               FontSize->10], {0., 0.}], {{{0.08333333333333333, 
-             0.22822913696528652`}}, {{0.07142857142857142, 
-             0.2278261131248481}}, {{0.0625, 0.22791817721946853`}}, {{
-             0.05555555555555555, 0.22789945106062254`}}, {{0.05, 
-             0.22790352353416343`}}, {{0.045454545454545456`, 
-             0.22790270499576484`}}, {{0.041666666666666664`, 
-             0.22790287750847696`}}, {{0.038461538461538464`, 
-             0.22790284311647666`}}, {{0.03571428571428571, 
-             0.22790285020267317`}}}]}, 
-           {RGBColor[1, 0, 0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
-            Opacity[0.7], Dashing[{Small, Small}], 
-            GeometricTransformationBox[InsetBox[
-              StyleBox["\<\"\[FilledCircle]\"\>",
-               StripOnInput->False,
-               FontSize->10], {0., 0.}], {{{0.08333333333333333, 
-             0.16374509362324846`}}, {{0.07142857142857142, 
-             0.14110285676814188`}}, {{0.0625, 0.15197977106974517`}}, {{
-             0.05555555555555555, 0.1441814188526612}}, {{0.05, 
-             0.14778535937937476`}}, {{0.045454545454545456`, 
-             0.14516802724702335`}}, {{0.041666666666666664`, 
-             0.14610022841896328`}}, {{0.038461538461538464`, 
-             0.14516120894215967`}}, {{0.03571428571428571, 
-             0.145269086419453}}}]}, {}}, {}, {}, {}, {}}, {{{}, {}, 
-           TagBox[
-            {RGBColor[0, 0, 1], AbsoluteThickness[1.6], Opacity[0.7], 
-             Dashing[{Small, Small}], LineBox[CompressedData["
-1:eJwV0H0w23ccB3BsbLUs1HJNJPqg0tZmtLOdHXo+nurWqh7ashmjaFMPQzR0
-Z0Ta2VjJGqa0iVSXIGNk4vnnWuaCXVVo2JhVVT00xEOGCq2nfb9/vO99r//e
-97aOTAy8aGRgYOCDgluiJTiqbGs3Mn8o8pmdCvS0tNqbFHP4q6+NhX28rNqW
-SzkAQnNZPPaz2a7oFMoxOFx4NRVbkTdgxKa4g5uIdgObPvaPOoHiDwmVIQrs
-PpNQ4mtKBKi6xnawKc/9vuB3JMGlOKuqcWS2o2jSePobMNncffI58j5O7kJ/
-Ig9K/WansF+zL+xUK7PAgqTnTyDL3yfTRKoc4De22k0iB7856GPpwIeJRw1D
-2KIc6h7KAwEclQq4U8hrc8dIzLYCyLrIZEzjPRFB76ZrC6G+cKETO99Rkz+6
-VASz8oSoF8hJYiXbWHcbaDfU29g9ltWhqVQRHByIkWmQzVd2enR0MTgat3rP
-IKufhnsrTpbC3nLQYQ/Xfp+3t/keGJrIimbxf9b5LS+afoH5gG5HLXKY8KD2
-bK8EFKaMUezVjpiwE/1S4MqPpM0h+y47Df2rKQNme8yheWQHXWX6uY1y6BTw
-Vdg/CAeiAzcrIM4vJnYBueTMtcCXFr/CfGoaZRHZVjF9jU6thJRcr3psz3Hd
-GHNPFegjFs/okC1pPI/BD36DAGnfGjZru2va2L4aGh5fuvUf8pWF/Juj3jWw
-FPuJ+xIyqfINVnGwHI50T2qw6e/Z8YaCf4dokm/WMvKKZ3z/qFMtfNuusV9B
-LhwUZwpaakEYdrwXO/2UxKfpUwXU3U9mvURWdsWYyzsUIM0ZM1tFPkEjbbA8
-66AEjGqwDyWyZ1ZUdZAY9WWwHtldrNB7+NfDqeR4PbZE0ckwelwP+zzDC9aQ
-o3qEXoUhDfCIm+26jhze6ps386QBeBWsEexWefsw+XIjmLlmZL1CDv3RxEW2
-1AjFAs6Hr5GdXW0fGCY3wWG1zUNszhLJy2GrCQTct69sIGu5vbNWmc1gSC3f
-vYksW/5KlrHdDHFJNjXYytgGVm1OC8idhs9v4X9apz4r30XAK43nCva4B3OO
-SSYg8v4f69gVD6P4ZRYE9AjctrE/HplQSxkElDi77NpGPr0+HiKxJ8At96P9
-2BlOT+NLAwi47nDAF9u7zcpsfxABWqO7/timPqGKuyEEnB1mBGEXnX+yKo4i
-gMmjXsCWc0a4JSkEdKvJV7E5mzRrqzQCjlbkpWO7ZH2uFHEJKE4zvY7958/D
-b4myCbhsY8LH/olBraLnEaBe+64A+5w06LRQQIBzr+FtbLpd0aLlLQIk9zLF
-2ON1fwvu3CHgnZQtCfb/0PgyFg==
-              "]]},
-            Annotation[#, "Charting`Private`Tag$52095#1"]& ], 
-           TagBox[
-            {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[0.7], 
-             Dashing[{Small, Small}], LineBox[CompressedData["
-1:eJwV0Hs01HkYBnCr6LK6nJpchljShQ6HdCRsj/vWJrqhLNEgkZJIe9zinIoY
-Ma0Uk2XHpZSmGbn9bNF8v9HJJjtUyq3JJWIlpGwl+9s/3vOcz3/P8+rzwncH
-KSspKe1g7/8UDTNRzcn6W8xnx1Yr9cgQqrzifjlHCZ3CHRlrWH/UjJFkcJbi
-rNXNaVfWtkVl6xI4P+BlxKG/cli/etsQeJJjhqT+ruMWr2SQ8luVIzh2aH30
-6M9DChm4PS/kxzg7cSKrcFdzrwxPVH2Yoxx/VBh5xecOysB5vWN/uuw4GjPm
-582ZkCFig7BPZeBXNN6+q3f3iwy6UWmjLeGJeFuhkDuqEHyOODhbRs9AOOXm
-mruEQGy0WFPYnAKb9/VGdloEXnPbXLRM03FkTWxLxSoCYYqGOudeJursS4qm
-TQg+jZipGdZdxKz60660TQRP/D0XxQ1noWWta/eoPYFgw6Cgazwb/IlGu/zt
-BMfzaITK2BUcFUnb9DwImrTKfKI1hOhJf2Ma7kewdHK2aYybB1sL3dFFIQTy
-bj8n6bZ8GHMKImMjCdolZ/krqwtg0yEwqoknsNUX1Lyp+gObvc85OCUT+OYa
-DO95LMLDFQ2r8gUEU7IQX+eWQjikqR7eJiTYPmH5vGOwCG62F6NIMYHpWGnc
-3i/FiGtNlyyUEJzLbQ3c/bUEVwz47iKG4Kpb0u4Py67DUfy0av4DgnXSgSSu
-Rim6JvWS6poJHBRjPYbqN3BFtzPGsZ1ASzPRvs34JvrPKGwvvyYI/tYwoGJS
-Bt3ioYPWIwSRo4KMLqdbGFSycS+bIlArnRN82UuMNvuZI6OzBNzl6xOfe93G
-LVsyEr+AYtIhrKXLUgL1SLlF93KKrLa805k1EhwN6OtJW0kR97PIpWqTFINW
-QcyCtRS0IWSpWCbF+DZzH09zCmdNtS/BDuUY4ijxJqwpVodHDE02lyNcW8vM
-15nCLk/60X7nHfR1bjyo4U4hkj7QVv77DmKS7ssK9lEENOU6ZnlXQMTLHp7m
-UfjVbucPdVagauZYdEEYRa24vn3x4Up4PxU0qZ+i8Dmvan1tvBIGmYZuPkkU
-m23W3fvuRBXaVWo3jqdSRI2rOZrOVEGnOqdv7yWK4YTHb3VOV8PNIG5qXj7F
-tYkD1+K/VaPwxBPL1OvsntCKYElKDVK+hdp1llNwa/u3Fi9g8IvTwluxdylm
-4udyB75n0OdkVlrCWmFvOGK4mEGYs2exnHXJo4D0omUM4l1EeWvvUVi87JUX
-ajPI32p9oY2167TCW2TCoNc1NHx9PUW8ZXdY/i4GoR5N5p0yCv/PX398tYfB
-pMd7E1VC4VSns0TPk0Gsp7qxOeuFLj7S370Z8L14Bsmssz06p/ICGIj3f15m
-QSnEUS8Trp5kMOFr/CH1AYXA6l/3rlMMYg7sfF/JOuqrpr5ODIM5ftH/KFhb
-n9lHhQkMOP6k37KB4uFv7fOEyQwsed7Pelnf8Pr0ouM8gzpeonxRI8UFbY0b
-XD6DnwJKmq1Y7y30dM3NZLAvcKLhAutNwdErOy4yUARqEoY1d332O61LDEKC
-ttT1s555V1m//zKD8aDA2iUP2f+VP8vMyWH7HUqtsmb9H3Ttbu8=
-              "]]},
-            Annotation[#, "Charting`Private`Tag$52095#2"]& ]}, {}, {}}}, 
-        InsetBox[
-         TemplateBox[{
-          StyleBox[
-           "\"\[Lambda] = 0.0\"", 12, FontFamily -> "BookmanOldStyle", 
-            StripOnInput -> False],StyleBox[
-           "\"\[Lambda] = 1.0\"", 12, FontFamily -> "BookmanOldStyle", 
-            StripOnInput -> False]},
-          "PointLegend",
-          DisplayFunction->(FormBox[
-            StyleBox[
-             StyleBox[
-              PaneBox[
-               TagBox[
-                GridBox[{{
-                   TagBox[
-                    GridBox[{{
-                    GraphicsBox[{{}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[0, 0, 1], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], {
-                    InsetBox[
-                    FormBox[
-                    StyleBox["\"\[FilledCircle]\"", 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[0, 0, 1], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], FontSize -> 10, Plain, 
-                    StripOnInput -> False], TraditionalForm], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
-                    ImageSize -> {10, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}, {
-                    GraphicsBox[{{}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[1, 0, 0], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], {
-                    InsetBox[
-                    FormBox[
-                    StyleBox["\"\[FilledCircle]\"", 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[1, 0, 0], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], FontSize -> 10, Plain, 
-                    StripOnInput -> False], TraditionalForm], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
-                    ImageSize -> {10, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}}, 
-                    GridBoxAlignment -> {
-                    "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
-                    AutoDelete -> False, 
-                    GridBoxDividers -> {
-                    "Columns" -> {{False}}, "Rows" -> {{False}}}, 
-                    GridBoxItemSize -> {
-                    "Columns" -> {{All}}, "Rows" -> {{All}}}, 
-                    GridBoxSpacings -> {
-                    "Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], "Grid"]}}, 
-                 GridBoxAlignment -> {
-                  "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
-                 False, GridBoxItemSize -> {
-                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-                 GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
-                "Grid"], Alignment -> Left, AppearanceElements -> None, 
-               ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
-               "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
-              Directive[
-               GrayLevel[0], 12], FontFamily -> "Arial"}, Background -> 
-             Automatic, StripOnInput -> False], TraditionalForm]& ),
-          Editable->True,
-          InterpretationFunction:>(RowBox[{"PointLegend", "[", 
-             RowBox[{
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{"Directive", "[", 
-                    RowBox[{
-                    RowBox[{"PointSize", "[", "0.012833333333333334`", "]"}], 
-                    ",", 
-                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", 
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[0, 0, 1], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
-                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"RGBColor", "[", 
-                    RowBox[{"0", ",", "0", ",", "1"}], "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    RGBColor[0, 0, 1]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    RGBColor[0, 0, 1], Editable -> False, Selectable -> 
-                    False], ",", 
-                    RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
-                    RowBox[{"Dashing", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"Small", ",", "Small"}], "}"}], "]"}]}], "]"}], 
-                   ",", 
-                   RowBox[{"Directive", "[", 
-                    RowBox[{
-                    RowBox[{"PointSize", "[", "0.012833333333333334`", "]"}], 
-                    ",", 
-                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", 
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[1, 0, 0], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
-                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"RGBColor", "[", 
-                    RowBox[{"1", ",", "0", ",", "0"}], "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    RGBColor[1, 0, 0]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    RGBColor[1, 0, 0], Editable -> False, Selectable -> 
-                    False], ",", 
-                    RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
-                    RowBox[{"Dashing", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"Small", ",", "Small"}], "}"}], "]"}]}], "]"}]}], 
-                 "}"}], ",", 
-               RowBox[{"{", 
-                 RowBox[{#, ",", #2}], "}"}], ",", 
-               RowBox[{"LegendMarkers", "\[Rule]", 
-                 RowBox[{"{", 
-                   RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{"\"\[FilledCircle]\"", ",", "10"}], "}"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"\"\[FilledCircle]\"", ",", "10"}], "}"}]}], 
-                   "}"}]}], ",", 
-               RowBox[{"Joined", "\[Rule]", 
-                 RowBox[{"{", 
-                   RowBox[{"False", ",", "False"}], "}"}]}], ",", 
-               RowBox[{"LabelStyle", "\[Rule]", 
-                 RowBox[{"Directive", "[", 
-                   RowBox[{
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
-                    PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"GrayLevel", "[", "0", "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    GrayLevel[0]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["GrayLevelColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    GrayLevel[0], Editable -> False, Selectable -> False], 
-                    ",", "12"}], "]"}]}], ",", 
-               RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& )],
-          Scaled[{0.8, 0.8}], ImageScaled[{0.5, 0.5}],
-         BaseStyle->{FontSize -> Larger},
-         FormatType->StandardForm]},
-       AspectRatio->0.75,
-       Axes->{False, False},
-       AxesLabel->{None, None},
-       AxesOrigin->{0, 0},
-       DisplayFunction->Identity,
-       Epilog->InsetBox[
+     GraphicsBox[{{{}, {
+         {RGBColor[0, 0, 1], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+          Opacity[0.7], Dashing[{Small, Small}], 
+          GeometricTransformationBox[InsetBox[
+            StyleBox["\<\"\[FilledCircle]\"\>",
+             StripOnInput->False,
+             FontSize->10], {0., 0.}], {{{0.28867513459481287`, 
+           0.22822913696528652`}}, {{0.2672612419124244, 
+           0.2278261131248481}}, {{0.25, 0.22791817721946853`}}, {{
+           0.23570226039551584`, 0.22789945106062254`}}, {{
+           0.22360679774997896`, 0.22790352353416343`}}, {{
+           0.21320071635561044`, 0.22790270499576484`}}, {{0.2041241452319315,
+            0.22790287750847696`}}, {{0.19611613513818404`, 
+           0.22790284311647666`}}, {{0.18898223650461363`, 
+           0.22790285020267317`}}}]}, 
+         {RGBColor[1, 0, 0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+          Opacity[0.7], Dashing[{Small, Small}], 
+          GeometricTransformationBox[InsetBox[
+            StyleBox["\<\"\[FilledCircle]\"\>",
+             StripOnInput->False,
+             FontSize->10], {0., 0.}], {{{0.28867513459481287`, 
+           0.16374509362324846`}}, {{0.2672612419124244, 
+           0.14110285676814188`}}, {{0.25, 0.15197977106974517`}}, {{
+           0.23570226039551584`, 0.1441814188526612}}, {{0.22360679774997896`,
+            0.14778535937937476`}}, {{0.21320071635561044`, 
+           0.14516802724702335`}}, {{0.2041241452319315, 
+           0.14610022841896328`}}, {{0.19611613513818404`, 
+           0.14516120894215967`}}, {{0.18898223650461363`, 
+           0.145269086419453}}}]}, {}}, {}, {}, {}, {}}, {{{}, {}, 
+         TagBox[
+          {RGBColor[0, 0, 1], AbsoluteThickness[1.6], Opacity[0.7], 
+           Dashing[{Small, Small}], LineBox[CompressedData["
+1:eJwV0n9Q03UYB3AUqG4lXQxknbJgQPw0xIEIOB8pFIiWMWFSZEvGRGEeMq+k
+U0AMD6cxflyEFyk/TkICAwaDmCAIg/FrOL7fCahzMH5OCTEGg7OAPp8/nnvu
+9c/73s/d4xiXzBFsNTMzO4wGb+P4du/GiMADii3UFsJTBckuzVdH6W6wyjVv
+x44xbWW10feBR41Rga3SudnV0cMgj6tRY79JBmVV0WPgeHWhAduZ3R34O/0U
+rETRaCQyk0L55TY9FVzv2J/H/m142TKKIYYIsfMhDbJG0JioqC6At/ZnWT5C
+3vVR5HRz5Q1InLLvxDZ5WGf86FICku4GyQhycAmF4/trOYT/UM4eRT74CX2l
+YLICehJydo4hGz5zcry1owqefyqdw146EW69174Gbm96VzxG9s3fYiPn1YLj
+YpXoCfKC4MwZgV89+NVd3PMU2aaJYxvSIIVFgfgldgw1s/tGZCMkcQvkWmS2
+CcaYGhmk05ZTnyF/MxtqDDnfDEdtOaE65BBxL6fGugWG3njx3jjy0/rHNl8V
+yEHf92QIWzLHHE/b0woypbJ4Avcrp79jaGoDRtG2WD2yKIkT3BvbDkfKjnhM
+IvPPZRzPuNgBTqUDK9gzxpsDLNYDyD1b2jCFvPJ6guVv1QmtF1Iyp5F1IUL9
+0eFOyIwpDp5B9jEwK4vzumDefXMd29raIYX+rQJoe3n9s8iD6VFChWM3aKk0
+8Ry+X3Q3qcLYDXFeqmMG5J77H+fUP+iBnIBWxnPkyM8dJiYylRBJs5jAToxn
++EdwemHEJ+zuC+TYNmH7mE0fGHfOCOeRm5ONp/PJPpD9d8/tb+SyO7doV8r7
+IcAudxmb71ywVswfAK75PekCcsOHf2gXfAeB6TF16SWyNomyFLc2CFWM+OBF
+/J+USnfzv1SgePeDDew871MCXfYQlPmP9L9CvlaUQmjDH8J2n1nxP8iUroeO
+b1upgS1YillCtpjLSmJ9pwZ3yT5nI+7vpWNnPlLDzaujemw7Wbh0kjUMZJuo
+dhl5N+/L2uiSYShVnExeQd7wy2bpNoaB2vGzpwmZ+oWSnXWSgDDT/VXswuvV
+piAlAbYbwU2rON8ntq64n4BF7lwr9oFRSuK/KgL6an/qwjYwEp/JNQSknRhV
+YwfK3RQBkwTMKITz2DpDRb7/OgGy60UOa8hSSXREkRkJudP7XbGzfS0tV81J
+OM2a3IW9+1J8ahOFBPtFryDsy3ZOPD8aCVc4ndHY3DaCVriDBF51wtfYnvzL
+xDKdhACLbXxszZ/6Q40uJCzIjp3FrorK36S6k6C0Wv8eO/31wZZzXiSUJZSn
+YXNKX4lIbxIudIRmYbseLvViMkmIfn/hGvb/LmEunA==
+            "]]},
+          Annotation[#, "Charting`Private`Tag$505856#1"]& ], 
+         TagBox[
+          {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[0.7], 
+           Dashing[{Small, Small}], LineBox[CompressedData["
+1:eJwVz3s0VAkABnC2ZHeyOofx2mq8UmgkDRFNXzI9LApJpZA8YihbjnJ6qIlq
+9aaUmsQqqVTDJKQdufd6Mx73TthDaKpld3tsJrSczd794zvf+f33fZY7EwOj
+v9HS0vJj839rBowdy3zcV2zwPCYbMCSQm2ZuoWduilk1Rjf1uQQSbSp+7ubZ
+om1F8Vkh6y1j3wgVPDesX94VJ2Wt7Lc1KeGtg68rf95mIwK6jEf6Pd4WeDv0
+5LQZE5jnV+d+hxcLL7PFxxVmBAQczpXbvBS4fhoIkpoTuNH5WSfIKgOr66j8
+jXwCqugycW1xFr4PkVo5uxFwWBTwpqIoB7rz3031eBEYszc4mmaThwXGRNpB
+fwKeeZxA5+sF0GrIEIq2E1jpxRvNUhdiStqVy4kjMOxrbXlz9j043b2xNTuZ
+wEiEt8HSuQ8wJznYZ52EgHOmNrcqXAaHmMuvx88ReB+9e3e0SynGTepL268R
+4JYHGokey6HR2tsbX8j+N5TU5QSUwVg/v3i6nIDfGHoEqicY6SVL6xQEwn5f
+qxEdqMBnZVxYWjMBUUZj4AODp7Adz4jR6SbQW/obNySrCsavcm/L1ATODwkG
+jiz5FfYfXTKCP7L7Cnh6w+UKjCmIWzaTBPbFB3o2bnuOP0o6oz7pkohMOhp6
+9HANZvWGSCRcEm81uS1CIbu7rptZZkFidGJQ6KpPYkTV0/qBT6JflPBqYycJ
+2W3lZIsbCadhQZH0IoX8Yo+Tu0UkDAws9vJ21KK8y6FiZgCJ1tSghFrLOpwk
+DXn0dhLcfQ/jCzV1OEQfWZgdR6K+etW5UqIet8wiLs/ZTyJgvcXgoKQB6ZZu
+glYJCXGUlatPYCPO+l1KSTlPYpsi4XkPtwm+7mqN73USFYmauEymCQi73/y2
+kMQvd2+anihoxpY7Y2sPydl/87K+SCNbYC9bOulWTeLx/Pt9751bYd03EaRp
+JtEXzxnZ+aUVqib5mxddJBI5RXbTKpWo/PC6/bCaxEXH2Oj+U20gXa9FWHwk
+cfrqXrrPux0nPFfZvZsgwaHaLWfqd2BPYuLVMl0K04fS44XJHTitMorw5FIQ
+8/v9JC86ED4h2zFmTsHkibdcLexEiKhtxl0+hcXhW2Wb8jqhv2FQLXGj8NXl
+lLD/aydGL8b/YCGiYOjf4JceQ0N7/OCXKn8K2WeKxzwaaDTMTdVL3U7hWFga
+81cjDYddFzLlrMVO20qkzTSySvKNh1iv6OaIJ5U0Qr0oC/9QCsNW4pdVKhqa
+2G9drMIouFfZ1i5T0zAvywqtD6fQP1yY6fovjf0/Fj3Sj6TQ+OzInqGvNPou
+VQq8WMvPb/K5qsXA82VT5QHWp5x1dManMdD76R05yHrxsaiUcg6DgmynbnkU
+heMm1uEupgzaBp9NBcdQSPhzwuOtGQOBvTL9DOtgBW2aPZtBTlL/dzWsF0Ye
+pz/zGETO0Oba7aKgevRqdZkNg38WrrGdZF0teWoVtYBBePLmh46xFO4FZU4Z
+2jGorY5dEsU6dWLl0yQ+gwsBZ5YrWccqTa9YL2Iwev0GoR1HITD/732MI4OQ
+Nw/XLGW9PKlxQ5oTgxqH5y1i1gvW5PMFAgY2Bzr881j/B+gKWmg=
+            "]]},
+          Annotation[#, "Charting`Private`Tag$505856#2"]& ]}, {}, {}}},
+      AspectRatio->0.75,
+      Axes->{False, False},
+      AxesLabel->{None, None},
+      AxesOrigin->{0, 0},
+      DisplayFunction->Identity,
+      Epilog->InsetBox[
+        FormBox[
+         StyleBox["\"(d)  p = 0\"", 
+          GrayLevel[0], 18, FontFamily -> "Bookman Old Style", StripOnInput -> 
+          False], TraditionalForm], {0.075, 0.44}],
+      Frame->{{True, True}, {True, True}},
+      FrameLabel->{{
          FormBox[
-          StyleBox["\"J = 0.4t\\n p = 0.0\[Pi]\"", 
-           GrayLevel[0], 15, FontFamily -> "Bookman Old Style", StripOnInput -> 
-           False], TraditionalForm], {0.02, 0.4}],
-       Frame->{{True, True}, {True, True}},
-       FrameLabel->{{
-          FormBox[
-           StyleBox["\"z\"", 
-            GrayLevel[0], 15, FontFamily -> "Bookman Old Style", StripOnInput -> 
-            False], TraditionalForm], None}, {
-          FormBox[
-           StyleBox["\"\\!\\(\\*SuperscriptBox[\\(L\\), \\(-1\\)]\\)\"", 
-            GrayLevel[0], 14, FontFamily -> "Bookman Old Style", StripOnInput -> 
-            False], TraditionalForm], None}},
-       FrameStyle->Directive[
-         GrayLevel[0], 14, FontFamily -> "Bookman Old Style"],
-       FrameTicks->
-        FrontEndValueCache[{{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-            Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-             SlotSequence[1]], {Identity, Identity}]& }, {
-          CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-            Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-             SlotSequence[1]], {Identity, Identity}]& }}, {{{{0., 
-             FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
-             FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.30000000000000004`, 
-             FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
-             FormBox["\"0.4\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
-             FormBox["\"0.5\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.020000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.04000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.08000000000000002, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.12000000000000001`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.16000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.18000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.22000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.24000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.32000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.3400000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.36000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.38000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.42000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.44000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.48000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.30000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.020000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.04000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.08000000000000002, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.12000000000000001`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.16000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.18000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.22000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.24000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.32000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.3400000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.36000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.38000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.42000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.44000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.48000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}, {{{0., 
-             FormBox["\"0.00\"", TraditionalForm], {0.025, 0.}, {}}, {0.02, 
-             FormBox["\"0.02\"", TraditionalForm], {0.025, 0.}, {}}, {0.04, 
-             FormBox["\"0.04\"", TraditionalForm], {0.025, 0.}, {}}, {0.06, 
-             FormBox["\"0.06\"", TraditionalForm], {0.025, 0.}, {}}, {0.08, 
-             FormBox["\"0.08\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"0.10\"", TraditionalForm], {0.025, 0.}, {}}, {0.005, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.01, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.015, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.025, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.03, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.035, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.045, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.055, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.065, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06999999999999999, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.075, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.085, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.09, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.095, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.02, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.04, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.06, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.08, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.005, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.01, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.015, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.025, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.03, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.035, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.045, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.055, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.065, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06999999999999999, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.075, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.085, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.09, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.095, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}],
-       GridLines->{None, None},
-       GridLinesStyle->Directive[
-         GrayLevel[0.5, 0.4]],
-       ImagePadding->All,
-       ImageSize->240,
-       LabelStyle->Directive[
-         GrayLevel[0], 12],
-       Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-             (Identity[#]& )[
-              Part[#, 1]], 
-             (Identity[#]& )[
-              Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-             (Identity[#]& )[
-              Part[#, 1]], 
-             (Identity[#]& )[
-              Part[#, 2]]}& )}},
-       PlotRange->{{0, 0.1}, {0, 0.5}},
-       PlotRangeClipping->False,
-       PlotRangePadding->{{0, 0}, {0, 0}},
-       Ticks->{Automatic, Automatic}],
-      InterpretTemplate[Legended[
-        Graphics[{{{}, {{{
-              Directive[
-               PointSize[0.012833333333333334`], 
-               AbsoluteThickness[1.6], 
-               RGBColor[0, 0, 1], 
-               Opacity[0.7], 
-               Dashing[{Small, Small}], 
-               AbsolutePointSize[6]], 
-              GeometricTransformation[
-               Inset[
-                Style["\[FilledCircle]", FontSize -> 10], {0., 0.}], {{{
-               0.08333333333333333, 0.22822913696528652`}}, {{
-               0.07142857142857142, 0.2278261131248481}}, {{0.0625, 
-               0.22791817721946853`}}, {{0.05555555555555555, 
-               0.22789945106062254`}}, {{0.05, 0.22790352353416343`}}, {{
-               0.045454545454545456`, 0.22790270499576484`}}, {{
-               0.041666666666666664`, 0.22790287750847696`}}, {{
-               0.038461538461538464`, 0.22790284311647666`}}, {{
-               0.03571428571428571, 0.22790285020267317`}}}]}, {
-              Directive[
-               PointSize[0.012833333333333334`], 
-               AbsoluteThickness[1.6], 
-               RGBColor[1, 0, 0], 
-               Opacity[0.7], 
-               Dashing[{Small, Small}], 
-               AbsolutePointSize[6]], 
-              GeometricTransformation[
-               Inset[
-                Style["\[FilledCircle]", FontSize -> 10], {0., 0.}], {{{
-               0.08333333333333333, 0.16374509362324846`}}, {{
-               0.07142857142857142, 0.14110285676814188`}}, {{0.0625, 
-               0.15197977106974517`}}, {{0.05555555555555555, 
-               0.1441814188526612}}, {{0.05, 0.14778535937937476`}}, {{
-               0.045454545454545456`, 0.14516802724702335`}}, {{
-               0.041666666666666664`, 0.14610022841896328`}}, {{
-               0.038461538461538464`, 0.14516120894215967`}}, {{
-               0.03571428571428571, 
-               0.145269086419453}}}]}, {}}}, {}, {}, {}, {}}, {{{{}, {}, 
-             Annotation[{
-               Directive[
-                AbsoluteThickness[1.6], 
-                RGBColor[0, 0, 1], 
-                Opacity[0.7], 
-                Dashing[{Small, Small}]], 
-               Line[CompressedData["
-1:eJwV0H0w23ccB3BsbLUs1HJNJPqg0tZmtLOdHXo+nurWqh7ashmjaFMPQzR0
-Z0Ta2VjJGqa0iVSXIGNk4vnnWuaCXVVo2JhVVT00xEOGCq2nfb9/vO99r//e
-97aOTAy8aGRgYOCDgluiJTiqbGs3Mn8o8pmdCvS0tNqbFHP4q6+NhX28rNqW
-SzkAQnNZPPaz2a7oFMoxOFx4NRVbkTdgxKa4g5uIdgObPvaPOoHiDwmVIQrs
-PpNQ4mtKBKi6xnawKc/9vuB3JMGlOKuqcWS2o2jSePobMNncffI58j5O7kJ/
-Ig9K/WansF+zL+xUK7PAgqTnTyDL3yfTRKoc4De22k0iB7856GPpwIeJRw1D
-2KIc6h7KAwEclQq4U8hrc8dIzLYCyLrIZEzjPRFB76ZrC6G+cKETO99Rkz+6
-VASz8oSoF8hJYiXbWHcbaDfU29g9ltWhqVQRHByIkWmQzVd2enR0MTgat3rP
-IKufhnsrTpbC3nLQYQ/Xfp+3t/keGJrIimbxf9b5LS+afoH5gG5HLXKY8KD2
-bK8EFKaMUezVjpiwE/1S4MqPpM0h+y47Df2rKQNme8yheWQHXWX6uY1y6BTw
-Vdg/CAeiAzcrIM4vJnYBueTMtcCXFr/CfGoaZRHZVjF9jU6thJRcr3psz3Hd
-GHNPFegjFs/okC1pPI/BD36DAGnfGjZru2va2L4aGh5fuvUf8pWF/Juj3jWw
-FPuJ+xIyqfINVnGwHI50T2qw6e/Z8YaCf4dokm/WMvKKZ3z/qFMtfNuusV9B
-LhwUZwpaakEYdrwXO/2UxKfpUwXU3U9mvURWdsWYyzsUIM0ZM1tFPkEjbbA8
-66AEjGqwDyWyZ1ZUdZAY9WWwHtldrNB7+NfDqeR4PbZE0ckwelwP+zzDC9aQ
-o3qEXoUhDfCIm+26jhze6ps386QBeBWsEexWefsw+XIjmLlmZL1CDv3RxEW2
-1AjFAs6Hr5GdXW0fGCY3wWG1zUNszhLJy2GrCQTct69sIGu5vbNWmc1gSC3f
-vYksW/5KlrHdDHFJNjXYytgGVm1OC8idhs9v4X9apz4r30XAK43nCva4B3OO
-SSYg8v4f69gVD6P4ZRYE9AjctrE/HplQSxkElDi77NpGPr0+HiKxJ8At96P9
-2BlOT+NLAwi47nDAF9u7zcpsfxABWqO7/timPqGKuyEEnB1mBGEXnX+yKo4i
-gMmjXsCWc0a4JSkEdKvJV7E5mzRrqzQCjlbkpWO7ZH2uFHEJKE4zvY7958/D
-b4myCbhsY8LH/olBraLnEaBe+64A+5w06LRQQIBzr+FtbLpd0aLlLQIk9zLF
-2ON1fwvu3CHgnZQtCfb/0PgyFg==
-                "]]}, 
-              "Charting`Private`Tag$52095#1"], 
-             Annotation[{
-               Directive[
-                AbsoluteThickness[1.6], 
-                RGBColor[1, 0, 0], 
-                Opacity[0.7], 
-                Dashing[{Small, Small}]], 
-               Line[CompressedData["
-1:eJwV0Hs01HkYBnCr6LK6nJpchljShQ6HdCRsj/vWJrqhLNEgkZJIe9zinIoY
-Ma0Uk2XHpZSmGbn9bNF8v9HJJjtUyq3JJWIlpGwl+9s/3vOcz3/P8+rzwncH
-KSspKe1g7/8UDTNRzcn6W8xnx1Yr9cgQqrzifjlHCZ3CHRlrWH/UjJFkcJbi
-rNXNaVfWtkVl6xI4P+BlxKG/cli/etsQeJJjhqT+ruMWr2SQ8luVIzh2aH30
-6M9DChm4PS/kxzg7cSKrcFdzrwxPVH2Yoxx/VBh5xecOysB5vWN/uuw4GjPm
-582ZkCFig7BPZeBXNN6+q3f3iwy6UWmjLeGJeFuhkDuqEHyOODhbRs9AOOXm
-mruEQGy0WFPYnAKb9/VGdloEXnPbXLRM03FkTWxLxSoCYYqGOudeJursS4qm
-TQg+jZipGdZdxKz60660TQRP/D0XxQ1noWWta/eoPYFgw6Cgazwb/IlGu/zt
-BMfzaITK2BUcFUnb9DwImrTKfKI1hOhJf2Ma7kewdHK2aYybB1sL3dFFIQTy
-bj8n6bZ8GHMKImMjCdolZ/krqwtg0yEwqoknsNUX1Lyp+gObvc85OCUT+OYa
-DO95LMLDFQ2r8gUEU7IQX+eWQjikqR7eJiTYPmH5vGOwCG62F6NIMYHpWGnc
-3i/FiGtNlyyUEJzLbQ3c/bUEVwz47iKG4Kpb0u4Py67DUfy0av4DgnXSgSSu
-Rim6JvWS6poJHBRjPYbqN3BFtzPGsZ1ASzPRvs34JvrPKGwvvyYI/tYwoGJS
-Bt3ioYPWIwSRo4KMLqdbGFSycS+bIlArnRN82UuMNvuZI6OzBNzl6xOfe93G
-LVsyEr+AYtIhrKXLUgL1SLlF93KKrLa805k1EhwN6OtJW0kR97PIpWqTFINW
-QcyCtRS0IWSpWCbF+DZzH09zCmdNtS/BDuUY4ijxJqwpVodHDE02lyNcW8vM
-15nCLk/60X7nHfR1bjyo4U4hkj7QVv77DmKS7ssK9lEENOU6ZnlXQMTLHp7m
-UfjVbucPdVagauZYdEEYRa24vn3x4Up4PxU0qZ+i8Dmvan1tvBIGmYZuPkkU
-m23W3fvuRBXaVWo3jqdSRI2rOZrOVEGnOqdv7yWK4YTHb3VOV8PNIG5qXj7F
-tYkD1+K/VaPwxBPL1OvsntCKYElKDVK+hdp1llNwa/u3Fi9g8IvTwluxdylm
-4udyB75n0OdkVlrCWmFvOGK4mEGYs2exnHXJo4D0omUM4l1EeWvvUVi87JUX
-ajPI32p9oY2167TCW2TCoNc1NHx9PUW8ZXdY/i4GoR5N5p0yCv/PX398tYfB
-pMd7E1VC4VSns0TPk0Gsp7qxOeuFLj7S370Z8L14Bsmssz06p/ICGIj3f15m
-QSnEUS8Trp5kMOFr/CH1AYXA6l/3rlMMYg7sfF/JOuqrpr5ODIM5ftH/KFhb
-n9lHhQkMOP6k37KB4uFv7fOEyQwsed7Pelnf8Pr0ouM8gzpeonxRI8UFbY0b
-XD6DnwJKmq1Y7y30dM3NZLAvcKLhAutNwdErOy4yUARqEoY1d332O61LDEKC
-ttT1s555V1m//zKD8aDA2iUP2f+VP8vMyWH7HUqtsmb9H3Ttbu8=
-                "]]}, 
-              "Charting`Private`Tag$52095#2"]}}, {}, {}}}, {
-         PlotRangeClipping -> False, DisplayFunction -> Identity, 
-          PlotRangePadding -> {{0, 0}, {0, 0}}, AxesOrigin -> {0, 0}, 
-          PlotRange -> {{0, 0.1}, {0, 0.5}}, PlotRangeClipping -> True, 
-          ImagePadding -> All, DisplayFunction -> Identity, AspectRatio -> 
-          0.75, Axes -> {False, False}, AxesLabel -> {None, None}, 
-          AxesOrigin -> {0, 0}, DisplayFunction :> Identity, Epilog -> Text[
-            Style["J = 0.4t\n p = 0.0\[Pi]", 
-             GrayLevel[0], 15, FontFamily -> "Bookman Old Style"], {0.02, 
-            0.4}], Frame -> {{True, True}, {True, True}}, FrameLabel -> {{
-             Style["z", 
-              GrayLevel[0], 15, FontFamily -> "Bookman Old Style"], None}, {
-             Style["\!\(\*SuperscriptBox[\(L\), \(-1\)]\)", 
-              GrayLevel[0], 14, FontFamily -> "Bookman Old Style"], None}}, 
-          FrameStyle -> Directive[
-            GrayLevel[0], 14, FontFamily -> "Bookman Old Style"], 
-          FrameTicks -> {{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-              Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-               SlotSequence[1]], {Identity, Identity}]& }, {
-            CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-              Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-               SlotSequence[1]], {Identity, Identity}]& }}, 
-          GridLines -> {None, None}, GridLinesStyle -> Directive[
-            GrayLevel[0.5, 0.4]], ImageSize -> 240, LabelStyle -> Directive[
-            GrayLevel[0], 12], 
-          Method -> {"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-                (Identity[#]& )[
-                 Part[#, 1]], 
-                (Identity[#]& )[
-                 Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-                (Identity[#]& )[
-                 Part[#, 1]], 
-                (Identity[#]& )[
-                 Part[#, 2]]}& )}}, PlotRange -> {{0, 0.1}, {0, 0.5}}, 
-          PlotRangeClipping -> True, PlotRangePadding -> {{0, 0}, {0, 0}}, 
-          Ticks -> {Automatic, Automatic}}], 
-        Placed[
-         Unevaluated[
-          PointLegend[{
-            Directive[
-             PointSize[0.012833333333333334`], 
-             AbsoluteThickness[1.6], 
-             RGBColor[0, 0, 1], 
-             Opacity[0.7], 
-             Dashing[{Small, Small}]], 
-            Directive[
-             PointSize[0.012833333333333334`], 
-             AbsoluteThickness[1.6], 
-             RGBColor[1, 0, 0], 
-             Opacity[0.7], 
-             Dashing[{Small, Small}]]}, {
-            Style["\[Lambda] = 0.0", 12, FontFamily -> "BookmanOldStyle"], 
-            Style["\[Lambda] = 1.0", 12, FontFamily -> "BookmanOldStyle"]}, 
-           LegendMarkers -> {{"\[FilledCircle]", 10}, {
-             "\[FilledCircle]", 10}}, Joined -> {False, False}, LabelStyle -> 
-           Directive[
-             GrayLevel[0], 12], LegendLayout -> "Column"]], {0.8, 0.8}, 
-         Identity]]& ],
-      AutoDelete->True,
-      Editable->True,
-      SelectWithContents->False,
-      Selectable->True], 
-     TagBox[
-      GraphicsBox[{{{{}, {
-           {RGBColor[0, 0, 1], AbsolutePointSize[6], AbsoluteThickness[1.6], 
-            Opacity[0.7], Dashing[{Small, Small}], 
-            GeometricTransformationBox[InsetBox[
-              StyleBox["\<\"\[FilledCircle]\"\>",
-               StripOnInput->False,
-               FontSize->10], {0., 0.}], {{{0.08333333333333333, 
-             0.19947378477840247`}}, {{0.0625, 0.1991605279661397}}, {{0.05, 
-             0.19913501925005628`}}, {{0.041666666666666664`, 
-             0.199133155408173}}, {{0.03571428571428571, 
-             0.19913302765135799`}}}]}, 
-           {RGBColor[1, 0, 0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
-            Opacity[0.7], Dashing[{Small, Small}], 
-            GeometricTransformationBox[InsetBox[
-              StyleBox["\<\"\[FilledCircle]\"\>",
-               StripOnInput->False,
-               FontSize->10], {0., 0.}], {{{0.08333333333333333, 
-             0.17062096708819124`}}, {{0.0625, 0.15023946359182133`}}, {{0.05,
-              0.13587249668180265`}}, {{0.041666666666666664`, 
-             0.12500420651595082`}}, {{0.03571428571428571, 
-             0.11639740117308658`}}}]}, {}}, {}, {}, {}, {}}, {{{}, {}, 
-           TagBox[
-            {RGBColor[0, 0, 1], AbsoluteThickness[1.6], Opacity[0.7], 
-             Dashing[{Small, Small}], LineBox[CompressedData["
-1:eJwV0Hs01HkYx3EJW0ySpoxx2XQkFLWILdWTGakltov7MWhpVatF7nZcU0xR
-tHKbdBlKJM3I4OtEdaTt59S6FWJihFzLuhZd7OOP5zzn9d/nvHV+Czh8TFZG
-RsYeb/ELRkjIyySd3Ubc0/c2BFNwUnbN4zK6DLzZsyViI3qWESW8RFeBRPkx
-lgF6Z0GJfgx9HXRdPNaxGd0zXO8bSt8K52+6LjVDi1JaZIPoe2Dw2W43FprZ
-3dH8J/0g3FylJO+F/lfBg5yiewO9MN8jG03vtXdLfRIIwRs8RfQQCoJM+H3y
-AxHA2y15nozWDrnwoTEgDrI6vXLm0fNBRxdK6hJBs8F/ZVgoBaUGygz+y2Rw
-ddy1fxjtItdqo26cCjSTLL3fwyjgJ6utpdekQeXl2Rop+tPoVppu7WVgXlRn
-HAnHPd7OK7gjGTAtqVdrRKebDKZLJjIh6dm2TlYEBYF5dUHy49mgYnrXqRzd
-oF7iEabGh1VTRWFbIilQmVpoGGfmAWXv7y5AN7/1shb9ch3mvlT2aUdR0C48
-m6JVeQPWGS3Xy0Hv1Emvel9xExY+a21S+osCTu76kSMvBODEePj6HHrmyQnO
-3sZ88GnRYs+j7SbN2zoHC2CwZ5lzOJcC4/EiruOXW+AbOKcziT6X2+J7+Ott
-yObfE/pGU3DVIf7wtOodYDNH+6VofdFAPFOtCG6bjnU5xlDAko53664thiVN
-kxeeodUZcVathneh9VFCr1UsBX7f6wfkjUqAY9s2V44O/pB+SWJ9Dzj6Dyp/
-iqOAVrTUL8ulFJx4V4xL0MzVm+LaXO6DwlnL49rxFEyx/Bsl5kIwenVyXy46
-ozUvNq1KCLRazvCKBAq4tgKbCgsRvDN0to5F19WfUCl9IoKto+3W8+i9DNoX
-P1YZbLPRWnbqDAUbAoKGpl6WQdn0aOAwek+eaNbq4AN4vyvmKieRAoHoqYZs
-0wNQVVwb34j2achlZ7iXg9jAQsnuLAVe1XYpQ13lsLJfw7UWXV36qF35uBh6
-J3i2luco8OAp7CicEENxwrcZMXq7pX7NktMVsLnUzFc/iYKQCRrb+FsF6BrN
-hBegR2JeDGvGVsIrm0gHRjIFhZOehdHfK4HbJ9vNQ9edLPcTJldBbuua1fI8
-7FPdv//WcgJBnmOKEehv0XLMASUCZf77aFFoqZXuqK4ygakowQou+jblk1qg
-SiA0y1UlDm365l1zvgaByKana5LRBz5L3QVGBOJZeeuy0dHmb/2vHyKQpudg
-XoX2nv+6q+cIgWazIotqtHWt5sofnQmosuW2P0Qr2niIrrkTyPCqtnyMznTq
-msnzIZCdrWf1HF0a8ibmaiiBG4oLdh3o9J/nfpWEE+hluNt3okO+MnQ0owis
-3yh2kKB3JLrW8WMIFLD/OCRF//N3+w/8JAJ3uO3OQ+hil08dnTwCw+dNXEfQ
-FzXUipkpBAxzUt3G0I75zgdy0wiUiNke/6Et/MK0Oi8T+FB3jTO52G9T5kf1
-KwSMW+Y8pxf7fRQ/cssiECB19J5d7Ff2Oi0nh4Dw4/2jn9H/A4p3Ycc=
-              "]]},
-            Annotation[#, "Charting`Private`Tag$52209#1"]& ], 
-           TagBox[
-            {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[0.7], 
-             Dashing[{Small, Small}], LineBox[CompressedData["
-1:eJwVk3s0lAkYxlG07Uo2sy4jMla7LlG6KGV7SkLrslIRDWmpiShaKcU0nRXK
-JUOxDNUOXcgyMwbzCWNmDN+WkssiCbXpomRdkkqXb/94z3ueP37Pe85znpfx
-6yHvvWoqKioe1Py/+cNE9J0kxnrOgWVs2WgFwtS+axDRVGAZaDGtMV6BKf3j
-gnM0bXR6mR52n6yAQ1GpOZtmAnM72r7u6QoMvFCGHKEtwz2VaY8RVTGEqe1q
-UbQNYGRLjQxoYtD7e9oO0rwgb/Csi1wjxl0NJhFBC8Js3YiZRafEoD3y8EuT
-RYIzq10uMa5E1HLev+pDx6A/Ip8cEFbCODplpPUQB7oXjG3NHKvwPmrP51JF
-AuZx+JX8/iqUWWjp8+4kw4QlulIeWQ3f2R3OBjZpsOIOP5zSkoCXrKdLq8tA
-fmyaya4SCd6+XKZpVp8Ji8Daux7rCNwN8pkXN3we5ad1lMd7CHCXP+P2jWVj
-a/HUD3YHahBZoIhSH/0DfilOWVofanDLoJQZo8eDn6DGhZFzE9oTn2+N0gsQ
-01bLkpvXou3hbifhlktIWfWstaCpFt2C06lG1ZehsTPOMXtPHRwYXMnTqj9x
-MabAxGi8DgF5psPbWvhY0vPUuT+9Hm9koQGbWwvRs6q2x5ohhdu4XVfvsyKw
-uwhRtVQKm9HiuO0frqCRznUrt25AYl57iPfMVfi6pkxsiWlAvucp78kF17Ev
-J1eqqmyAuXDoFF2vGAlPImQcLRkcB0f7zXRL0Jlx1DXdRwYDfc7GDssbuBx4
-YUJSJAPrk3JI3boUJyxjO0tGZPhthHuuz+kvtOtF3Scc5NAsnsXK8S0DM+Ri
-sO9ZOeg6Vpwu33JMlnG/r22XY8IxvLXPToCvDHPnrGcocL6j4GSGRADL0/sY
-SWEKxP3Md65aLQTHM7QhUKSAQhmqXSYTwtue8/s2lUZs1tf8wHIUwdY0IG7+
-lkYsPhT1fOKOCKlLPHOf5zRiQ4FwaqMX1cuV6q+SHzWCL2w0VLtXgaz8MUW1
-hRLBt/I2nfcXo3TxuHTWMSV217ilPn8gRmepZExXpkRNmbRba38lju7IcnHR
-bgLzjMbaa2OV8AwoNNUIbIL9OvM61cNVWB4cuyL1ahOixzQ32XysQubZ4P1L
-3zRhmN3yYuHJaqgKdDpy1zfj2njgtfhP1eCvfCfPTGyGIkzMEiRL0NA73nW9
-sxn0mieuV+YSeMUWmSQakfgYP5s+9A0B96mAE7eNSQxuNHtppkWgNGJul7YJ
-iat/B6cVLSAQzgxK4ZmSWHH/cVuhIYERe60pwY8k3KcH/fnWBF5Pht5+YEsi
-3u5h+KWtlA5jxNg6kwh6P/PTwDYCno9b7sW4kHCqXzh/kQ+BMr9jVrWuJL52
-Zgov+hM46No66OxGInvHgzcFwRS/ON6N6UWiLPo+O/8IpQd7TJL8SXDXvPul
-7yjltzPhRMsuEtEz+oyFxym/1qVd3waQWJuwU8FjU371iSn5u0k0Z3XP4SVR
-PG/llDCERInv257eMxSvM+j1di+JdEO9EnoqxZ9NueHAIrG90Mc9L4PiYx8H
-NYeSWM2KMerNpP7yv7SbmgdI0K2yXxtcIGCz317XO5zK73Wl1C+HQPrAk8ic
-CCo/0T8ZubnUPZ+M230HSXwBFntiDg==
-              "]]},
-            Annotation[#, "Charting`Private`Tag$52209#2"]& ]}, {}, {}}}, 
-        InsetBox[
-         TemplateBox[{
-          StyleBox[
-           "\"\[Lambda] = 0.0\"", 12, FontFamily -> "BookmanOldStyle", 
-            StripOnInput -> False],StyleBox[
-           "\"\[Lambda] = 1.0\"", 12, FontFamily -> "BookmanOldStyle", 
-            StripOnInput -> False]},
-          "PointLegend",
-          DisplayFunction->(FormBox[
-            StyleBox[
-             StyleBox[
-              PaneBox[
-               TagBox[
-                GridBox[{{
-                   TagBox[
-                    GridBox[{{
-                    GraphicsBox[{{}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[0, 0, 1], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], {
-                    InsetBox[
-                    FormBox[
-                    StyleBox["\"\[FilledCircle]\"", 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[0, 0, 1], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], FontSize -> 10, Plain, 
-                    StripOnInput -> False], TraditionalForm], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
-                    ImageSize -> {10, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}, {
-                    GraphicsBox[{{}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[1, 0, 0], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], {
-                    InsetBox[
-                    FormBox[
-                    StyleBox["\"\[FilledCircle]\"", 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[1, 0, 0], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], FontSize -> 10, Plain, 
-                    StripOnInput -> False], TraditionalForm], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
-                    ImageSize -> {10, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}}, 
-                    GridBoxAlignment -> {
-                    "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
-                    AutoDelete -> False, 
-                    GridBoxDividers -> {
-                    "Columns" -> {{False}}, "Rows" -> {{False}}}, 
-                    GridBoxItemSize -> {
-                    "Columns" -> {{All}}, "Rows" -> {{All}}}, 
-                    GridBoxSpacings -> {
-                    "Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], "Grid"]}}, 
-                 GridBoxAlignment -> {
-                  "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
-                 False, GridBoxItemSize -> {
-                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-                 GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
-                "Grid"], Alignment -> Left, AppearanceElements -> None, 
-               ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
-               "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
-              Directive[
-               GrayLevel[0], 12], FontFamily -> "Arial"}, Background -> 
-             Automatic, StripOnInput -> False], TraditionalForm]& ),
-          Editable->True,
-          InterpretationFunction:>(RowBox[{"PointLegend", "[", 
-             RowBox[{
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{"Directive", "[", 
-                    RowBox[{
-                    RowBox[{"PointSize", "[", "0.012833333333333334`", "]"}], 
-                    ",", 
-                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", 
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[0, 0, 1], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
-                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"RGBColor", "[", 
-                    RowBox[{"0", ",", "0", ",", "1"}], "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    RGBColor[0, 0, 1]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    RGBColor[0, 0, 1], Editable -> False, Selectable -> 
-                    False], ",", 
-                    RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
-                    RowBox[{"Dashing", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"Small", ",", "Small"}], "}"}], "]"}]}], "]"}], 
-                   ",", 
-                   RowBox[{"Directive", "[", 
-                    RowBox[{
-                    RowBox[{"PointSize", "[", "0.012833333333333334`", "]"}], 
-                    ",", 
-                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", 
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[1, 0, 0], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
-                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"RGBColor", "[", 
-                    RowBox[{"1", ",", "0", ",", "0"}], "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    RGBColor[1, 0, 0]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    RGBColor[1, 0, 0], Editable -> False, Selectable -> 
-                    False], ",", 
-                    RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
-                    RowBox[{"Dashing", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"Small", ",", "Small"}], "}"}], "]"}]}], "]"}]}], 
-                 "}"}], ",", 
-               RowBox[{"{", 
-                 RowBox[{#, ",", #2}], "}"}], ",", 
-               RowBox[{"LegendMarkers", "\[Rule]", 
-                 RowBox[{"{", 
-                   RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{"\"\[FilledCircle]\"", ",", "10"}], "}"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"\"\[FilledCircle]\"", ",", "10"}], "}"}]}], 
-                   "}"}]}], ",", 
-               RowBox[{"Joined", "\[Rule]", 
-                 RowBox[{"{", 
-                   RowBox[{"False", ",", "False"}], "}"}]}], ",", 
-               RowBox[{"LabelStyle", "\[Rule]", 
-                 RowBox[{"Directive", "[", 
-                   RowBox[{
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
-                    PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"GrayLevel", "[", "0", "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    GrayLevel[0]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["GrayLevelColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    GrayLevel[0], Editable -> False, Selectable -> False], 
-                    ",", "12"}], "]"}]}], ",", 
-               RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& )],
-          Scaled[{0.8, 0.8}], ImageScaled[{0.5, 0.5}],
-         BaseStyle->{FontSize -> Larger},
-         FormatType->StandardForm]},
-       AspectRatio->0.75,
-       Axes->{False, False},
-       AxesLabel->{None, None},
-       AxesOrigin->{0, 0},
-       DisplayFunction->Identity,
-       Epilog->InsetBox[
+          StyleBox["\"z\"", 
+           GrayLevel[0], 18, FontFamily -> "Bookman Old Style", StripOnInput -> 
+           False], TraditionalForm], None}, {None, None}},
+      FrameStyle->Directive[
+        GrayLevel[0], 18, FontFamily -> "Bookman Old Style"],
+      FrameTicks->
+       FrontEndValueCache[{{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
+           Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
+            SlotSequence[1]], {Identity, Identity}]& }, {{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.010000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.030000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.07, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.09000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.11000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.13, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.15000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.17, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.19, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.21000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.23, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.25, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.27, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.29000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}, {{{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
+            FormBox["\"0.4\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
+            FormBox["\"0.5\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.32000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.3400000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.36000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.38000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.42000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.44000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.48000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.32000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.3400000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.36000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.38000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.42000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.44000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.48000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}, {{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.010000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.030000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.07, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.09000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.11000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.13, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.15000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.17, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.19, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.21000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.23, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.25, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.27, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.29000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}],
+      GridLines->{None, None},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      ImagePadding->All,
+      ImageSize->240,
+      LabelStyle->Directive[
+        GrayLevel[0], 12],
+      Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& )}},
+      PlotRange->{{0, 0.3001}, {0, 0.5}},
+      PlotRangeClipping->False,
+      PlotRangePadding->{{0, 0}, {0, 0}},
+      Ticks->{Automatic, Automatic}], 
+     GraphicsBox[{{{}, {
+         {RGBColor[0, 0, 1], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+          Opacity[0.7], Dashing[{Small, Small}], 
+          GeometricTransformationBox[InsetBox[
+            StyleBox["\<\"\[FilledCircle]\"\>",
+             StripOnInput->False,
+             FontSize->10], {0., 0.}], {{{0.28867513459481287`, 
+           0.19947378477840247`}}, {{0.25, 0.1991605279661397}}, {{
+           0.22360679774997896`, 0.19913501925005628`}}, {{0.2041241452319315,
+            0.199133155408173}}, {{0.18898223650461363`, 
+           0.19913302765135799`}}}]}, 
+         {RGBColor[1, 0, 0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+          Opacity[0.7], Dashing[{Small, Small}], 
+          GeometricTransformationBox[InsetBox[
+            StyleBox["\<\"\[FilledCircle]\"\>",
+             StripOnInput->False,
+             FontSize->10], {0., 0.}], {{{0.28867513459481287`, 
+           0.17062096708819124`}}, {{0.25, 0.15023946359182133`}}, {{
+           0.22360679774997896`, 0.13587249668180265`}}, {{0.2041241452319315,
+            0.12500420651595082`}}, {{0.18898223650461363`, 
+           0.11639740117308658`}}}]}, {}}, {}, {}, {}, {}}, {{{}, {}, 
+         TagBox[
+          {RGBColor[0, 0, 1], AbsoluteThickness[1.6], Opacity[0.7], 
+           Dashing[{Small, Small}], LineBox[CompressedData["
+1:eJwV0nk41HkcB3Adtt3J9pQjU23jrsQmzUix402rw2OxzarHpnUrZ0KlVAZD
+sl2GdeySq4O2y20pqVzzdc/vp9JmFJFReZ6idCjtd//4PO/n9d/7/TwfPZ8w
+kf9MFRUVJ3r/58TjhWYVjlY2433idct3E5yV6Oiq6XCRGjpaZUwdZlR9/AFv
+BcynRRam1G6TM4V1vHXYq7NsjTl1R/8K7RLeFox5t5tYU89hrRMu8dygfMbV
+caE2dGqyusgLgOJVqWoUNZ/DyTjPOwjZ7CGmmTpH/kbVVT8Zx3MW/BsZQNDj
+XxHUeDkVlbsGArUCCb5ftXWouigLnVFeneXUkyvVxRKjPMjfF+d5BhHY5XFE
+gr8KYXcl7cMXatsfeW9TBy8gp2vz7avBBMqfDPRyl1zC0/WX3d1CCMa9HdTX
+Lr2CjPsl4nfUAukMzVrP6xA8Fc8/H0ow5h8a6m9RChv918Yb9xBoVom07MvL
+IChewH1K7aYR15S1tQJauVMRp8MInCbRy++phE9z0vZVewk8nm2esI+qRraH
+4uIjavtkmeiKeg3qhYNtieEEj0ofau5IrYWLS/IhwwiC0yP8x0fX3ERb94e0
+burxQp6asqoOZQlqluGRBBHBIjuZez0Si5WbdPYR+EaKfxMfuQ17jX0mrdTD
+E2fbhMI72FNSkBW4n+DtxydCy3l3kVCXFbHwAEG/fcjAL/K7+Oqz+b1qanMl
+vyg7pQGRkmi17VEE6uq64TyvRrQfOlky4yBBe4xrSKNeE6SFtooCas2Iq8EX
+JppgZ33rgMshguZbG06V3mmGYvGLoQ/UW511nzyJa8Gwae2jrGiCID99S0eR
+DL3XRNh4mMC9LqS+V5Ngne8pk2fU1WETgVKWIN4j6qXkCEFBcS43sbAVNWTl
+YrOjdJ9h6vts3za4747t7qQuX/Z335igHaP78iYOxxD0BXPGfd63Y7DCK2+p
+mP4np8h41j8daLGW69ykTjEL8O9P6kTWmrnfBsQS/J4ZzvQ5dKHHfST+6zgC
+TkOX3tx53fj05qR/FfXskYRg4f5uzL838J13PO1v2u8Ud68bKSO9O1UkBNqV
+DmWDQjmmAv/85ir1as9fr2/Lk4PhfbJxTiCYtkgS9k/L8cfieQ4vqTV+bnFK
+2MVgw7HR+sxEgvQTlyetWxjsNNxdb3mMINZDwr6QMTCKZpOtqIPM3UuyWxmM
+dcFVSG3zgBM01cEg5jB3dAO1Uj9IUdvDIJ8h6s7UVrUrGtcPMhiKNd3lR92v
+vCC1/MwgWPFaTUotu3F0z8g0Az7f40EaddnpbY6ZKiw+HW8tyKBOEqiqvpvF
+4pTg3Noc6tWxfgerOCyun3D1KqKO1zbwtOCyGF9fXV5HHfL8o/XwIhY3zhjE
+3KbeXsdw05ewkAyf2dJAbeIbz7zhsdCUBihk1D3XBjZWGLFYq1w0p4f6VlyN
+vt9yFl+Ex+T3qS+5Sr9oGLNoSRvPfkgd89G2JtKUhRvaVj+mDujgZhisYqGX
+bjk1QC3KfxXBmrEYfX6uaYj6h0iZi8ScRant/JQR6uWb8k35fBbRGUd2PKf+
+D6n8ZxM=
+            "]]},
+          Annotation[#, "Charting`Private`Tag$506070#1"]& ], 
+         TagBox[
+          {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[0.7], 
+           Dashing[{Small, Small}], LineBox[CompressedData["
+1:eJwVjn041AcAx0VqHVlhc/HsvHV11c3b0Qnny6KSl+Zo2VTKsUdHE2pqFYke
+qyFsZJ28laS4OJe3OJ27+zlvw/2YViLJmNKLk5pWTX98ns9/n+djHhrNDdfU
+0NDwXeCj1SOfW4u9nVyvPJBRZpvScCnZ1EzXlIqOwSeGzME0RNPrfh6kMfCi
+z8A07GUaguY0Oc00R7gQPFY/PR3dwwyjKto2DAi1dosz0rGUdE4ppwVhyanN
+lYf3ZWC1r8LpKi0C9lmjZfOLMsGiUHKv0I4ih7V/+/HSLOT3zWoHWpyF8Hme
+xaesHPSHi/nyG9mYi/XbtjslD19a+T+uK8uDqoR/UkMhwNx6/cRkeiE0t7d4
+sn0K4V5I4dpfLIHtkLLyV+9iuG2mvcp+VArdHX6aOw0vY9LH0rzApBw21NRh
+af8VzOz30t/4RQWeyhP268RfXfhaZNgYchMBlfpWBS7XMB1+8GC4QzUCjoUX
+L39cDsNa7mceNSIIBJH5jOQbCDJIUuT5i3H+3+WjaZ6V8J3DXVb/LZg4R3d1
+/yPE3r+3qj3i68DYXatREVQFj7NKboV+AyYVeiNbHKtxv/ovw++yG3G4mFjR
++4kIGROskZN2TRi46DPxbkqEmRKa7mRtM7SW2K00ltQgNpLrrgxugfb58ZF7
+JWLw4hL3JJ64A6YsNjYm+RbG1Zc6ORwpaAdCguYCa/Fq/iGHrdeKcabxmKlj
+HYY9okYD+lrxU6i9lK1bD9tJVpkgUwa7zQwefage+vpmMbR9crS4T5XXNTeg
+KyEwSm6uwCqRjodjZiMMYysjS9UKeLm9Pb3n8G0Qkq/Sq6UE8o/JzwQFNsHf
+z+zhw6Q2NK2evu9ObwY/zILtzVWienrsz56lEgQ3R7XcNWxHLMOJ7nNfgrpo
+9YEssh1Benx2wfUWFF8roJ4p6QBlmX18h+cd8FZnvxHwOtEtC/2vSXgHNWuu
+D03bd+F4+hsyyUyKoUjKTOibLqxY4TrQfE6KaErZOq36bmyMOFT/eEaKTOuI
+8OHUP7C1Z9mzB7xWnLsQoxry6oHrc66vX3crKLIecx29XpjTtD5kQobFEymR
+nCO9yLUoypbclIHPHPZNGujFy5GnO3hUOYxueYkecfrArigKuXdWDpuQb2/u
+LOxDqO3i35VqOd47pHKG3/fBLC1QXBysgMHXbb4p36ugfKVj4dulQM4vN+ac
+21TYRY1riHYgcGpvMvlEqUJXXgLTk02AbxtcJehQwW3VuULjTQRcByn8t90q
+MIyLzyhcCExa8B809qswb9Ljb+JBwKmRId/0SAWB6YYpgktgeLI0i/1OhZE1
+Y8a0QwSUt0/+MPFehYCyZ+nqGAKijJ3eFzRItK2d12iPI5Bqr639WotEFWPl
+RFw8AZtTYUdrKSSS1qOmPYHAaSPLEAcqCUsrgfeRdAJRU/PO46tIXBBelWw/
+T+CbZhU1x4SEjrXI1iyLwAbeadUsjcSsdbtR528E+oWjnmI6CYXt6zGzfAKS
+pAaLsLUkNok0d81dIlAemPXBYB0JoZ1eR2chgYR5t4Y45kKfRa/68TKBiG5q
+rqXVQl9sY+lTSoBb9CKWtCaRaO+Sa15GwCVOuSPZloRavHXZ62sE1m4pYrJY
+JCIcAk50XSfwP7EeTPk=
+            "]]},
+          Annotation[#, "Charting`Private`Tag$506070#2"]& ]}, {}, {}}},
+      AspectRatio->0.75,
+      Axes->{False, False},
+      AxesLabel->{None, None},
+      AxesOrigin->{0, 0},
+      DisplayFunction->Identity,
+      Epilog->InsetBox[
+        FormBox[
+         StyleBox["\"(d)  p = 0\"", 
+          GrayLevel[0], 18, FontFamily -> "Bookman Old Style", StripOnInput -> 
+          False], TraditionalForm], {0.075, 0.44}],
+      Frame->{{True, True}, {True, True}},
+      FrameLabel->{{
          FormBox[
-          StyleBox["\"J = 0.4t\\n p = 0.5\[Pi]\"", 
-           GrayLevel[0], 15, FontFamily -> "Bookman Old Style", StripOnInput -> 
-           False], TraditionalForm], {0.02, 0.4}],
-       Frame->{{True, True}, {True, True}},
-       FrameLabel->{{
-          FormBox[
-           StyleBox["\"z\"", 
-            GrayLevel[0], 15, FontFamily -> "Bookman Old Style", StripOnInput -> 
-            False], TraditionalForm], None}, {
-          FormBox[
-           StyleBox["\"\\!\\(\\*SuperscriptBox[\\(L\\), \\(-1\\)]\\)\"", 
-            GrayLevel[0], 14, FontFamily -> "Bookman Old Style", StripOnInput -> 
-            False], TraditionalForm], None}},
-       FrameStyle->Directive[
-         GrayLevel[0], 14, FontFamily -> "Bookman Old Style"],
-       FrameTicks->
-        FrontEndValueCache[{{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-            Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-             SlotSequence[1]], {Identity, Identity}]& }, {
-          CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-            Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-             SlotSequence[1]], {Identity, Identity}]& }}, {{{{0., 
-             FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
-             FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.30000000000000004`, 
-             FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
-             FormBox["\"0.4\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
-             FormBox["\"0.5\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.020000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.04000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.08000000000000002, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.12000000000000001`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.16000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.18000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.22000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.24000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.32000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.3400000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.36000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.38000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.42000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.44000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.48000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.30000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.020000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.04000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.08000000000000002, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.12000000000000001`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.16000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.18000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.22000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.24000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.32000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.3400000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.36000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.38000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.42000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.44000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.48000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}, {{{0., 
-             FormBox["\"0.00\"", TraditionalForm], {0.025, 0.}, {}}, {0.02, 
-             FormBox["\"0.02\"", TraditionalForm], {0.025, 0.}, {}}, {0.04, 
-             FormBox["\"0.04\"", TraditionalForm], {0.025, 0.}, {}}, {0.06, 
-             FormBox["\"0.06\"", TraditionalForm], {0.025, 0.}, {}}, {0.08, 
-             FormBox["\"0.08\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"0.10\"", TraditionalForm], {0.025, 0.}, {}}, {0.005, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.01, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.015, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.025, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.03, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.035, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.045, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.055, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.065, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06999999999999999, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.075, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.085, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.09, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.095, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.02, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.04, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.06, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.08, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.005, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.01, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.015, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.025, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.03, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.035, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.045, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.055, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.065, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06999999999999999, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.075, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.085, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.09, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.095, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}],
-       GridLines->{None, None},
-       GridLinesStyle->Directive[
-         GrayLevel[0.5, 0.4]],
-       ImagePadding->All,
-       ImageSize->240,
-       LabelStyle->Directive[
-         GrayLevel[0], 12],
-       Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-             (Identity[#]& )[
-              Part[#, 1]], 
-             (Identity[#]& )[
-              Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-             (Identity[#]& )[
-              Part[#, 1]], 
-             (Identity[#]& )[
-              Part[#, 2]]}& )}},
-       PlotRange->{{0, 0.1}, {0, 0.5}},
-       PlotRangeClipping->False,
-       PlotRangePadding->{{0, 0}, {0, 0}},
-       Ticks->{Automatic, Automatic}],
-      InterpretTemplate[Legended[
-        Graphics[{{{}, {{{
-              Directive[
-               PointSize[0.012833333333333334`], 
-               AbsoluteThickness[1.6], 
-               RGBColor[0, 0, 1], 
-               Opacity[0.7], 
-               Dashing[{Small, Small}], 
-               AbsolutePointSize[6]], 
-              GeometricTransformation[
-               Inset[
-                Style["\[FilledCircle]", FontSize -> 10], {0., 0.}], {{{
-               0.08333333333333333, 0.19947378477840247`}}, {{0.0625, 
-               0.1991605279661397}}, {{0.05, 0.19913501925005628`}}, {{
-               0.041666666666666664`, 0.199133155408173}}, {{
-               0.03571428571428571, 0.19913302765135799`}}}]}, {
-              Directive[
-               PointSize[0.012833333333333334`], 
-               AbsoluteThickness[1.6], 
-               RGBColor[1, 0, 0], 
-               Opacity[0.7], 
-               Dashing[{Small, Small}], 
-               AbsolutePointSize[6]], 
-              GeometricTransformation[
-               Inset[
-                Style["\[FilledCircle]", FontSize -> 10], {0., 0.}], {{{
-               0.08333333333333333, 0.17062096708819124`}}, {{0.0625, 
-               0.15023946359182133`}}, {{0.05, 0.13587249668180265`}}, {{
-               0.041666666666666664`, 0.12500420651595082`}}, {{
-               0.03571428571428571, 
-               0.11639740117308658`}}}]}, {}}}, {}, {}, {}, {}}, {{{{}, {}, 
-             Annotation[{
-               Directive[
-                AbsoluteThickness[1.6], 
-                RGBColor[0, 0, 1], 
-                Opacity[0.7], 
-                Dashing[{Small, Small}]], 
-               Line[CompressedData["
-1:eJwV0Hs01HkYx3EJW0ySpoxx2XQkFLWILdWTGakltov7MWhpVatF7nZcU0xR
-tHKbdBlKJM3I4OtEdaTt59S6FWJihFzLuhZd7OOP5zzn9d/nvHV+Czh8TFZG
-RsYeb/ELRkjIyySd3Ubc0/c2BFNwUnbN4zK6DLzZsyViI3qWESW8RFeBRPkx
-lgF6Z0GJfgx9HXRdPNaxGd0zXO8bSt8K52+6LjVDi1JaZIPoe2Dw2W43FprZ
-3dH8J/0g3FylJO+F/lfBg5yiewO9MN8jG03vtXdLfRIIwRs8RfQQCoJM+H3y
-AxHA2y15nozWDrnwoTEgDrI6vXLm0fNBRxdK6hJBs8F/ZVgoBaUGygz+y2Rw
-ddy1fxjtItdqo26cCjSTLL3fwyjgJ6utpdekQeXl2Rop+tPoVppu7WVgXlRn
-HAnHPd7OK7gjGTAtqVdrRKebDKZLJjIh6dm2TlYEBYF5dUHy49mgYnrXqRzd
-oF7iEabGh1VTRWFbIilQmVpoGGfmAWXv7y5AN7/1shb9ch3mvlT2aUdR0C48
-m6JVeQPWGS3Xy0Hv1Emvel9xExY+a21S+osCTu76kSMvBODEePj6HHrmyQnO
-3sZ88GnRYs+j7SbN2zoHC2CwZ5lzOJcC4/EiruOXW+AbOKcziT6X2+J7+Ott
-yObfE/pGU3DVIf7wtOodYDNH+6VofdFAPFOtCG6bjnU5xlDAko53664thiVN
-kxeeodUZcVathneh9VFCr1UsBX7f6wfkjUqAY9s2V44O/pB+SWJ9Dzj6Dyp/
-iqOAVrTUL8ulFJx4V4xL0MzVm+LaXO6DwlnL49rxFEyx/Bsl5kIwenVyXy46
-ozUvNq1KCLRazvCKBAq4tgKbCgsRvDN0to5F19WfUCl9IoKto+3W8+i9DNoX
-P1YZbLPRWnbqDAUbAoKGpl6WQdn0aOAwek+eaNbq4AN4vyvmKieRAoHoqYZs
-0wNQVVwb34j2achlZ7iXg9jAQsnuLAVe1XYpQ13lsLJfw7UWXV36qF35uBh6
-J3i2luco8OAp7CicEENxwrcZMXq7pX7NktMVsLnUzFc/iYKQCRrb+FsF6BrN
-hBegR2JeDGvGVsIrm0gHRjIFhZOehdHfK4HbJ9vNQ9edLPcTJldBbuua1fI8
-7FPdv//WcgJBnmOKEehv0XLMASUCZf77aFFoqZXuqK4ygakowQou+jblk1qg
-SiA0y1UlDm365l1zvgaByKana5LRBz5L3QVGBOJZeeuy0dHmb/2vHyKQpudg
-XoX2nv+6q+cIgWazIotqtHWt5sofnQmosuW2P0Qr2niIrrkTyPCqtnyMznTq
-msnzIZCdrWf1HF0a8ibmaiiBG4oLdh3o9J/nfpWEE+hluNt3okO+MnQ0owis
-3yh2kKB3JLrW8WMIFLD/OCRF//N3+w/8JAJ3uO3OQ+hil08dnTwCw+dNXEfQ
-FzXUipkpBAxzUt3G0I75zgdy0wiUiNke/6Et/MK0Oi8T+FB3jTO52G9T5kf1
-KwSMW+Y8pxf7fRQ/cssiECB19J5d7Ff2Oi0nh4Dw4/2jn9H/A4p3Ycc=
-                "]]},
-               "Charting`Private`Tag$52209#1"], 
-             Annotation[{
-               Directive[
-                AbsoluteThickness[1.6], 
-                RGBColor[1, 0, 0], 
-                Opacity[0.7], 
-                Dashing[{Small, Small}]], 
-               Line[CompressedData["
-1:eJwVk3s0lAkYxlG07Uo2sy4jMla7LlG6KGV7SkLrslIRDWmpiShaKcU0nRXK
-JUOxDNUOXcgyMwbzCWNmDN+WkssiCbXpomRdkkqXb/94z3ueP37Pe85znpfx
-6yHvvWoqKioe1Py/+cNE9J0kxnrOgWVs2WgFwtS+axDRVGAZaDGtMV6BKf3j
-gnM0bXR6mR52n6yAQ1GpOZtmAnM72r7u6QoMvFCGHKEtwz2VaY8RVTGEqe1q
-UbQNYGRLjQxoYtD7e9oO0rwgb/Csi1wjxl0NJhFBC8Js3YiZRafEoD3y8EuT
-RYIzq10uMa5E1HLev+pDx6A/Ip8cEFbCODplpPUQB7oXjG3NHKvwPmrP51JF
-AuZx+JX8/iqUWWjp8+4kw4QlulIeWQ3f2R3OBjZpsOIOP5zSkoCXrKdLq8tA
-fmyaya4SCd6+XKZpVp8Ji8Daux7rCNwN8pkXN3we5ad1lMd7CHCXP+P2jWVj
-a/HUD3YHahBZoIhSH/0DfilOWVofanDLoJQZo8eDn6DGhZFzE9oTn2+N0gsQ
-01bLkpvXou3hbifhlktIWfWstaCpFt2C06lG1ZehsTPOMXtPHRwYXMnTqj9x
-MabAxGi8DgF5psPbWvhY0vPUuT+9Hm9koQGbWwvRs6q2x5ohhdu4XVfvsyKw
-uwhRtVQKm9HiuO0frqCRznUrt25AYl57iPfMVfi6pkxsiWlAvucp78kF17Ev
-J1eqqmyAuXDoFF2vGAlPImQcLRkcB0f7zXRL0Jlx1DXdRwYDfc7GDssbuBx4
-YUJSJAPrk3JI3boUJyxjO0tGZPhthHuuz+kvtOtF3Scc5NAsnsXK8S0DM+Ri
-sO9ZOeg6Vpwu33JMlnG/r22XY8IxvLXPToCvDHPnrGcocL6j4GSGRADL0/sY
-SWEKxP3Md65aLQTHM7QhUKSAQhmqXSYTwtue8/s2lUZs1tf8wHIUwdY0IG7+
-lkYsPhT1fOKOCKlLPHOf5zRiQ4FwaqMX1cuV6q+SHzWCL2w0VLtXgaz8MUW1
-hRLBt/I2nfcXo3TxuHTWMSV217ilPn8gRmepZExXpkRNmbRba38lju7IcnHR
-bgLzjMbaa2OV8AwoNNUIbIL9OvM61cNVWB4cuyL1ahOixzQ32XysQubZ4P1L
-3zRhmN3yYuHJaqgKdDpy1zfj2njgtfhP1eCvfCfPTGyGIkzMEiRL0NA73nW9
-sxn0mieuV+YSeMUWmSQakfgYP5s+9A0B96mAE7eNSQxuNHtppkWgNGJul7YJ
-iat/B6cVLSAQzgxK4ZmSWHH/cVuhIYERe60pwY8k3KcH/fnWBF5Pht5+YEsi
-3u5h+KWtlA5jxNg6kwh6P/PTwDYCno9b7sW4kHCqXzh/kQ+BMr9jVrWuJL52
-Zgov+hM46No66OxGInvHgzcFwRS/ON6N6UWiLPo+O/8IpQd7TJL8SXDXvPul
-7yjltzPhRMsuEtEz+oyFxym/1qVd3waQWJuwU8FjU371iSn5u0k0Z3XP4SVR
-PG/llDCERInv257eMxSvM+j1di+JdEO9EnoqxZ9NueHAIrG90Mc9L4PiYx8H
-NYeSWM2KMerNpP7yv7SbmgdI0K2yXxtcIGCz317XO5zK73Wl1C+HQPrAk8ic
-CCo/0T8ZubnUPZ+M230HSXwBFntiDg==
-                "]]}, 
-              "Charting`Private`Tag$52209#2"]}}, {}, {}}}, {
-         PlotRangeClipping -> False, DisplayFunction -> Identity, 
-          PlotRangePadding -> {{0, 0}, {0, 0}}, AxesOrigin -> {0, 0}, 
-          PlotRange -> {{0, 0.1}, {0, 0.5}}, PlotRangeClipping -> True, 
-          ImagePadding -> All, DisplayFunction -> Identity, AspectRatio -> 
-          0.75, Axes -> {False, False}, AxesLabel -> {None, None}, 
-          AxesOrigin -> {0, 0}, DisplayFunction :> Identity, Epilog -> Text[
-            Style["J = 0.4t\n p = 0.5\[Pi]", 
-             GrayLevel[0], 15, FontFamily -> "Bookman Old Style"], {0.02, 
-            0.4}], Frame -> {{True, True}, {True, True}}, FrameLabel -> {{
-             Style["z", 
-              GrayLevel[0], 15, FontFamily -> "Bookman Old Style"], None}, {
-             Style["\!\(\*SuperscriptBox[\(L\), \(-1\)]\)", 
-              GrayLevel[0], 14, FontFamily -> "Bookman Old Style"], None}}, 
-          FrameStyle -> Directive[
-            GrayLevel[0], 14, FontFamily -> "Bookman Old Style"], 
-          FrameTicks -> {{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-              Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-               SlotSequence[1]], {Identity, Identity}]& }, {
-            CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-              Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-               SlotSequence[1]], {Identity, Identity}]& }}, 
-          GridLines -> {None, None}, GridLinesStyle -> Directive[
-            GrayLevel[0.5, 0.4]], ImageSize -> 240, LabelStyle -> Directive[
-            GrayLevel[0], 12], 
-          Method -> {"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-                (Identity[#]& )[
-                 Part[#, 1]], 
-                (Identity[#]& )[
-                 Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-                (Identity[#]& )[
-                 Part[#, 1]], 
-                (Identity[#]& )[
-                 Part[#, 2]]}& )}}, PlotRange -> {{0, 0.1}, {0, 0.5}}, 
-          PlotRangeClipping -> True, PlotRangePadding -> {{0, 0}, {0, 0}}, 
-          Ticks -> {Automatic, Automatic}}], 
-        Placed[
-         Unevaluated[
-          PointLegend[{
-            Directive[
-             PointSize[0.012833333333333334`], 
-             AbsoluteThickness[1.6], 
-             RGBColor[0, 0, 1], 
-             Opacity[0.7], 
-             Dashing[{Small, Small}]], 
-            Directive[
-             PointSize[0.012833333333333334`], 
-             AbsoluteThickness[1.6], 
-             RGBColor[1, 0, 0], 
-             Opacity[0.7], 
-             Dashing[{Small, Small}]]}, {
-            Style["\[Lambda] = 0.0", 12, FontFamily -> "BookmanOldStyle"], 
-            Style["\[Lambda] = 1.0", 12, FontFamily -> "BookmanOldStyle"]}, 
-           LegendMarkers -> {{"\[FilledCircle]", 10}, {
-             "\[FilledCircle]", 10}}, Joined -> {False, False}, LabelStyle -> 
-           Directive[
-             GrayLevel[0], 12], LegendLayout -> "Column"]], {0.8, 0.8}, 
-         Identity]]& ],
-      AutoDelete->True,
-      Editable->True,
-      SelectWithContents->False,
-      Selectable->True], 
-     TagBox[
-      GraphicsBox[{{{{}, {
-           {RGBColor[0, 0, 1], AbsolutePointSize[6], AbsoluteThickness[1.6], 
-            Opacity[0.7], Dashing[{Small, Small}], 
-            GeometricTransformationBox[InsetBox[
-              StyleBox["\<\"\[FilledCircle]\"\>",
-               StripOnInput->False,
-               FontSize->10], {0., 0.}], {{{0.08333333333333333, 
-             0.04434461036490609}}, {{0.07142857142857142, 
-             0.04426477311177036}}, {{0.0625, 0.04428264855741694}}, {{
-             0.05555555555555555, 0.044278972725795104`}}, {{0.05, 
-             0.044279762873326}}, {{0.045454545454545456`, 
-             0.04427960290499932}}, {{0.041666666666666664`, 
-             0.044279636381608325`}}, {{0.038461538461538464`, 
-             0.04427962967441779}}, {{0.03571428571428571, 
-             0.04427963105017924}}}]}, 
-           {RGBColor[1, 0, 0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
-            Opacity[0.7], Dashing[{Small, Small}], 
-            GeometricTransformationBox[InsetBox[
-              StyleBox["\<\"\[FilledCircle]\"\>",
-               StripOnInput->False,
-               FontSize->10], {0., 0.}], {{{0.08333333333333333, 
-             3.55016536662663*^-32}}, {{0.07142857142857142, 
-             2.3009375921671418`*^-31}}, {{0.0625, 
-             2.8273602599068576`*^-31}}, {{0.05555555555555555, 
-             1.4135268549192867`*^-30}}, {{0.05, 
-             1.5303401742764397`*^-32}}, {{0.045454545454545456`, 
-             1.962351661187153*^-30}}, {{0.041666666666666664`, 
-             1.86927017628212*^-30}}, {{0.038461538461538464`, 
-             8.96195482473691*^-30}}, {{0.03571428571428571, 
-             2.363020422350665*^-29}}}]}, {}}, {}, {}, {}, {}}, {{{}, {}, 
-           TagBox[
-            {RGBColor[0, 0, 1], AbsoluteThickness[1.6], Opacity[0.7], 
-             Dashing[{Small, Small}], LineBox[CompressedData["
-1:eJwV0H9Q03UcBnBaoVdHHiffEzb7hQ0FTU4nLYGxN4IsTDQjguSmkKOQ1GAJ
-ph4yPC0w4BzJoWwsdJsgOOcGuH2/O5HbES0JGGPB+O1CEZjHcUhIp4F93n88
-99zrz+cJPJSd+DXLy8srmgRb7WFyu4oChRqvtKg/btaCQKsLLqDeA2WWbxz6
-wXR7Rh61BS71WhPQxtJelpSKhnNarhjNGRtwfEftg0PxntPo7hVi5hiVDuvk
-eTSa+nvP/jJrDgTUPI66TyzlKR96T5yErHGZBf1ObsmMPbsQ3j1eF9ZB/Fz6
-1Utd23nYcy6EQetDVgUou4qhz+YM+5M45TWniB1aBn0lAxa0sth/DdUihwjV
-EWEn8eKTLT7ce7/A8/H1DLo7PfnNfE8F8G4IhF3E5bzJ8pG5Smi/dtqCzlG1
-Sb1nr0DLlCism7iDrROf8FfCB7eP0Wjf+ZcdsxwVPKu/u81O7BhN22ncVQPb
-ud8waJfhx9K3zVdh7IlK0IP/BZbTj03XwD25ZEIfUKzzfN6phv0SOtJBvGDN
-OhBn10Con9KM3v2U3z80qYVTMQNRvcShs/X5SS+uw8ZWjRX9k6I3I/G/WuDn
-XBY4iav3nk38Z/UNYK5OWNHBxomzHP96uOItFv5FHOOeHeOuaYBhczqNZgcU
-7nBuvAmV062CPuLM5fYJ78060H36MY0+PlN+cWTnLQj/METYT+xT/2rm5RQ9
-bDpcZUVz/DYV9qfchlP2rQIX8XzMUfsI3wBCE9eKrnCqZHLaAAcdEDVAnP+J
-WmT6yAiPwqdN6Lb2LF+91QjuwJmIQeK4AJ8XmTGNsF3INqGDsqVT812NsHKo
-JnKIOFplfLZjXxNsbdhLo9XG39ayeprAaivhDRNLOhSxFanNYMt434xOs+wu
-nRpuhhD+Q94IsUXf6lp1+A6wipZotPjCioi6uTsQHVQrGCUOjwxueeV7Ewwu
-njCjc+d8YkOXTODZpRaMEXsKOqffkpkhuWeBRtc9PVh3ZtkMG7Qu3gPc821z
-pqGYhuxFPzOaY3kUf/11BvxkJ3lu4tr7kjLtagZ+llCR6G2D4w7NWgZY8YZY
-dMK/7lT1ZgbmfKeS0Gf4o0drPmPArk75Af2GSGz8NZUBUdG8DF35xfCCSsLA
-vSMXi9H63MGC6jwGboXZqtAR579sUxYwEMSWqNG2S66VyiIGqpeWG9BJmuQE
-hZwBalzRhHY39smrqhgo+Z1/F/0/ifcaZw==
-              "]]},
-            Annotation[#, "Charting`Private`Tag$52323#1"]& ], 
-           TagBox[
-            {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[0.7], 
-             Dashing[{Small, Small}], LineBox[CompressedData["
-1:eJwVxX0803kcAPBZHnqQhm1fhmNZvXTVrlMvbr+r+xBWHUV6cIoeTm49uXKn
-9OCp6wELEaW2JPMUsWx5+n47lXNKD3JysjzOIbJK2kUepuv+eL/e3B8P+AbT
-aTTa2s/+XzaIw+pjud/d9yAGDmIWtZfOuqdk0uD5aUHQhTMsasTiWMk5JgP6
-ayvv0U+yqOU5RQ5RTDswElYc7zjOorpe1e46xFwCq4Wlw+dDWJQi4Rk9lOkC
-j4XyDp0Pi+J0qhp/ZvpAwypZWRNiUU8NA3AIcweo1oiDo3OZFLN7rX9i9UFo
-yk2elBSbU6GO0h6DviPwFot19vfNqC/Czr5pOBAD+24n+Tn3mFLjoTs/FdWc
-gibmwwGTNwxKvsDEQlofB/7zR3s2GDEoP/0moSU/EVJtKxYRaxNKGofYzKpk
-oOpT3bqXGlOjmiXGvDvnwVbjx+/ZN5N6umPz7IjBNFBVxsWGRE6nUhz7U9qH
-L0LDyLXSZzcNqYMZNaEGQ5dAPKc+1UujTz2yLAo4jKRgpQruXkebRjG0nx4N
-cTJggPGSvshJj2rs2O6uWJMJbG3uPPuzU4KWktMJNhXXoPdofgH6fVywnJtS
-+bI8CxZ1hzdX80cFgZK5gxueyIB3ndsZsVEr+FC9J9CjIRvsMpfZtIUPCTzf
-Oz1v7c8Bn2KVc2dRv4A/VBCxcSIXLs1/wllmqBackTzb5TuZByXVRDJY2yi4
-su6E779m1yEmjyU5GSgTOCj6TnBQAbgUaRf85F2HV6qHOnnsQlCL041DfVux
-pUWMa9OXNyBGLao7pOrFoqnaPoPFRXCJeklW6b/Gv75JOdfuXgylg6qxid5h
-bFwwTZTuJ4dkOlIWln3AHPOFMc/9bsJrwZk/st3HsHbl/oZ2pxK4Zmo9ctZO
-h9OaMqKTK0tg/6lhl+2BNBLxvUxY7qwA93nVfwdx6aSmdg9DXq0AIZs33jVL
-n3hYGE+IVirBJD3T80SzAZl3IHRAW6+EcZGcL6k1Ii4ZihFXn1sgr2teoUqb
-QWSKP63of90CybpXEr2ts0jQI4lb2pZSUPKS42WrZpPtxDNhoK0UksTeObvN
-5xAiv9tisrsMPO3WOzT9xiAB8YZU/nAZaBIP5orCTYngW4cqvV/KIcTtSmXS
-VjMSNmzsxteVg0FWStqwrzkZjHryyjq6AiKFqYb9AibJf78tP3KqAlKmxLa+
-1ixSs7dUVBJXCVXbvPTGTNmEQ3pX587A8NiQc9RxlE10kfqcvlkYbPSu6jlO
-sInalafhmWAIneCKv/7EJnkPgxJzzDCgdwukS4wQWfrin8ZsKwzBLwRVfISI
-10f1FtliDLob/noLnRGJdOrYn7kew1frL8fbhyOyY3xyRdcGDCc9bczsjyPi
-fsd6ju1mDC0eWZK50YjMFAYorm7BEEkV3ODGInJxU9uHjCAMD+1xvW06IvKw
-F1FXDmHYOaIyta5AJOWbMe/2cAxl7wIkVrcRCZu04Fofw2CkUc+1uosIdeqH
-GmkUhuKugaWcB4g8SG0xksZimKj7uMmiBZFCv1FVazwG75qITtSGSJIVKuQk
-YMiuoolQFyIbszd7SZIxrFFOP8LuR8RZdNim9TwGaVECja1BhLPw4lvLCxiG
-8hjxrCFEdG/L7vqnY3DNSjNlaRFRK5uTL1/GcEFqIWGOIvIfPf9SZg==
-              "]]},
-            Annotation[#, "Charting`Private`Tag$52323#2"]& ]}, {}, {}}}, 
-        InsetBox[
-         TemplateBox[{
-          StyleBox[
-           "\"\[Lambda] = 0.0\"", 12, FontFamily -> "BookmanOldStyle", 
-            StripOnInput -> False],StyleBox[
-           "\"\[Lambda] = 1.0\"", 12, FontFamily -> "BookmanOldStyle", 
-            StripOnInput -> False]},
-          "PointLegend",
-          DisplayFunction->(FormBox[
-            StyleBox[
-             StyleBox[
-              PaneBox[
-               TagBox[
-                GridBox[{{
-                   TagBox[
-                    GridBox[{{
-                    GraphicsBox[{{}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[0, 0, 1], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], {
-                    InsetBox[
-                    FormBox[
-                    StyleBox["\"\[FilledCircle]\"", 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[0, 0, 1], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], FontSize -> 10, Plain, 
-                    StripOnInput -> False], TraditionalForm], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
-                    ImageSize -> {10, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}, {
-                    GraphicsBox[{{}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[1, 0, 0], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], {
-                    InsetBox[
-                    FormBox[
-                    StyleBox["\"\[FilledCircle]\"", 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.462], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[1, 0, 0], 
-                    Opacity[0.7], 
-                    Dashing[{Small, Small}]], FontSize -> 10, Plain, 
-                    StripOnInput -> False], TraditionalForm], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
-                    ImageSize -> {10, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}}, 
-                    GridBoxAlignment -> {
-                    "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
-                    AutoDelete -> False, 
-                    GridBoxDividers -> {
-                    "Columns" -> {{False}}, "Rows" -> {{False}}}, 
-                    GridBoxItemSize -> {
-                    "Columns" -> {{All}}, "Rows" -> {{All}}}, 
-                    GridBoxSpacings -> {
-                    "Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], "Grid"]}}, 
-                 GridBoxAlignment -> {
-                  "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
-                 False, GridBoxItemSize -> {
-                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-                 GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
-                "Grid"], Alignment -> Left, AppearanceElements -> None, 
-               ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
-               "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
-              Directive[
-               GrayLevel[0], 12], FontFamily -> "Arial"}, Background -> 
-             Automatic, StripOnInput -> False], TraditionalForm]& ),
-          Editable->True,
-          InterpretationFunction:>(RowBox[{"PointLegend", "[", 
-             RowBox[{
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{"Directive", "[", 
-                    RowBox[{
-                    RowBox[{"PointSize", "[", "0.012833333333333334`", "]"}], 
-                    ",", 
-                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", 
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[0, 0, 1], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
-                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"RGBColor", "[", 
-                    RowBox[{"0", ",", "0", ",", "1"}], "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    RGBColor[0, 0, 1]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    RGBColor[0, 0, 1], Editable -> False, Selectable -> 
-                    False], ",", 
-                    RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
-                    RowBox[{"Dashing", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"Small", ",", "Small"}], "}"}], "]"}]}], "]"}], 
-                   ",", 
-                   RowBox[{"Directive", "[", 
-                    RowBox[{
-                    RowBox[{"PointSize", "[", "0.012833333333333334`", "]"}], 
-                    ",", 
-                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}], ",", 
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[1, 0, 0], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
-                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"RGBColor", "[", 
-                    RowBox[{"1", ",", "0", ",", "0"}], "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    RGBColor[1, 0, 0]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    RGBColor[1, 0, 0], Editable -> False, Selectable -> 
-                    False], ",", 
-                    RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
-                    RowBox[{"Dashing", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"Small", ",", "Small"}], "}"}], "]"}]}], "]"}]}], 
-                 "}"}], ",", 
-               RowBox[{"{", 
-                 RowBox[{#, ",", #2}], "}"}], ",", 
-               RowBox[{"LegendMarkers", "\[Rule]", 
-                 RowBox[{"{", 
-                   RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{"\"\[FilledCircle]\"", ",", "10"}], "}"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"\"\[FilledCircle]\"", ",", "10"}], "}"}]}], 
-                   "}"}]}], ",", 
-               RowBox[{"Joined", "\[Rule]", 
-                 RowBox[{"{", 
-                   RowBox[{"False", ",", "False"}], "}"}]}], ",", 
-               RowBox[{"LabelStyle", "\[Rule]", 
-                 RowBox[{"Directive", "[", 
-                   RowBox[{
-                    InterpretationBox[
-                    ButtonBox[
-                    TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
-                    PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    StyleBox[
-                    RowBox[{"GrayLevel", "[", "0", "]"}], NumberMarks -> 
-                    False]], Appearance -> None, BaseStyle -> {}, 
-                    BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = 
-                    GrayLevel[0]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["GrayLevelColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    GrayLevel[0], Editable -> False, Selectable -> False], 
-                    ",", "12"}], "]"}]}], ",", 
-               RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& )],
-          Scaled[{0.8, 0.8}], ImageScaled[{0.5, 0.5}],
-         BaseStyle->{FontSize -> Larger},
-         FormatType->StandardForm]},
-       AspectRatio->0.75,
-       Axes->{False, False},
-       AxesLabel->{None, None},
-       AxesOrigin->{0, 0},
-       DisplayFunction->Identity,
-       Epilog->InsetBox[
+          StyleBox["\"z\"", 
+           GrayLevel[0], 18, FontFamily -> "Bookman Old Style", StripOnInput -> 
+           False], TraditionalForm], None}, {None, None}},
+      FrameStyle->Directive[
+        GrayLevel[0], 18, FontFamily -> "Bookman Old Style"],
+      FrameTicks->
+       FrontEndValueCache[{{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
+           Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
+            SlotSequence[1]], {Identity, Identity}]& }, {{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.010000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.030000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.07, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.09000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.11000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.13, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.15000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.17, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.19, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.21000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.23, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.25, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.27, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.29000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}, {{{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
+            FormBox["\"0.4\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
+            FormBox["\"0.5\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.32000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.3400000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.36000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.38000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.42000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.44000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.48000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.32000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.3400000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.36000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.38000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.42000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.44000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.48000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}, {{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.010000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.030000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.07, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.09000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.11000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.13, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.15000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.17, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.19, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.21000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.23, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.25, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.27, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.29000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}],
+      GridLines->{None, None},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      ImagePadding->All,
+      ImageSize->240,
+      LabelStyle->Directive[
+        GrayLevel[0], 12],
+      Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& )}},
+      PlotRange->{{0, 0.3001}, {0, 0.5}},
+      PlotRangeClipping->False,
+      PlotRangePadding->{{0, 0}, {0, 0}},
+      Ticks->{Automatic, Automatic}], 
+     GraphicsBox[{{{}, {
+         {RGBColor[0, 0, 1], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+          Opacity[0.7], Dashing[{Small, Small}], 
+          GeometricTransformationBox[InsetBox[
+            StyleBox["\<\"\[FilledCircle]\"\>",
+             StripOnInput->False,
+             FontSize->10], {0., 0.}], {{{0.28867513459481287`, 
+           0.04434461036490609}}, {{0.2672612419124244, 
+           0.04426477311177036}}, {{0.25, 0.04428264855741694}}, {{
+           0.23570226039551584`, 0.044278972725795104`}}, {{
+           0.22360679774997896`, 0.044279762873326}}, {{0.21320071635561044`, 
+           0.04427960290499932}}, {{0.2041241452319315, 
+           0.044279636381608325`}}, {{0.19611613513818404`, 
+           0.04427962967441779}}, {{0.18898223650461363`, 
+           0.04427963105017924}}}]}, 
+         {RGBColor[1, 0, 0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+          Opacity[0.7], Dashing[{Small, Small}], 
+          GeometricTransformationBox[InsetBox[
+            StyleBox["\<\"\[FilledCircle]\"\>",
+             StripOnInput->False,
+             FontSize->10], {0., 0.}], {{{0.28867513459481287`, 
+           3.55016536662663*^-32}}, {{0.2672612419124244, 
+           2.3009375921671418`*^-31}}, {{0.25, 2.8273602599068576`*^-31}}, {{
+           0.23570226039551584`, 1.4135268549192867`*^-30}}, {{
+           0.22360679774997896`, 1.5303401742764397`*^-32}}, {{
+           0.21320071635561044`, 1.962351661187153*^-30}}, {{
+           0.2041241452319315, 1.86927017628212*^-30}}, {{
+           0.19611613513818404`, 8.96195482473691*^-30}}, {{
+           0.18898223650461363`, 
+           2.363020422350665*^-29}}}]}, {}}, {}, {}, {}, {}}, {{{}, {}, 
+         TagBox[
+          {RGBColor[0, 0, 1], AbsoluteThickness[1.6], Opacity[0.7], 
+           Dashing[{Small, Small}], LineBox[CompressedData["
+1:eJwVz31Q0nccB3Bnc91w+QeSujV/F5bT1B4mooaHH0yWo6anzFbUTVLEDGzO
+nKZ3FeE0p7s8dVd5PWGc5nyaYabJhaaCImDyVJo5QmZK53W7BbpOV+77/eN9
+73v9935Ts/K5Qk8PDw8WCm7XC7/dPQcZ8RUp5NSB9jtwZMWTqSJigWPN5GFP
+2EL97xJfw6ajiizsjZa48lbiCFwWphZhb0/WMO4QudB0tuYaNo1EutJElIC6
+jfQS+4bJ7ZUeVAWbZqovDiJbhT0idXs90BmHAx8h79yVNt/X0gCN3+1SYK+E
+kSU/B8uAsv9S2hBygozEjbomhxM5sYvYrERiud7RDCM8cdUwsvObbdRbW1oh
+6+PW0BHkN5kccnRgB8y9ilRhR9V9QFHyuyD3JjtDjfxaeOqUkK6ASancjU3p
+5W5m3+uG0iDvXzT4v69U05DWA+FX1kJGkZNXYJpmvQ8DjFgVdsZCkot9pg94
+3f9ljCGzq7TcDnI/RC/o32E/VzyjHK1XgvvAYp0WuWaR9uJc5ENQllVHjuN9
+cuITZ68K+EulWuzTYm6C9tgg+IT8I9IhCwol30vOPoJ1opCkR37puqlnMofA
+mJQgw15etTNjfIahLfEqy4BsY+fNfWsaBsGPe6ewv3TSWq7XjgCftyCaQCaT
+txYQx9WQvXmL92Nkw/n0PDVVAxzPG43YlNOd4maXBqKHm/ZNIo8O7LukGBqF
+nPgHc9hpKVvtdukYFC/5FxuRRdlBMQe5WqgRr/uZkI+p8ganKeNw8XNaJ3Zf
+vutknWUchqoKWGbk27/fCqiQ68BLF2PHFmyvf3tdoIfQuANFFuR7X7TNvo4y
+QLpk3s+KPCsmvcl6a4Djbl0ndj6pZceGBxPQFfww4Qly7e5coa3yMXwURndg
+V18tMM9yJoHJXz3zFJk0Mkn19jHCuRNJn00hf7hYLmYWGWE9XNaPLYqwJUuf
+GCGTmpgyjex/n9PtYJrA8OqHv7H38Hldh2Qm8PtroeIZ8nt6JdP23gRNDSc/
+nUH2TR1LLs8xA4P6Uz/25V/bV+LGzHB3RpfyHDl+iiRamzCDb1g0D9sZJPpT
+aTVDceltATZDGare6zADM6CkBNvmbK6LeWcG3aFgOXZllJfXvxsssLO5tgN7
+z4Xskl6SBWrda73YZf7b+PQACxz+zazHDheUmd2EBZQO5lNs6x9zX/UEWyAw
+stWOfX6V1V8YYYELUsoSdsj+xggazQLzRsky9v+pMwjE
+            "]]},
+          Annotation[#, "Charting`Private`Tag$506284#1"]& ], 
+         TagBox[
+          {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[0.7], 
+           Dashing[{Small, Small}], LineBox[CompressedData["
+1:eJwB4QQe+yFib1JlAgAAAE0AAAACAAAA898WL7RLOj6D3fjgNrckOp2DHyAM
+Hxg/+jaJFvi0JDpvJbeI1x4oP3GQGUy5siQ6WPYCPb0eOD9gQzq3O64kOs3e
+KBewHkg/Pal7jUClJDoH0zuEqR5YP/h0/jlKkyQ6JE3FOqYeaD9uDASTXW8k
+OjMKCpakHng/WTsPRYQnJDqc0fQFVCKJP+LMwl67iyM61GW0asSrkj/nU2pP
+RfoiOi0uUeS3p5g/0Y+TtqlrIjr2KhJ/gyWfP23/WdP30CE6QZ8KUjSaoj+G
+ZBTHmEAhOkBDHvWS4qU/Uv1rcCOkIDroTCMhnhupPwFLRZCICiA68mFJEjYd
+rD9aHCUOgfYeOjSRARS6X68/GAr6ZsS/HTrtZW1tZTWxP87itm2tnRw6FLZS
+FUSzsj9NJXdhS4EbOlgTgcWYUbQ/MM9xwLxMGjpN9j/YM9S1Pw1kVM3TLBk6
+XuZH80R3tz9PYHFFvvQXOkSJyFKsErk/WcaRql3CFjrbsdkUWpK6P1wXmr2i
+pBU6jucz330yvD/Ez9w7u24UOvKiHgzotr0/J3MHaHlNEzpya1JByFu/P+19
+bP8KFBI6Y3N/XX98wD998tSDUeAQOuXzncs9PcE/DqRKbHuCDzr1+uA9Nw7C
+P+wxYKf6Ew063kRs4VPRwj+8lUU+xc4KOjHoM6ebkMM/HM0xr/mUCDoSEiBx
+HmDEP0jTkvbUKgY6zH5UbMQhxT9kr8OZ++kDOhRyrWul88U/TFppE8l4ATrG
+vkKNscHGP4ixK84AJv45UU4g4OCBxz9YWiQtBq35OWpkIjdLUsg/wKAGOVnT
+9DlbvWy/2BTJPxCTiPxCTPA5t2/zaZHTyT8AWTDoALjnOaGonhiFoso/AI5F
+Yi4s3DljJJL4m2PLP0AzUqVrZcQ5syaq3O00zD/AyJkSGJPCudxrCvJi+Mw/
+4DLEBnN727lvCqcpA7jNP2ByApoFqea5kC9oZd6Hzj8YyGcr2yrwuYqXcdLc
+Sc8/GKsu0pyu9LkKw88hCw7QP5jwC8wQk/m5BOeEaz110D/wjtsRsWD+uWos
+3k2B1dA/sMAFUN1tAboXtUmy4j3RPyDrqEC72wO6MF9Zr1Wf0T+YP3zVTSAG
+uv41hz3e/tE/gMBIkHZZCLoTUMdNhGbSP5xyoHT4wgq6lYur9jvH0j/MTij9
+LgMNuoBeg9PryNI/bMFA5TsNDbpqMVuwm8rSPwQ0Wc1IFw26PtcKavvN0j88
+GYqdYisNuugiat261NI/sOPrPZZTDbo6uijEOeLSP4x4r379ow263uilkTf9
+0j9EojYAzEQOusi7fW7n/tI/4BRP6NhODrqyjlVLlwDTP3iHZ9DlWA66hzQF
+BfcD0z+0bJig/2wOujCAZHi2CtM/IDf6QDOVDrqCFyNfNRjTPwDMvYGa5Q66
+bOr6O+UZ0z+YPtZpp+8Oula90hiVG9M/NLHuUbT5DrorY4LS9B7TP2yWHyLO
+DQ+61K7hRbQl0z/cYIHCATYPur6BuSJkJ9M/dNOZqg5AD7qpVJH/EynTPxRG
+spIbSg+6fvpAuXMs0z9QK+NiNV4PumjNGJYjLtM/6J37SkJoD7pSoPBy0y/T
+P4QQFDNPcg+6PHPIT4Mx0z8ggywbXHwPuidGoCwzM9M/wPVEA2mGD7qg9jrd
+
+            "]]},
+          Annotation[#, "Charting`Private`Tag$506284#2"]& ]}, {}, {}}},
+      AspectRatio->0.75,
+      Axes->{False, False},
+      AxesLabel->{None, None},
+      AxesOrigin->{0, 0},
+      DisplayFunction->Identity,
+      Epilog->InsetBox[
+        FormBox[
+         StyleBox["\"(d)  p = 0\"", 
+          GrayLevel[0], 18, FontFamily -> "Bookman Old Style", StripOnInput -> 
+          False], TraditionalForm], {0.075, 0.44}],
+      Frame->{{True, True}, {True, True}},
+      FrameLabel->{{
          FormBox[
-          StyleBox["\"J = 0.4t\\n p = 1.0\[Pi]\"", 
-           GrayLevel[0], 15, FontFamily -> "Bookman Old Style", StripOnInput -> 
-           False], TraditionalForm], {0.02, 0.4}],
-       Frame->{{True, True}, {True, True}},
-       FrameLabel->{{
-          FormBox[
-           StyleBox["\"z\"", 
-            GrayLevel[0], 15, FontFamily -> "Bookman Old Style", StripOnInput -> 
-            False], TraditionalForm], None}, {
-          FormBox[
-           StyleBox["\"\\!\\(\\*SuperscriptBox[\\(L\\), \\(-1\\)]\\)\"", 
-            GrayLevel[0], 14, FontFamily -> "Bookman Old Style", StripOnInput -> 
-            False], TraditionalForm], None}},
-       FrameStyle->Directive[
-         GrayLevel[0], 14, FontFamily -> "Bookman Old Style"],
-       FrameTicks->
-        FrontEndValueCache[{{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-            Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-             SlotSequence[1]], {Identity, Identity}]& }, {
-          CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-            Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-             SlotSequence[1]], {Identity, Identity}]& }}, {{{{0., 
-             FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
-             FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.30000000000000004`, 
-             FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
-             FormBox["\"0.4\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
-             FormBox["\"0.5\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.020000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.04000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.08000000000000002, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.12000000000000001`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.16000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.18000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.22000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.24000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.32000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.3400000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.36000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.38000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.42000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.44000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.48000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.30000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
-            0.020000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.04000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06000000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.08000000000000002, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.12000000000000001`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.16000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.18000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.22000000000000003`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.24000000000000002`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.32000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.3400000000000001, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.36000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.38000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.42000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.44000000000000006`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.48000000000000004`, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}, {{{0., 
-             FormBox["\"0.00\"", TraditionalForm], {0.025, 0.}, {}}, {0.02, 
-             FormBox["\"0.02\"", TraditionalForm], {0.025, 0.}, {}}, {0.04, 
-             FormBox["\"0.04\"", TraditionalForm], {0.025, 0.}, {}}, {0.06, 
-             FormBox["\"0.06\"", TraditionalForm], {0.025, 0.}, {}}, {0.08, 
-             FormBox["\"0.08\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"0.10\"", TraditionalForm], {0.025, 0.}, {}}, {0.005, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.01, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.015, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.025, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.03, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.035, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.045, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.055, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.065, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06999999999999999, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.075, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.085, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.09, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.095, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.02, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.04, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.06, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.08, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
-             FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.005, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.01, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.015, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.025, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.03, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.035, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.045, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.055, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.065, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
-            0.06999999999999999, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.075, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.085, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.09, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.095, 
-             FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}],
-       GridLines->{None, None},
-       GridLinesStyle->Directive[
-         GrayLevel[0.5, 0.4]],
-       ImagePadding->All,
-       ImageSize->240,
-       LabelStyle->Directive[
-         GrayLevel[0], 12],
-       Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-             (Identity[#]& )[
-              Part[#, 1]], 
-             (Identity[#]& )[
-              Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-             (Identity[#]& )[
-              Part[#, 1]], 
-             (Identity[#]& )[
-              Part[#, 2]]}& )}},
-       PlotRange->{{0, 0.1}, {0, 0.5}},
-       PlotRangeClipping->False,
-       PlotRangePadding->{{0, 0}, {0, 0}},
-       Ticks->{Automatic, Automatic}],
-      InterpretTemplate[Legended[
-        Graphics[{{{}, {{{
-              Directive[
-               PointSize[0.012833333333333334`], 
-               AbsoluteThickness[1.6], 
-               RGBColor[0, 0, 1], 
-               Opacity[0.7], 
-               Dashing[{Small, Small}], 
-               AbsolutePointSize[6]], 
-              GeometricTransformation[
-               Inset[
-                Style["\[FilledCircle]", FontSize -> 10], {0., 0.}], {{{
-               0.08333333333333333, 0.04434461036490609}}, {{
-               0.07142857142857142, 0.04426477311177036}}, {{0.0625, 
-               0.04428264855741694}}, {{0.05555555555555555, 
-               0.044278972725795104`}}, {{0.05, 0.044279762873326}}, {{
-               0.045454545454545456`, 0.04427960290499932}}, {{
-               0.041666666666666664`, 0.044279636381608325`}}, {{
-               0.038461538461538464`, 0.04427962967441779}}, {{
-               0.03571428571428571, 0.04427963105017924}}}]}, {
-              Directive[
-               PointSize[0.012833333333333334`], 
-               AbsoluteThickness[1.6], 
-               RGBColor[1, 0, 0], 
-               Opacity[0.7], 
-               Dashing[{Small, Small}], 
-               AbsolutePointSize[6]], 
-              GeometricTransformation[
-               Inset[
-                Style["\[FilledCircle]", FontSize -> 10], {0., 0.}], {{{
-               0.08333333333333333, 3.55016536662663*^-32}}, {{
-               0.07142857142857142, 2.3009375921671418`*^-31}}, {{0.0625, 
-               2.8273602599068576`*^-31}}, {{0.05555555555555555, 
-               1.4135268549192867`*^-30}}, {{0.05, 
-               1.5303401742764397`*^-32}}, {{0.045454545454545456`, 
-               1.962351661187153*^-30}}, {{0.041666666666666664`, 
-               1.86927017628212*^-30}}, {{0.038461538461538464`, 
-               8.96195482473691*^-30}}, {{0.03571428571428571, 
-               2.363020422350665*^-29}}}]}, {}}}, {}, {}, {}, {}}, {{{{}, {}, 
-             
-             Annotation[{
-               Directive[
-                AbsoluteThickness[1.6], 
-                RGBColor[0, 0, 1], 
-                Opacity[0.7], 
-                Dashing[{Small, Small}]], 
-               Line[CompressedData["
-1:eJwV0H9Q03UcBnBaoVdHHiffEzb7hQ0FTU4nLYGxN4IsTDQjguSmkKOQ1GAJ
-ph4yPC0w4BzJoWwsdJsgOOcGuH2/O5HbES0JGGPB+O1CEZjHcUhIp4F93n88
-99zrz+cJPJSd+DXLy8srmgRb7WFyu4oChRqvtKg/btaCQKsLLqDeA2WWbxz6
-wXR7Rh61BS71WhPQxtJelpSKhnNarhjNGRtwfEftg0PxntPo7hVi5hiVDuvk
-eTSa+nvP/jJrDgTUPI66TyzlKR96T5yErHGZBf1ObsmMPbsQ3j1eF9ZB/Fz6
-1Utd23nYcy6EQetDVgUou4qhz+YM+5M45TWniB1aBn0lAxa0sth/DdUihwjV
-EWEn8eKTLT7ce7/A8/H1DLo7PfnNfE8F8G4IhF3E5bzJ8pG5Smi/dtqCzlG1
-Sb1nr0DLlCism7iDrROf8FfCB7eP0Wjf+ZcdsxwVPKu/u81O7BhN22ncVQPb
-ud8waJfhx9K3zVdh7IlK0IP/BZbTj03XwD25ZEIfUKzzfN6phv0SOtJBvGDN
-OhBn10Con9KM3v2U3z80qYVTMQNRvcShs/X5SS+uw8ZWjRX9k6I3I/G/WuDn
-XBY4iav3nk38Z/UNYK5OWNHBxomzHP96uOItFv5FHOOeHeOuaYBhczqNZgcU
-7nBuvAmV062CPuLM5fYJ78060H36MY0+PlN+cWTnLQj/METYT+xT/2rm5RQ9
-bDpcZUVz/DYV9qfchlP2rQIX8XzMUfsI3wBCE9eKrnCqZHLaAAcdEDVAnP+J
-WmT6yAiPwqdN6Lb2LF+91QjuwJmIQeK4AJ8XmTGNsF3INqGDsqVT812NsHKo
-JnKIOFplfLZjXxNsbdhLo9XG39ayeprAaivhDRNLOhSxFanNYMt434xOs+wu
-nRpuhhD+Q94IsUXf6lp1+A6wipZotPjCioi6uTsQHVQrGCUOjwxueeV7Ewwu
-njCjc+d8YkOXTODZpRaMEXsKOqffkpkhuWeBRtc9PVh3ZtkMG7Qu3gPc821z
-pqGYhuxFPzOaY3kUf/11BvxkJ3lu4tr7kjLtagZ+llCR6G2D4w7NWgZY8YZY
-dMK/7lT1ZgbmfKeS0Gf4o0drPmPArk75Af2GSGz8NZUBUdG8DF35xfCCSsLA
-vSMXi9H63MGC6jwGboXZqtAR579sUxYwEMSWqNG2S66VyiIGqpeWG9BJmuQE
-hZwBalzRhHY39smrqhgo+Z1/F/0/ifcaZw==
-                "]]}, 
-              "Charting`Private`Tag$52323#1"], 
-             Annotation[{
-               Directive[
-                AbsoluteThickness[1.6], 
-                RGBColor[1, 0, 0], 
-                Opacity[0.7], 
-                Dashing[{Small, Small}]], 
-               Line[CompressedData["
-1:eJwVxX0803kcAPBZHnqQhm1fhmNZvXTVrlMvbr+r+xBWHUV6cIoeTm49uXKn
-9OCp6wELEaW2JPMUsWx5+n47lXNKD3JysjzOIbJK2kUepuv+eL/e3B8P+AbT
-aTTa2s/+XzaIw+pjud/d9yAGDmIWtZfOuqdk0uD5aUHQhTMsasTiWMk5JgP6
-ayvv0U+yqOU5RQ5RTDswElYc7zjOorpe1e46xFwCq4Wlw+dDWJQi4Rk9lOkC
-j4XyDp0Pi+J0qhp/ZvpAwypZWRNiUU8NA3AIcweo1oiDo3OZFLN7rX9i9UFo
-yk2elBSbU6GO0h6DviPwFot19vfNqC/Czr5pOBAD+24n+Tn3mFLjoTs/FdWc
-gibmwwGTNwxKvsDEQlofB/7zR3s2GDEoP/0moSU/EVJtKxYRaxNKGofYzKpk
-oOpT3bqXGlOjmiXGvDvnwVbjx+/ZN5N6umPz7IjBNFBVxsWGRE6nUhz7U9qH
-L0LDyLXSZzcNqYMZNaEGQ5dAPKc+1UujTz2yLAo4jKRgpQruXkebRjG0nx4N
-cTJggPGSvshJj2rs2O6uWJMJbG3uPPuzU4KWktMJNhXXoPdofgH6fVywnJtS
-+bI8CxZ1hzdX80cFgZK5gxueyIB3ndsZsVEr+FC9J9CjIRvsMpfZtIUPCTzf
-Oz1v7c8Bn2KVc2dRv4A/VBCxcSIXLs1/wllmqBackTzb5TuZByXVRDJY2yi4
-su6E779m1yEmjyU5GSgTOCj6TnBQAbgUaRf85F2HV6qHOnnsQlCL041DfVux
-pUWMa9OXNyBGLao7pOrFoqnaPoPFRXCJeklW6b/Gv75JOdfuXgylg6qxid5h
-bFwwTZTuJ4dkOlIWln3AHPOFMc/9bsJrwZk/st3HsHbl/oZ2pxK4Zmo9ctZO
-h9OaMqKTK0tg/6lhl+2BNBLxvUxY7qwA93nVfwdx6aSmdg9DXq0AIZs33jVL
-n3hYGE+IVirBJD3T80SzAZl3IHRAW6+EcZGcL6k1Ii4ZihFXn1sgr2teoUqb
-QWSKP63of90CybpXEr2ts0jQI4lb2pZSUPKS42WrZpPtxDNhoK0UksTeObvN
-5xAiv9tisrsMPO3WOzT9xiAB8YZU/nAZaBIP5orCTYngW4cqvV/KIcTtSmXS
-VjMSNmzsxteVg0FWStqwrzkZjHryyjq6AiKFqYb9AibJf78tP3KqAlKmxLa+
-1ixSs7dUVBJXCVXbvPTGTNmEQ3pX587A8NiQc9RxlE10kfqcvlkYbPSu6jlO
-sInalafhmWAIneCKv/7EJnkPgxJzzDCgdwukS4wQWfrin8ZsKwzBLwRVfISI
-10f1FtliDLob/noLnRGJdOrYn7kew1frL8fbhyOyY3xyRdcGDCc9bczsjyPi
-fsd6ju1mDC0eWZK50YjMFAYorm7BEEkV3ODGInJxU9uHjCAMD+1xvW06IvKw
-F1FXDmHYOaIyta5AJOWbMe/2cAxl7wIkVrcRCZu04Fofw2CkUc+1uosIdeqH
-GmkUhuKugaWcB4g8SG0xksZimKj7uMmiBZFCv1FVazwG75qITtSGSJIVKuQk
-YMiuoolQFyIbszd7SZIxrFFOP8LuR8RZdNim9TwGaVECja1BhLPw4lvLCxiG
-8hjxrCFEdG/L7vqnY3DNSjNlaRFRK5uTL1/GcEFqIWGOIvIfPf9SZg==
-                "]]},
-               "Charting`Private`Tag$52323#2"]}}, {}, {}}}, {
-         PlotRangeClipping -> False, DisplayFunction -> Identity, 
-          PlotRangePadding -> {{0, 0}, {0, 0}}, AxesOrigin -> {0, 0}, 
-          PlotRange -> {{0, 0.1}, {0, 0.5}}, PlotRangeClipping -> True, 
-          ImagePadding -> All, DisplayFunction -> Identity, AspectRatio -> 
-          0.75, Axes -> {False, False}, AxesLabel -> {None, None}, 
-          AxesOrigin -> {0, 0}, DisplayFunction :> Identity, Epilog -> Text[
-            Style["J = 0.4t\n p = 1.0\[Pi]", 
-             GrayLevel[0], 15, FontFamily -> "Bookman Old Style"], {0.02, 
-            0.4}], Frame -> {{True, True}, {True, True}}, FrameLabel -> {{
-             Style["z", 
-              GrayLevel[0], 15, FontFamily -> "Bookman Old Style"], None}, {
-             Style["\!\(\*SuperscriptBox[\(L\), \(-1\)]\)", 
-              GrayLevel[0], 14, FontFamily -> "Bookman Old Style"], None}}, 
-          FrameStyle -> Directive[
-            GrayLevel[0], 14, FontFamily -> "Bookman Old Style"], 
-          FrameTicks -> {{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-              Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-               SlotSequence[1]], {Identity, Identity}]& }, {
-            CustomTicks`LinTicks, Charting`ScaledFrameTicks[
-              Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
-               SlotSequence[1]], {Identity, Identity}]& }}, 
-          GridLines -> {None, None}, GridLinesStyle -> Directive[
-            GrayLevel[0.5, 0.4]], ImageSize -> 240, LabelStyle -> Directive[
-            GrayLevel[0], 12], 
-          Method -> {"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-                (Identity[#]& )[
-                 Part[#, 1]], 
-                (Identity[#]& )[
-                 Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-                (Identity[#]& )[
-                 Part[#, 1]], 
-                (Identity[#]& )[
-                 Part[#, 2]]}& )}}, PlotRange -> {{0, 0.1}, {0, 0.5}}, 
-          PlotRangeClipping -> True, PlotRangePadding -> {{0, 0}, {0, 0}}, 
-          Ticks -> {Automatic, Automatic}}], 
-        Placed[
-         Unevaluated[
-          PointLegend[{
-            Directive[
-             PointSize[0.012833333333333334`], 
-             AbsoluteThickness[1.6], 
-             RGBColor[0, 0, 1], 
-             Opacity[0.7], 
-             Dashing[{Small, Small}]], 
-            Directive[
-             PointSize[0.012833333333333334`], 
-             AbsoluteThickness[1.6], 
-             RGBColor[1, 0, 0], 
-             Opacity[0.7], 
-             Dashing[{Small, Small}]]}, {
-            Style["\[Lambda] = 0.0", 12, FontFamily -> "BookmanOldStyle"], 
-            Style["\[Lambda] = 1.0", 12, FontFamily -> "BookmanOldStyle"]}, 
-           LegendMarkers -> {{"\[FilledCircle]", 10}, {
-             "\[FilledCircle]", 10}}, Joined -> {False, False}, LabelStyle -> 
-           Directive[
-             GrayLevel[0], 12], LegendLayout -> "Column"]], {0.8, 0.8}, 
-         Identity]]& ],
-      AutoDelete->True,
-      Editable->True,
-      SelectWithContents->False,
-      Selectable->True]}
+          StyleBox["\"z\"", 
+           GrayLevel[0], 18, FontFamily -> "Bookman Old Style", StripOnInput -> 
+           False], TraditionalForm], None}, {None, None}},
+      FrameStyle->Directive[
+        GrayLevel[0], 18, FontFamily -> "Bookman Old Style"],
+      FrameTicks->
+       FrontEndValueCache[{{CustomTicks`LinTicks, Charting`ScaledFrameTicks[
+           Composition[CustomTicks`StripTickLabels, CustomTicks`LinTicks][
+            SlotSequence[1]], {Identity, Identity}]& }, {{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.010000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.030000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.07, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.09000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.11000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.13, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.15000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.17, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.19, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.21000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.23, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.25, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.27, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.29000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}, {{{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
+            FormBox["\"0.4\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
+            FormBox["\"0.5\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.32000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.3400000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.36000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.38000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.42000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.44000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.48000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.4, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.5, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.32000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.3400000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.36000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.38000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.42000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.44000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.46, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.48000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}, {{{0., 
+            FormBox["\"0.0\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"0.1\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"0.2\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"0.3\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.010000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.030000000000000006`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.05, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.07, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.09000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.11000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.13, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.15000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.17, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.19, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.21000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.23, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.25, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.27, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.29000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}, {{0., 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.1, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {0.2, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.30000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.025, 0.}, {}}, {
+           0.020000000000000004`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.04000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.06000000000000001, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.08000000000000002, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.12000000000000001`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.14, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.16000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.18000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.22000000000000003`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {
+           0.24000000000000002`, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.26, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}, {0.28, 
+            FormBox["\"\"", TraditionalForm], {0.0125, 0.}, {}}}}}],
+      GridLines->{None, None},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      ImagePadding->All,
+      ImageSize->240,
+      LabelStyle->Directive[
+        GrayLevel[0], 12],
+      Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& )}},
+      PlotRange->{{0, 0.3001}, {0, 0.5}},
+      PlotRangeClipping->False,
+      PlotRangePadding->{{0, 0}, {0, 0}},
+      Ticks->{Automatic, Automatic}]}
    },
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
@@ -2881,11 +1910,21 @@ YMiuoolQFyIbszd7SZIxrFFOP8LuR8RZdNim9TwGaVECja1BhLPw4lvLCxiG
    3.829919091504744*^9, 3.82991916184879*^9}, 3.829919199706891*^9, 
    3.8299193492794657`*^9, 3.829919534469048*^9, 3.829927445197834*^9, 
    3.82992755010721*^9, 3.832053374112154*^9, 3.83205340445326*^9, 
-   3.832053511955361*^9, {3.832053554610458*^9, 3.8320535762001657`*^9}, 
-   3.832053606476667*^9},
+   3.832053511955361*^9, {3.832053554610458*^9, 3.8320536061565*^9}, {
+   3.839938243142251*^9, 3.839938318475087*^9}, 3.839938356936407*^9, {
+   3.839938465382107*^9, 3.839938502706558*^9}, {3.839939180180966*^9, 
+   3.8399392048578577`*^9}, 3.8399434685345716`*^9, {3.83994349992745*^9, 
+   3.839943511028017*^9}, {3.8399435725150948`*^9, 3.839943595945347*^9}, {
+   3.83994452621775*^9, 3.839944662483388*^9}, {3.839944831947654*^9, 
+   3.839944844275436*^9}, {3.839944920872527*^9, 3.839945022153791*^9}, {
+   3.839945068589451*^9, 3.839945081679459*^9}, {3.839945130890831*^9, 
+   3.839945152334095*^9}, {3.83994533876504*^9, 3.839945373058975*^9}, 
+   3.8399454286219063`*^9, 3.83994617732018*^9, 3.839991667785116*^9, {
+   3.839991730965107*^9, 3.8399917754799623`*^9}, {3.839991843615744*^9, 
+   3.839991854326735*^9}},
  CellLabel->
   "During evaluation of \
-In[389]:=",ExpressionUUID->"276499d3-e052-4409-8cbe-a075bdce3526"]
+In[2411]:=",ExpressionUUID->"aaaf49f4-5811-4102-871f-f1e4dfe4fc84"]
 }, Open  ]]
 }, Open  ]],
 
@@ -2951,7 +1990,7 @@ Cell[BoxData[
   3.827227867309766*^9, 3.827227867944278*^9}, {3.827228001224531*^9, 
   3.82722802955726*^9}},
  CellLabel->
-  "In[393]:=",ExpressionUUID->"92327ed3-63ba-4098-935f-a4a1392ba0e8"],
+  "In[2415]:=",ExpressionUUID->"92327ed3-63ba-4098-935f-a4a1392ba0e8"],
 
 Cell[BoxData[
  RowBox[{"SavePlots", "[", "]"}]], "Input",
@@ -2961,7 +2000,7 @@ Cell[BoxData[
    3.8299274693334713`*^9, 3.829927472265873*^9}, 3.829927555842505*^9, 
    3.832053553066168*^9},
  CellLabel->
-  "In[394]:=",ExpressionUUID->"f3fbcc78-fdb2-4c30-b14f-8abf96ef4af5"]
+  "In[2416]:=",ExpressionUUID->"f3fbcc78-fdb2-4c30-b14f-8abf96ef4af5"]
 },
 WindowSize->{1440, 855},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
@@ -2981,25 +2020,25 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 866, 20, 94, "Input",ExpressionUUID->"9750f5a9-f756-4508-b30e-e11cab3fd343"],
-Cell[1449, 44, 3349, 48, 34, "Output",ExpressionUUID->"c5f8ebbf-bd3f-498e-87ad-413da3f88b49"]
+Cell[580, 22, 867, 20, 94, "Input",ExpressionUUID->"9750f5a9-f756-4508-b30e-e11cab3fd343"],
+Cell[1450, 44, 4119, 58, 34, "Output",ExpressionUUID->"5fd22b35-43eb-49e4-a11f-17d8fa9d9602"]
 }, Open  ]],
-Cell[4813, 95, 359, 9, 73, "Input",ExpressionUUID->"8119b744-4ce8-4ed8-bc9f-28f81d40bb99"],
-Cell[5175, 106, 1767, 40, 199, "Input",ExpressionUUID->"2f566782-39d4-4ae2-a0e6-d7fcb44a549b"],
-Cell[6945, 148, 2334, 51, 178, "Input",ExpressionUUID->"e4b15072-2bf4-47d3-ba51-410df2c733c0"],
-Cell[9282, 201, 2122, 54, 199, "Input",ExpressionUUID->"d85a7243-072d-447f-b6b4-4f582f9983f3"],
-Cell[11407, 257, 929, 24, 30, "Input",ExpressionUUID->"2d4eaadc-6ac5-4f76-b8e6-c911f6e77c5e"],
-Cell[12339, 283, 8130, 170, 671, "Input",ExpressionUUID->"5bd1480f-a443-47fd-ae5b-508df22184f0"],
-Cell[20472, 455, 4991, 101, 430, "Input",ExpressionUUID->"cae0cf65-9274-4113-be62-7cc9431dbe59"],
+Cell[5584, 105, 360, 9, 73, "Input",ExpressionUUID->"8119b744-4ce8-4ed8-bc9f-28f81d40bb99"],
+Cell[5947, 116, 1768, 40, 199, "Input",ExpressionUUID->"2f566782-39d4-4ae2-a0e6-d7fcb44a549b"],
+Cell[7718, 158, 2335, 51, 178, "Input",ExpressionUUID->"e4b15072-2bf4-47d3-ba51-410df2c733c0"],
+Cell[10056, 211, 2213, 56, 199, "Input",ExpressionUUID->"d85a7243-072d-447f-b6b4-4f582f9983f3"],
+Cell[12272, 269, 930, 24, 30, "Input",ExpressionUUID->"2d4eaadc-6ac5-4f76-b8e6-c911f6e77c5e"],
+Cell[13205, 295, 8972, 180, 671, "Input",ExpressionUUID->"5bd1480f-a443-47fd-ae5b-508df22184f0"],
+Cell[22180, 477, 4990, 100, 430, "Input",ExpressionUUID->"cae0cf65-9274-4113-be62-7cc9431dbe59"],
 Cell[CellGroupData[{
-Cell[25488, 560, 7411, 132, 283, "Input",ExpressionUUID->"79f1820b-ace8-47bd-8dcb-815128ecc7dc"],
+Cell[27195, 581, 7406, 131, 283, "Input",ExpressionUUID->"79f1820b-ace8-47bd-8dcb-815128ecc7dc"],
 Cell[CellGroupData[{
-Cell[32924, 696, 3021, 45, 29, "Print",ExpressionUUID->"2014bbcc-62cf-4ede-8653-5cec974c8dd1"],
-Cell[35948, 743, 113233, 2144, 208, "Print",ExpressionUUID->"276499d3-e052-4409-8cbe-a075bdce3526"]
+Cell[34626, 716, 3780, 56, 29, "Print",ExpressionUUID->"a98363f8-0f83-44cb-99bf-f6311598afbc"],
+Cell[38409, 774, 63190, 1152, 186, "Print",ExpressionUUID->"aaaf49f4-5811-4102-871f-f1e4dfe4fc84"]
 }, Open  ]]
 }, Open  ]],
-Cell[149208, 2891, 2612, 62, 241, "Input",ExpressionUUID->"92327ed3-63ba-4098-935f-a4a1392ba0e8"],
-Cell[151823, 2955, 447, 8, 88, "Input",ExpressionUUID->"f3fbcc78-fdb2-4c30-b14f-8abf96ef4af5"]
+Cell[101626, 1930, 2613, 62, 241, "Input",ExpressionUUID->"92327ed3-63ba-4098-935f-a4a1392ba0e8"],
+Cell[104242, 1994, 448, 8, 30, "Input",ExpressionUUID->"f3fbcc78-fdb2-4c30-b14f-8abf96ef4af5"]
 }
 ]
 *)

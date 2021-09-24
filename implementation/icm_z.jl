@@ -43,11 +43,11 @@ function run_z(parameters::Parameters)
     β = parameters.β
     J = parameters.J
     t = parameters.t
-    q = 0 + div(n, 2) * div(mod(n, 4), 2)
+    q = 0 # in rotating momentum basis Heisenberg GS always at q = 0
     input = OrderedDict(
         "system size" => n,
         "momentum sector" => q,
-        "magnetization sector" => 1 + div(n, 2),
+        "magnetization sector" => 0,
         "coupling constant" => J,
         "magnon interaction" => β
     )
@@ -67,7 +67,7 @@ function run_z(parameters::Parameters)
     input = OrderedDict(
         "system size" => n,
         "momentum sector" => p,
-        "magnetization sector" => 1 + div(n, 2),
+        "magnetization sector" => 0,
         "coupling constant" => J,
         "magnon interaction" => β,
         "hopping constant" => t
@@ -79,19 +79,27 @@ function run_z(parameters::Parameters)
 
     vals, vecs, info = tJFactorization
 
-    tJGSE, tJGSV = vals[1], vecs[1]
+    tJGSE, tJGSV = vals[1], vecs[1] # !now we have 2-fold degeneracy (remove spin up or down)
 
     pole = tJGSE - GSE
     residue = abs(dot(tJGSV, initialState))^2
+    ΔE = vals[2] - vals[1]
+
+    epsilon = 10^-12
+    tJGSE2, tJGSV2 = vals[2], vecs[2]
+    if abs(tJGSE - tJGSE2) < epsilon
+        residue += abs(dot(tJGSV2, initialState))^2
+        ΔE = vals[3] - vals[1]
+    end
 
     iDelta = 0.05im
     ωRange = collect(-3:0.005:7)
-    @time spectrum = Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
+    @time spectrum = [0] #Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
-    return (QP(pole[1], residue[1], vals[2] - vals[1], n, k, β, J, t), ωRange, spectrum, tJGSV)
+    return (QP(pole, residue, ΔE, n, k, β, J, t), ωRange, spectrum, tJGSV)
 end
 
-function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
+function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)::Vector{Complex{Float64}}
     l::Int = hSystem.size
     highestBit::Int = 1 << (l - 1)
     highestValue::Int = (1 << l) - 1
@@ -99,22 +107,50 @@ function getInitialState(GSV, hBasis, hSystem, tJBasis, tJSystem)
     q = hSystem.momentum
     p = tJSystem.momentum
 
+    ### not proved
+    k = mod(p - q, hSystem.size)
+
+    ### spin of removed electron: 1 -> up, 0 -> down
+    removedSpin = 0
+
+    ### set sublattice rotation masks
+    mask = sum(1 << site for site in 0:2:(hSystem.size - 1))
+
+    # ### calculate initial state (symmetric eye case)
+    # initialState = zeros(Complex{Float64}, length(tJBasis))
+    # for (state, coordinate) in hBasis
+    #     spinState = xor(state, mask)
+    #     for position in 1:l
+    #         R = position - 1
+    #         RValue = 1 << R
+    #         ## 0 for spin down; != for spin up
+    #         if div(state & RValue, RValue) == removedSpin # ifelse(R % 2 == 0, 1 - removedSpin, removedSpin)
+    #             repState = state
+    #             for _ in 1:position
+    #                 repState = Main.Heisenberg.bitmov(repState, l, false, hb = highestBit, hv = highestValue)
+    #             end
+    #             phase = exp(2π * im * q * R / l) * exp(2π * im * p / l)
+    #             periodicity = Main.Heisenberg.getPeriodicity(repState, hSystem)
+    #             coefficient = GSV[coordinate] * phase * sqrt(periodicity / l^2)
+    #             initialState[tJBasis[repState]] += coefficient
+    #         end
+    #     end
+    # end
     ### calculate initial state
     initialState = zeros(Complex{Float64}, length(tJBasis))
     for (state, coordinate) in hBasis
+        spinState = xor(state, mask)
         for position in 1:l
             R = position - 1
             RValue = 1 << R
-            if (state & RValue) == 0 ## == 0 for spin down annihilation or != for spin up (second one not implemented yet)
-                repState = state
-                for _ in 1:position
-                    repState = Main.Heisenberg.bitmov(repState, l, false, hb = highestBit, hv = highestValue)
-                end
-                phase = exp(2π * im * q * R / l) * exp(2π * im * p / l)
-                periodicity = Main.Heisenberg.getPeriodicity(repState, hSystem)
-                coefficient = GSV[coordinate] * phase * sqrt(periodicity / l^2)
-                initialState[tJBasis[repState]] += coefficient
+            repState = state
+            for _ in 1:position
+                repState = Main.Heisenberg.bitmov(repState, l, false, hb = highestBit, hv = highestValue)
             end
+            phase = exp(2π * im * q * R / l) * exp(2π * im * p / l)
+            periodicity = Main.Heisenberg.getPeriodicity(repState, hSystem)
+            coefficient = sqrt(0.5) * GSV[coordinate] * phase * sqrt(periodicity / l^2)
+            initialState[tJBasis[repState]] += coefficient
         end
     end
     return initialState
@@ -130,9 +166,9 @@ function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vecto
     referenceIndices = findall(x -> x[1].interaction == 1.0, data)
 
     doOverlaps = false
-    if length(referenceIndices) > 0
-        doOverlaps = true
-    end
+#    if length(referenceIndices) > 0
+#        doOverlaps = true
+#    end
 
     if doOverlaps
         for it in referenceIndices
@@ -185,9 +221,9 @@ function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vecto
     JSON.print(file, qpData, 1)
     close(file)
 
-    file = open(string("./data/s", tail, ".json"), "w")
-    JSON.print(file, sData, 1)
-    close(file)
+#    file = open(string("./data/s", tail, ".json"), "w")
+#    JSON.print(file, sData, 1)
+#    close(file)
 
     if doOverlaps
         file = open(string("./data/gs", tail, ".json"), "w")

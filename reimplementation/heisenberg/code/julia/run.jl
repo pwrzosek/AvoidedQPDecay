@@ -1,5 +1,6 @@
 using OrderedCollections
 using JSON
+using BenchmarkTools
 
 # if !any(names(Main, imported = true) .== :Heisenberg)
     include("heisenberg.jl")

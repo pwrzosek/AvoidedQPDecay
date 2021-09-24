@@ -45,7 +45,7 @@ Model = SparseMatrixCSC{Complex{Float64},Int64}
 
 Run t-J model diagonalization procedure.
 """
-function run(input::Union{Missing, OrderedDict} = missing)
+function run(input::Union{Missing, OrderedDict} = missing; howmany = 3, factor = true)
     system::System = if input === missing
         readInput()
     else
@@ -61,8 +61,12 @@ function run(input::Union{Missing, OrderedDict} = missing)
     println()
     @time basis::Basis = makeBasis(system)
     @time model::Model = makeModel(basis, system)
-    @time factorization = factorize(model, howmany = 2000) # put 10 for DOS
-    return system, basis, model, factorization
+    if factor
+        @time factorization = factorize(model, howmany = howmany, kryldim = max(30, 3*howmany)) # put 10 for DOS
+        return system, basis, model, factorization
+    else
+        return system, basis, model
+    end
 end
 
 "Read `input.json` file and return `System` structure with input data. It requires `input.json` file to be located in the current working directory."
@@ -339,7 +343,7 @@ function makeModel(basis::Basis, system::System)::Model
             V[(index - 1) * linearCombinationLength + it] = linearCombination.coefficient[it]
         end
     end
-    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +); trim = false)
+    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +))
 end
 
 """
@@ -347,9 +351,9 @@ end
 
 Compute eigenvalues (by default with smallest real part) and their corresponding eigenvectors.
 """
-function factorize(model::Model; howmany = 1, which = :SR)
+function factorize(model::Model; howmany = 1, which = :SR, kryldim)
     if length(model) != 0
-        return eigsolve(model, howmany, which, ishermitian = true, krylovdim = 2000)
+        return eigsolve(model, howmany, which, ishermitian = true, krylovdim = kryldim)
     else
         return (missing, missing, missing)
     end

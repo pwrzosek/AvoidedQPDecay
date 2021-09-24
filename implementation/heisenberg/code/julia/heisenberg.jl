@@ -9,8 +9,8 @@ using JSON
 `struct System` immutable structure for system input parameters:
 # Fields
 *   `size::Int64`: number of lattice sites
-*   `momentum::Int64`: index in range `1:size` indicating which momentum sector should be calculated. Range `1:size` corresponds to momenta `k` in `0:2π/size:(2π - 2π/size)`.
-*   `magnetization::Int64`: index in range `1:(size + 1)` indicating which magnetization sector should be calculated. Range `1:(size + 1)` corresponds to magnetization in `-size/2:size/2`.
+*   `momentum::Int64`: index indicating which momentum sector should be calculated. Index `momentum` corresponds to momentum `k = 2π * momentum / size`.
+*   `magnetization::Int64`: index in range `0:floor(size/2)` indicating which magnetization sector should be calculated. Magnetization is taken without sign.
 *   `coupling::Float64`: value of the coupling constant J. For ferromagnet `coupling < 0`, while for antiferromagnet `coupling > 0`.
 *   `interaction::FLoat64`: parameter for scaling magnon-magnon interactions. For pure Heisenberg model `interaction = 1.0`.
 """
@@ -28,7 +28,7 @@ Basis = OrderedDict{Int64, Int64}
 """
 `mutable struct LinearCombination`: structure for storing result of operators action on states belonging to `basis::Basis`
 # Fields
-*   `state::Int64`: spin configuration in binary representation written as decimal number
+*   `state::Int64`: magnon configuration in binary representation written as decimal number
 *   `coefficient::Vector{Complex{Float64}}`: coeffcient multiplying state in the linear combination
 """
 mutable struct LinearCombination
@@ -81,20 +81,26 @@ end
 Return `Basis === Dict{Int64, Int64}` dictionary representing basis of given magnetization and momentum sector specified by `system.magnetization` and `system.momentum` respectively. Each index in `Basis` corresponds to state value, and each value in `Basis` corresponds to position in the basis.
 """
 function makeBasis(system::System)::Basis
-    if system.magnetization < 1 || system.magnetization > system.size + 1
-        error("Wrong magnetization sector in the input file!")
+    if isodd(system.size)
+        error("Requested 'system.size' is odd! Only even sizes are supported.")
+    end
+    if system.magnetization < 0 || 2 * system.magnetization > system.size
+        error("Wrong magnetization sector in the input file! Possible subspaces are denoted by integers from 0 to N/2.")
     end
 
-    ### get number of spins up
-    nSpinsUp::Int64 = system.magnetization - 1
+    ### get maximum number of spins pointing in the same direction (up or down)
+    nSpinsUp::Int64 = div(system.size, 2) - system.magnetization
     ### note: in the code `spin up === 1`, `spin down === 0`
 
-    ### calculate magnetic subspace size
+    ### calculate magnetic subspace size: initialize with binomial
     subspaceSize::Int64 = binomial(system.size, nSpinsUp)
 
     ### get first state (i.e. with lowest index in binary basis)
     ### note: `1 << n == 2^n`, but former is faster
     state::Int64 = nSpinsUp == 0 ? 0 : sum(n -> 1 << n, 0 : (nSpinsUp - 1))
+
+    ### set sublattice rotation mask
+    mask = sum(1 << k for k in 0:2:(system.size - 1))
 
     ### initialize the basis
     basis::Basis = Basis()
@@ -102,11 +108,14 @@ function makeBasis(system::System)::Basis
     index = 0
     ### iterate over states within given magnetization subspace
     for _ in 1:subspaceSize
+        ### perform sublattice rotation
+        magnonState = sublatticeRotation(state, mask)
+        ### now 1 represents magnon, 0 stands for empty site
 
         ### check if state belongs to requested momentum subspace
-        if hasMomentum(state, system)
+        if hasMomentum(magnonState, system)
             ### pick representative state
-            repState = getRepresentative(state, system)
+            repState = getRepresentative(magnonState, system)
 
             ### check if repState is already included
             if get(basis, repState, nothing) === nothing
@@ -115,11 +124,29 @@ function makeBasis(system::System)::Basis
             end
         end
 
-        ### get next state
+        ### get next state (in spin language)
         state = getNextState(state, system)
     end
 
+    ### Since our model for β ≂̸ 1 does not commute with
+    ### translation operator, we are going to use different
+    ### operator to further simplify the diagonalization.
+    ### This requires joining the subspaces with
+    ### the same absolute value of magnetization.
+    ### Due to simple facts of how magnon and spin representations
+    ### are connected to get full basis it is enough
+    ### to iterate over half of spin states
+
     return basis
+end
+
+"""
+    sublatticeRotation(state::Int64, mask::Int64) -> Int64
+
+Reverse bits according to mask.
+"""
+function sublatticeRotation(state::Int64, mask::Int64)::Int64
+    return xor(state, mask)
 end
 
 """
@@ -131,7 +158,6 @@ function hasMomentum(state::Int64, system::System)::Bool
     ### system.size must divide system.momentum times periodicity
     return rem(system.momentum * getPeriodicity(state, system), system.size) == 0
 end
-
 
 """
     getPeriodicity(state::Int64, system::System) -> Int64
@@ -274,18 +300,6 @@ Cyclic bit shift for calculationg bit translations with periodic boundary condit
 @inline bitmov(s::Int, l::Int, f::Bool = false; hb::Int = 1 << (l - 1), hv::Int = (1 << l) - 1) = f ? 2s - div(s, hb) * hv : div(s, 2) + rem(s, 2) * hb
 
 """
-    sublatticeRotation(state::Int64, system::System) -> Int64
-
-Reverse every second bit starting with lowest bit. Example:
-`sublatticeRotation(1, system) = 0` where `system.size == 1` (or `2`)
-`sublatticeRotation(6, system) = 3` where `system.size == 3` (or `4`)
-"""
-function sublatticeRotation(state::Int64, system::System)::Int64
-    mask = sum(1 << k for k in 0:2:(system.size - 1))
-    return xor(state, mask)
-end
-
-"""
     act(operator::Function, state::Int64, basis::Basis, system::System) -> LinearCombination
 
 Apply `operator` to `state` belonging to `basis` and returns `LinearCombination  === Dict{Int64, Complex{Float64}}` representing states with their coefficients.
@@ -311,9 +325,6 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
         ### calculate state periodicity
         periodicity = getPeriodicity(state, system)
 
-        ### apply sublattice rotation (for AFM case)
-        rotatedState = sublatticeRotation(state, system)
-
         ### loop over lattice sites
         for i in 1:system.size
             j = mod1(i + 1, system.size)
@@ -323,9 +334,13 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
 
             ## work out off-diagonal coeffcients
             iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
-            if iBit != jBit
-                ### if two neighbouring spins are different then flip those spins
+            if iBit == jBit
+                ### if two neighbouring spins are the same then flip those spins
                 newState = xor(state, iValue + jValue)
+                ### remember we applied the sublattice rotation creating the basis
+                ### this is why we flip spins when they are the same
+                ### it corresponds to creating pair of magnons in two nearest
+                ### empty sites or annihilating pair of neighboring magnons
 
                 ### get info about state after spin flip
                 hasMomentum, repState, repPeriodicity, distance = getStateInfo(newState, system)
@@ -345,13 +360,9 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
             end
 
             ## work out diagonal coefficient
-            if system.coupling > 0.0 # AFM case
-                ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
-                iBit, jBit = div(rotatedState & iValue, iValue), div(rotatedState & jValue, jValue)
-                result.coefficient[1] -= 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
-            else # FM case
-                result.coefficient[1] += 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
-            end
+            ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
+            iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
+            result.coefficient[1] -= 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
         end
 
         ### multiply the result by coupling constant
@@ -365,20 +376,8 @@ end
 """
     makeModel(basis::Basis, system::System) -> Model
 
-Calculate dense matrix of the `model` Hamiltonian. Returns `Model === Array{Complex{Float64},2}`.
+Calculate sparse matrix of the `Model` Hamiltonian. Returns `Model === Array{Complex{Float64},2}`.
 """
-# function makeModel(basis::Basis, system::System)::Model
-#     subspaceSize = length(basis)
-#     linearCombinationLength = system.size + 1
-#     result = spzeros(Complex{Float64}, subspaceSize, subspaceSize)
-#     for (state, index) in basis
-#         linearCombination::LinearCombination = act(hamiltonian, state, basis, system)
-#         for it in 1:linearCombinationLength
-#             result[basis[linearCombination.state[it]], index] += linearCombination.coefficient[it]
-#         end
-#     end
-#     return result
-# end
 function makeModel(basis::Basis, system::System)::Model
     subspaceSize = length(basis)
     linearCombinationLength = system.size + 1
@@ -393,7 +392,7 @@ function makeModel(basis::Basis, system::System)::Model
             V[(index - 1) * linearCombinationLength + it] = linearCombination.coefficient[it]
         end
     end
-    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +); trim = false)
+    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +))
 end
 
 """
@@ -409,22 +408,22 @@ function factorize(model::Model; howmany = 1, which = :SR)
     end
 end
 
-"""
-    saveResult(factorization)
-
-Take output of the `factorize(model::Model)` and write file with convergance info, norm of ritz resudual for smallest eigenvalue, smallest eigenvalue and its corresponding eigenvector.
-"""
-function saveResult(factorization)
-    vals, vecs, info = factorization
-    file = open("result.txt", "w")
-    write(file, string("Converged:", "\n", info.converged, "\n\n"))
-    write(file, string("Norm of Residual:", "\n", info.normres[1], "\n\n"))
-    write(file, string("Eigenvalue:", "\n", vals[1], "\n\n"))
-    write(file, string("Eigenvector:", "\n"))
-    for coeff in vecs[1]
-        write(file, string(coeff, "\n"))
-    end
-    close(file)
-end
-
+# """
+#     saveResult(factorization)
+#
+# Take output of the `factorize(model::Model)` and write file with convergance info, norm of ritz resudual for smallest eigenvalue, smallest eigenvalue and its corresponding eigenvector.
+# """
+# function saveResult(factorization)
+#     vals, vecs, info = factorization
+#     file = open("result.txt", "w")
+#     write(file, string("Converged:", "\n", info.converged, "\n\n"))
+#     write(file, string("Norm of Residual:", "\n", info.normres[1], "\n\n"))
+#     write(file, string("Eigenvalue:", "\n", vals[1], "\n\n"))
+#     write(file, string("Eigenvector:", "\n"))
+#     for coeff in vecs[1]
+#         write(file, string(coeff, "\n"))
+#     end
+#     close(file)
+# end
+#
 end

@@ -23,7 +23,7 @@ struct DOS
     coupling::Float64
     hopping::Float64
     momentum::Vector{Float64}
-    energy::Vector{Float64}
+    # energy::Vector{Float64}
     spectrum::Array{Float64, 2}
 end
 
@@ -40,6 +40,8 @@ function run_d(parameters::Parameters)
     β = parameters.β
     J = parameters.J
     t = parameters.t
+
+    howmany = 20
 
     iDelta = 0.02im
     ωRange = collect(-3:0.001:7)
@@ -64,8 +66,10 @@ function run_d(parameters::Parameters)
 
     println("\n", info)
 
-    ### Spectral Function
-    dos = Array{Float64, 2}(undef, length(ωRange), hSystem.size + 1)
+
+    ### DOS
+    tJEigenvalues = Array{Float64, 2}(undef, howmany, hSystem.size + 1)
+    # dos = Array{Float64, 2}(undef, length(ωRange), hSystem.size + 1)
     for k in 0:hSystem.size
         println("Evaluating k = ", k, " in 0:", hSystem.size)
         p = mod(k + q, hSystem.size)
@@ -79,17 +83,18 @@ function run_d(parameters::Parameters)
             "hopping constant" => t
         )
 
-        @time tJSystem, tJBasis, tJModel, tJFactorization = Main.tJmodel.run(input)
+        @time tJSystem, tJBasis, tJModel, tJFactorization = Main.tJmodel.run(input, howmany = howmany)
 
-        tJEigenvalues, _, _ = tJFactorization
+        vals, _, _ = tJFactorization
+        tJEigenvalues[:, k + 1] = vals[1:howmany] .- GSE
 
         ### lanczos method for spectral function
-        @time dos[:, k + 1] .= Main.Dos.run(ωRange .+ GSE, iDelta, tJEigenvalues)
+        # @time dos[:, k + 1] .= Main.Dos.run(ωRange .+ GSE, iDelta, tJEigenvalues[1:10])
 
         println()
     end
 
-    return DOS(n, β, J, t, kRange, ωRange, dos)
+    return DOS(n, β, J, t, kRange, tJEigenvalues) #DOS(n, β, J, t, kRange, ωRange, dos)
 end
 
 function saveData(data::Vector{DOS})
@@ -102,7 +107,7 @@ function saveData(data::Vector{DOS})
             "coupling" => data[it].coupling,
             "hopping" => data[it].hopping,
             "momentum" => data[it].momentum,
-            "energy" => data[it].energy,
+            # "energy" => data[it].energy,
             "spectrum" => data[it].spectrum
         )
     end
@@ -119,8 +124,8 @@ end
 ### System Parameters
 t = 1.0
 J = 0.4
-nRange = [n for n in 8:2:8]
-βRange = [-1.0, 0.0, 1.0]
+nRange = [n for n in 16:2:16]
+βRange = [1.0]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

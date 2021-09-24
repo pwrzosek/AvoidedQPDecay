@@ -392,7 +392,7 @@ function makeModel(basis::Basis, system::System)::Model
             V[(index - 1) * linearCombinationLength + it] = linearCombination.coefficient[it]
         end
     end
-    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +); trim = false)
+    return dropzeros!(sparse(I, J, V, subspaceSize, subspaceSize, +))
 end
 
 """
