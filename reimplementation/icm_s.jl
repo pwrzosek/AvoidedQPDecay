@@ -175,9 +175,9 @@ end
 
 ### System Parameters
 t = 1.0
-J = 0.001
+J = 0.4
 nRange = [n for n in 16:2:16]
-βRange = [1.0]
+βRange = [Β for Β in 1.0:-0.1:0.0]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

@@ -92,9 +92,9 @@ function run_z(parameters::Parameters)
         ΔE = vals[3] - vals[1]
     end
 
-    iDelta = 0.05im
-    ωRange = collect(-3:0.005:7)
-    @time spectrum = [0] #Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
+    iDelta = 0.02im
+    ωRange = collect(-3:0.001:7)
+    @time spectrum = Main.SpectralFunction.run(ωRange .+ GSE, iDelta, initialState, tJModel)
 
     return (QP(pole, residue, ΔE, n, k, β, J, t), ωRange, spectrum, tJGSV)
 end
@@ -221,9 +221,9 @@ function saveData(data::Vector{Tuple{QP, Vector{Float64}, Vector{Float64}, Vecto
     JSON.print(file, qpData, 1)
     close(file)
 
-#    file = open(string("./data/s", tail, ".json"), "w")
-#    JSON.print(file, sData, 1)
-#    close(file)
+   file = open(string("./data/s", tail, ".json"), "w")
+   JSON.print(file, sData, 1)
+   close(file)
 
     if doOverlaps
         file = open(string("./data/gs", tail, ".json"), "w")
@@ -237,7 +237,7 @@ end
 t = 1.0
 J = 0.4
 nRange = [n for n in 16:2:16]
-βRange = [x for x in 0.0:1.0:1.0]
+βRange = [x for x in 0.0:0.1:1.0]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

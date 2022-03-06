@@ -7,7 +7,7 @@ using StaticArrays
 using DelimitedFiles
 
 g_showMessages = true
-g_showProgressBar = false
+g_showProgressBar = true
 
 g_isParallel = false
 

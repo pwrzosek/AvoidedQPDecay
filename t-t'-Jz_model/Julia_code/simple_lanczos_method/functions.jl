@@ -534,7 +534,7 @@ function draw(case = 0, kPath = g_kPath)
         display(Plots.plot(W, Y, framestyle = :box, label = string("t' = ", g_tPrime, " t", "  &  J = ", g_j, " t"), dpi = 600)) #, ylim = (-0.02, 0.84)))  #   @  k = , g_kNames[findall(x->x==kPath, g_kPath)[1][2]] # , ylim = (0, 1)
     else
         if case == 0
-            display(Plots.heatmap(L, W, Y, colorbar = true, xticks = (L, g_kNames), xrotation = 90, bottom_margin = 64px, xlabel = "k", ylabel = "w / t", title = "A(w)", dpi = 600))
+            display(Plots.heatmap(L, W, Y, colorbar = true, c = cgrad(:hot, rev=true), xticks = (L, g_kNames), xrotation = 90, bottom_margin = 64px, xlabel = "k", ylabel = "w / t", title = "A(w)", dpi = 600))
         else # fix it please!
             display(Plots.contour(L, W, Y, fill = true, levels = 1000, clim = (0, 1), colorbar = false))
         end

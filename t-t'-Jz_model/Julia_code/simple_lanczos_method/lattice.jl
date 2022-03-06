@@ -132,12 +132,12 @@ g_brillouin = [
 ] # have to be divided by corresponding units
 
 # only if all k needed
-g_kPath = [
-  k for k in 1 : length(g_brillouin)
-]
-g_kNames = [
-  string(round.(g_brillouin[k] ./ pi, digits = 2), " Pi") for k in g_kPath
-]
+# g_kPath = [
+#   k for k in 1 : length(g_brillouin)
+# ]
+# g_kNames = [
+#   string(round.(g_brillouin[k] ./ pi, digits = 2), " Pi") for k in g_kPath
+# ]
 nothing
 
 # Comment on XY and AB coordinates :

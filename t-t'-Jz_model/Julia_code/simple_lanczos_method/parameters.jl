@@ -1,12 +1,12 @@
-g_latticeType = 4
+g_latticeType = 1
 
 g_t = 1.
-g_j = g_t * 0.4
+g_j = g_t * 0.1
 g_tPrime = g_t * 0.
 
-g_iDelta = 0.05 * im
+g_iDelta = 0.02 * im
 
-g_maxKrylovSpaceDimension = 200
+g_maxKrylovSpaceDimension = 400
 
 if length(ARGS) > 0
     for (i, arg) in enumerate(ARGS)
