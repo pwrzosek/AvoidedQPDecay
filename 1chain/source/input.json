@@ -1,0 +1,11 @@
+{
+  "system size" : 8,
+  "magnetization sector" : 1,
+  "momentum sector" : 4,
+  "coupling constant" : 0.4,
+  "magnon fluctuations" : 1.0,
+  "magnon interaction" : 1.0,
+  "proximity interaction" : 1.0,
+  "hopping constant" : 1.0,
+  "solver type" : 1
+}

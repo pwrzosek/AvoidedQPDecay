@@ -1,0 +1,17 @@
+Dear Dr. Hall,
+
+Thank you very much for your kind email that was sent to us in the end of March. We apologise for such a late reply. In order to properly address the `main'  remark from the Referee, we have decided to perform several additional studies and calculations---which have taken us a long time. However, we believe that the added calculations and results (see below) have not only fully answered the Referee's questions but  have made the paper even more relevant and of broader interest to the wide audience of Physical Review Letters.
+
+The main result that was communicated by us in the former version of the paper shows the origin of the collapse of the spin polaron description of a hole in the {\it strictly-1D} Heisenberg antiferromagnet. Namely, this happens due to a critical value of the magnon-magnon interactions in this 1D system---such interactions kill the spin polaron quasiparticle and instead the (famous) spin-charge separation takes place.
+
+In the current version of the paper, we add another important result---which has far-reaching practical consequences. We show that: (i) we can map a realistic model with {\it finite} coupling between 1D chains, describing all known {\it quasi}-1D cuprates such as Sr$_2$CuO$_3$, SrCuO$_2$, KCuF$_3$, onto the 1D $t$--$J$ model with a {\it noncritical} value of the magnon-magnon interactions; (ii) as a consequence of (i) and the results mentioned above, the spin polaron is the proper (and exact) description of the hole motion in quasi-1D cuprates. Altogether this means that all ARPES experiments on such compounds [cf. Nat. Phys. {\bf 2}, 397] can be easily (and exactly) explained using the spin polaron picture. On the other hand, the spin-charge separation picture is only an approximate description of the physics of these {\it quasi}-1D compounds.
+
+Besides improving our understanding of the 1D antiferromagnets and {\it quasi}-1D cuprates, the obtained results are important for further studies of the doped 2D cuprates (the `high-$T_c$' problem). In particular, the confidence gained in using the spin polaron and (effectively noninteracting) magnons in {\it quasi}-1D cuprates, make us believe that also the doped 2D cuprates without long-range magnetic order can be described using the same formalism. This, {\it inter alia}, may make the persistence of (para)magnons in doped cuprates far less striking.
+
+We believe that the current version of the paper provides entirely novel and far-reaching results, which completely satisfy the strict acceptance criteria of Physical Review Letters.
+
+Sincerely yours,
+
+Piotr Wrzosek
+
+/on behalf of all authors/

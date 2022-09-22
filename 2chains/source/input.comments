@@ -1,0 +1,18 @@
+{
+  "system size" : positive (even) integer, length of the chain (chains are of the same size)
+  "magnetization sector" : positive odd integer == abs(spins up - spins down)
+  "momentum sector" : integer, 0:(system size - 1)
+  "coupling constant" : float, coupling along the chains
+  "primary coupling type" : 0 or 1 => Ising or Heisenberg (respectively) along chain with the hole
+  "secondary coupling type" : 0 or 1 => Ising or Heisenberg (respectively) along chain without the hole
+  "primary magnon interaction" : float, scales magnon-magnon interaction along chain with the hole
+  "secondary magnon interaction" : float, scales magnon-magnon interaction along chain without the hole
+  "primary proximity interaction" : float, scales hole-magnon interaction along chain with the hole
+  "interchain coupling" : float, coupling between the chains
+  "interchain coupling type" : 0 or 1 => Ising or Heisenberg (respectively) between the chains
+  "interchain magnon interaction" : float, scales magnon-magnon interaction between the chains
+  "interchain proximity interaction" : float, scales hole-magnon interaction between the chains
+  "hopping constant" : float, hopping of the hole (only along X direction - hole bound to the chain case)
+  "periodic along Y" : 0 or 1 => non-periodic or periodic (respectively) [periodicity along X is always ON]
+  "solver type" : 0 or 1 => Lanczos or Exact (respectively) [exact solver can only support small systems sizes up to ~8 sites in a chain]
+}

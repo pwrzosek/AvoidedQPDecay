@@ -131,7 +131,7 @@ g_brillouin = [
   r .* (2pi / g_unitA, 2pi / g_unitB) for r in g_bravais
 ] # have to be divided by corresponding units
 
-# only if all k needed
+# # only if all k needed
 # g_kPath = [
 #   k for k in 1 : length(g_brillouin)
 # ]

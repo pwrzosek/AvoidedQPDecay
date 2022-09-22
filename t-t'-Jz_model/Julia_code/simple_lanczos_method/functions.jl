@@ -223,7 +223,7 @@ function getSelfAdjacency(stateIndex)
             #holeHoleTerms = isHoleAtSiteI & isHoleAtSiteJ # assumptions: single hole
             magnonMagnonTerms = isMagnonAtSiteI & isMagnonAtSiteJ
             holeMagnonTerms = (isHoleAtSiteI & isMagnonAtSiteJ) + (isHoleAtSiteJ & isMagnonAtSiteI)
-            result += holeTerms + magnonTerms - 2 * magnonMagnonTerms - holeMagnonTerms #- holeHoleTerms # assumptions: single hole
+            result += holeTerms + magnonTerms #- 2 * magnonMagnonTerms - holeMagnonTerms #- holeHoleTerms # assumptions: single hole
         end
     end
     .25 * g_j * result # half from the Hamiltonian, second half because of a bond double counting

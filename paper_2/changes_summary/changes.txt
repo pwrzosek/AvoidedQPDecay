@@ -1,0 +1,222 @@
+**********************************************************
+Summary of changes
+**********************************************************
+
+(1) We modify last sentences of the abstract to accommodate for a new content of the paper and to clearify our standpoint on the relevance of our findings for the quasi-1D cuprates. The new abstract reads:
+
+"The stability of the spin polaron quasiparticle, well established in studies of a single hole in the 2D antiferromagnets, is investigated in the 1D antiferromagnets using a $t$--$J$ model. We  perform an exact slave fermion transformation to the holon-magnon basis, and  diagonalize numerically the resulting model in the presence of a single hole. We prove that the spin polaron is stable for any strength of the magnon-magnon interactions {\it except} for the unique value of the SU(2)-symmetric 1D $t$--$J$ model. Fine-tuning to this unique value is extremely unlikely to occur in {\it quasi}-1D antiferromagnets, therefore the spin polaron is the stable quasiparticle of real 1D materials. Our results lead to a new interpretation of the ARPES spectra of {\it quasi}-1D antiferromagnets in the spin polaron language."
+
+(2) In third paragraph of the introduction we remove unnecessary discussion of excited states:
+
+"Moreover, we find that the {\it excited states} of the 1D  antiferromagnet with a single hole are only very weakly affected by changing the strength of the magnon-magnon attraction, {\it i.e.} they do not provide much insight on whether there is a stable spin polaron."
+
+Instead, we report here the importance of our finding for the interpretation of ARPES spectra of quasi-1D cuprates in spin polaron language:
+
+"In particular, we show that the staggered magnetic field present in {\it quasi}-1D antiferromagnets of real materials~\cite{Kojima1997, Matsuda1997, Lake2005} disrupts this fine balance between the on-site magnon energy and the magnon-magnon interaction of the 1D $t$--$J$ model. This makes the spin polaron quasiparticle stable in the {\it quasi}-1D cuprates and leads to the interpretation of the ARPES spectra~\cite{Sobota2021} of {\it quasi}-1D cuprates~\cite{Kim96, Kim1997, Fujisawa1999, Koitzsch2006, Kim06} in the spin polaron language."
+
+(3) We include additional references to previous works on spin polaron and spin-charge separation in the third paragraph of the introduction.
+
+(4) To not repeat ourselves, we shorten the last sentence of the introduction:
+
+"This has important consequences for the interpretation of cold atom experiments~\cite{Bohrdt2021, Koepsell2021} or angle resolved photoemission spectroscopy (ARPES) spectra~\cite{Sobota2021} of quasi-1D antiferromagnets~\cite{Kim96, Kim06}, as discussed in our conclusions."
+
+which now reads:
+
+"The obtained results have important consequences reaching beyond condensed matter, {\it inter alia} in the interpretation of cold atom experiments~\cite{Bohrdt2021, Koepsell2021}."
+
+
+(5) As pointed by the Referee, Fig. 3. was missing dashed lines mentioned in the caption of the figure. We redraw the figure including the missing lines. In the same time we trim the figure by excluding bottom panel with redundant analysis of the n-th moments of the spectral function. Accordingly, we update the caption of the figure. It now reads:
+
+"Properties of the excited state of the 1D $t$--$J$ model with a single hole as probed by the spectral function $A(k,\omega)$: (a) with the magnon-magnon interactions correctly included [$\lambda=1$ in \eqref{eq:model}]; (b) without the magnon-magnon interactions [$\lambda=0$ in \eqref{eq:model}]. The dashed (dotted) lines in (a-b) show the holon (spinon) dispersion relations respectively, as obtained from the spin-charge separation Ansatz~\cite{Ede97, Kim97}. The highest intensity peak at lowest energy in (b) is the spin polaron quasiparticle peak. Calculation performed on the \L~sites long periodic chain using exact diagonalization and with $J=0.4t$."
+
+(6) In the section "Results: excited states" we remove the following last sentence of the second paragraph:
+
+"Below, we give an alternative explanation by comparing it to the spin polaron case." 
+
+(7) We are more precise when refering to the features visible on the Fig. 3. We change "high momenta" to "momenta $k> \pi/2$" and "apart from the dispersive low-energy feature" to "{\it apart} from the dispersive low-energy quasiparticle feature particularly pronounced for $k> \pi/2$" in the paragraphs 3 and 4 of section "Results: excited states".
+
+(8) As pointed by the Referee, to avoid reader's confusion towards which point we gravitate when comparing spectral functions with and witout magnon interactions we remove the following discussion referring to no longer present part of the Fig. 3:
+
+"To confirm this notion we calculate the first and second moments of the spectral function, see Fig.~\ref{fig:spectra}(c-d), and conclude that the functional forms guiding the behavior of both moments are qualitatively the same for $\lambda= 1$ and $\lambda =0"
+
+(9) To account for comments (iii) and (vi) by the Referee we restructure last paragraph of section "Results: excited states". We change
+
+"The similarity between the spectra with and without magnon-magnon interactions enable us to understand the features appearing at $\omega / t \propto t |\cos k | $ in the spectral function for both $\lambda =1 $ and $\lambda = 0$, which, in the spin-charge separation picture, would be associated with the `free holons' (see~\onlinecite{Ede97, Kim97} and dashed lines of Fig. 3(a-b)). In the magnon-holon language, such features can be already understood in the Born approximation, which gives the dominant dispersion that is proportional to $t^2 |\cos k|$, as it is related to the holon propagating in a polaronic way by exciting a single magnon at a vertex $t |\cos k | $."
+
+to
+
+"These results enable us to give an alternative, albeit approximate, understanding of the dominant features appearing at $\omega \propto t |\cos k |$ in the spectrum at $\lambda=1$. These dispersions are well accounted for in the spin-charge separation picture as the `free' holons, cf. ~\cite{Ede97, Kim97} and dashed lines of Fig. 3(a-b). Here, based on the similarity between $\lambda =1 $ and $\lambda = 0$ spectra, we can approximately interpret the two dominant spectral features as being due to a holon propagating in a polaronic way by exciting a single magnon (Born approximation) at a vertex $t |\cos k | $."
+
+(10) To accout for comment (iv) be the Referee, in first paragraph of section "Interpretation \& critical magnon interactions" we explicitely point out when SU(2) symmetry is broken in our investigations:
+
+"[the SU(2) symmetry is broken in the model once $\lambda \neq 1$ in \eqref{eq:model}, see \cite{SM}]".
+
+(11) We reformulate last sentence of first paragraph in section "Interpretation \& critical magnon interactions":
+
+"While we have verified this key result numerically [Fig.~\ref{fig:cn}(a)], it is actually more instructive to give a physical argument which explains it, and also provides an intuitive understanding of all the results presented so far."
+
+now reads:
+
+"While this result can be verified using the observables used above, it is actually more instructive now to use a different observable [Fig.~\ref{fig:cn}(a-c), for it provides a more intuitive and simpler understanding of the results that follow."
+
+(12) We redraw Fig. 4. To address Referee's comment (ii) we include result for c_n when \lambda = 0.99. To include discussion on the relevance of the paper for real material and interpretation of ARPES results on quasi-1D cuprates we replace repeating information of c_n for \lambda = 1 with new spectral function of a single hole doped to t-J chain in presence of staggered magentic field. 
+
+Accordingly, we update the caption of Fig. 4. It now reads:
+
+"Properties of 1D $t$--$J$ model with a single hole and with: (a) {\it modified} strength of the magnon-magnon interactions [$\lambda$ in \eqref{eq:model}]; (b, d) {\it added} staggered magnetic field arising due to the coupling [$J_\perp / J$ in Eq. (1) in~\cite{SM}] to neighboring chains in a quasi-1D geometry, cf.~text and~\cite{SM}. Panels (a-b) show probabilities $c_n$ of finding a state with $n$ magnons in a chain attached to the hole on one of its sides in the ground state of the respective model; panel (c) shows a pictorial view of a state with $n=4$ magnons attached to the left side of the hole; panel (d) shows the spectral function $A(k,\omega)$ calculated for the 1D $t$--$J$ model with added staggered magnetic field $J_\perp = 0.1J$. All data obtained using exact diagonalization on the \L~sites periodic chain using $J=0.4t$."
+
+(13) In last paragraph of section "Interpretation \& critical magnon interactions" we include reference to new data presented in Fig. 4 in:
+
+"[cf. Fig.~\ref{fig:cn}(a), {\it inter alia} note the distinct behavior for $\lambda =0.99$ and $\lambda =1 $]."
+
+(14) To address comment (i) by the Referee, we add a new section "Relevance for real materials" before section "Conclusions". The new section reads:
+
+"The existence of just one critical value of the magnon-magnon interactions [$\lambda =1$ in \eqref{eq:model}] stabilising the spin-charge separation solution leads to an important consequence for real materials. Due to the nature of atomic wavefunctions and crystal structures, the best-known `1D'
+antiferromagnetic materials (cf. Sr$_2$CuO$_3$, SrCuO$_2$, or KCuF$_3$) are solely {\it quasi}-1D~\cite{Kojima1997, Matsuda1997, Lake2005}. A precise model of these materials should include a small but finite staggered magnetic field $J_\perp$ [see the Supplementary Material~\cite{SM} for details], which originates in the magnetic coupling between the spins on neighboring chains~\cite{Schulz1996, Essler1997, Sandvik1999}.
+Importantly, the single-hole dynamics in a 1D $t$--$J$ model with staggered fields is qualitatively the same (and quantitatively very similar, as discussed in the Supplementary Material~\cite{SM}) as
+that in a 1D $t$--$J$ model with magnon-magnon interactions (and XXZ anisotropy). Here, the strength of the staggered field can be mapped to the strength of the magnon-magnon interactions.
+The reason for this is that the staggered field disrupts the above-discussed fine balance in the strict 1D $t$--$J$ model, between the on-site magnon energy and the magnon-magnon attraction. 
+In this case, the mobile hole in the quasi-1D cuprates experiences the string potential and forms 
+the spin polaron, cf.~Fig~\ref{fig:cn}(b). Therefore, the sensitivity to magnon interactions indicates that spin-charge separation is strictly speaking never realised in real materials.
+
+One may wonder how to reconcile the above finding with the fact that ARPES experiments on quasi-1D materials have reported 
+spin-charge separation~\cite{Kim96, Kim1997, Fujisawa1999, Koitzsch2006, Kim06}. That statement is based on the experimentally measured spectrum being similar 
+to the one obtained for the 1D $t$--$J$ model, 
+cf. Fig.~\ref{fig:spectra}(a) above \cite{Kim96, Kim1997, Fujisawa1999, Koitzsch2006, Kim06}. The salient fact is that the spectrum obtained for the 1D $t$--$J$
+model with a realistic value of the staggered field $0<J_\perp \lesssim 0.1J$~\cite{SM}, cf.~Fig~\ref{fig:cn}(d), is {\it almost indistinguishable}
+from the one of Fig.~\ref{fig:spectra}(a). 
+In fact, for the available finite size calculations with the numerical broadening $\delta = 0.05 t$, 
+the only visible difference between the two spectra lies in an extremely faint quasiparticle feature present for $k>\pi/2$. The latter
+feature cannot be observed with the current ARPES resolution, especially at high temperature and with a typically
+weaker signal for $k>\pi/2$ in ARPES. Thus, we conclude that ARPES on {\it quasi}-1D
+cuprates is correctly-explained using the spin polaron picture, with its dominant cosine-like features interpreted
+as the holon exciting a magnon at a vertex $\propto t |\cos k|$ (see above)."
+
+(15) We rewrite section "Conclusions" to account for new content of the paper and shorten it to more clearly express the message of the paper. Now this section reads:
+
+"In this work we discussed the extent to which the concept of the spin polaron, well-known from the studies of a single hole in the 2D antiferromagnets~\cite{Shr88}, can be applied to the single hole problem in the 1D antiferromagnets. We find that {\it only} in the 1D SU(2) symmetric model the spin polaron is unstable to spin-charge separation due to the critical value of the magnon-magnon interactions. In contrast, the spin polaron quasiparticle is stable in the real {\it quasi}-1D antiferromagnets such as SrCuO$_2$, Sr$_2$CuO$_3$ or KCuF$_3$. The surprising robustness of the spin polaron leaves us with a question whether this simple picture can be used to study also the higher-dimensional highly-doped antiferromagnets beyond the collapse of the long-range order."
+
+(16) To further address comment (i) by the Referee, we provide supplementary materials connecting tunning parameter \lambda for magnon interactions with physics of quasi-1D cuprates. There we explicitely show how an effective staggered field comming from small inter-chain coupling present in cuprate materials translates to reduction of magnon-mgagnon interactions. The content of supplementary material reads:
+
+"\section{The $t$--$J$ model for quasi-1D cuprates:\\ tuneable staggered magnetic field vs. tuneable magnon-magnon interaction}
+
+In order to construct the $t$--$J$ model for quasi-1D cuprates, we make the following assumptions:
+
+{\it First}, to get qualitative insight into the hole motion, we note that hopping between the chains can 
+be neglected~\cite{Gru18b} and that the longer-range hopping is
+very small for quasi-1D cuprates~\cite{Li2021}. Besides, the recently postulated strong coupling to phonons in 1D cuprates~\cite{Chen2021}, not included here, would only further 
+disrupt the (mentioned below and in the main text of the paper) fine balance between the magnon-magnon interactions and the magnon on-site energy.
+
+{\it Second}, the remaining Heisenberg exchange interaction between the chains 
+can be represented as the staggered magnetic field (which, due can be obtained from the spin exchange between the chains~\cite{Schulz1996}, hence is called $J_\perp$ below and  in the main text of the paper):
+\begin{equation}
+	H_{J_\perp} = \frac{J_\perp}{2} \sum_{\mean{i,j}} \left[(-1)^i S^z_i + (-1)^j S^z_j\right].
+	\label{eq:stag}
+\end{equation}
+The above term follows by assuming the onset of the long-range magnetic order at low temperatures, 
+the magnetic interactions between the chains can be treated on a mean-field level---which, irrespectively of the sign of the interchain coupling,
+yields a staggered magnetic field acting on the antiferromagnetic chain in which the hole moves~\cite{Schulz1996,
+Essler1997, Sandvik1999}. We note that, also at higher temperatures, i.e. when there is no long-range order and the staggered field 
+cannot be used to simulate the coupling between the chains, the (mentioned in the main text of the paper) 
+fine balance between the magnon-magnon interactions and their onsite energies will {\it also} be disrupted due to the 
+change of magnon on-site energies by the exchange interaction between the chains.
+Thus, all of the presented results, obtained below will qualitatively model the quasi-1D cuprates also at temperatures higher than 
+the Neel temperature. (We do not present such calculations, since they require exact diagonalisation 
+of a full 2D problem, which heavily suffers from finite size effects and is beyond the scope of this work.)
+Following \cite{Schulz1996} one can estimate the value of  $J_\perp$
+in various quasi-1D cuprates: e.g. for KCuF$_3$ we obtain $J_\perp \approx 0.06 J$ [hence the assumed in Fig. 4(d) of the main text value $J_\perp =0.1J$, being
+the upper bound of that estimate].
+
+Now let us investigate how the additional staggered field looks like in the polaronic description already used in the main text. In order to 
+do this we firstly show in detail the polaronic descritpion of the 1D $t$--$J$ model [i.e. how to for from Eq.~(1) to Eq.~(2) of the main text].
+To this end, we start with a rotation of spins in one of the system's sublattices. This results in
+%
+\begin{equation}
+	H_{\text{rot}} = -t\sum_{\mean{i,j}}\left(\tilde{c}_{i\sigma}^\dagger\tilde{c}_{j\bar{\sigma}} + H.c\right)
+	+ J\sum_{\mean{i,j}}\left[\frac{1}{2}\left(S_i^+S_j^+ + S_i^-S_j^-\right) - S_i^zS_j^z - \frac{1}{4}\tilde{n}_i\tilde{n}_j\right].
+\end{equation}
+%
+This allows for the introduction of holes and magnons according to the following transformations
+%
+\begin{equation}
+	\begin{aligned}
+	\tilde{c}_{i\uparrow}^\dag &= h_i, &\quad \tilde{c}_{i\uparrow} &= h_i^\dag (1 - a_i^\dag a_i), \\
+	\tilde{c}_{i\downarrow}^\dag &= h_i a_i^\dag, &\quad \tilde{c}_{i\downarrow} &= h_i^\dag a_i,
+	\end{aligned}
+\end{equation}
+%
+\begin{equation}
+	\begin{aligned}
+		S_i^+ &= h_i h_i^\dag (1 - a_i^\dag a_i)a_i, &\quad S_i^z &= \left(\frac{1}{2} - a_i^\dag a_i \right) h_i h_i^\dag, \\
+		S_i^- &= a_i^\dag (1 - a_i^\dag a_i) h_i h_i^\dag, &\quad \tilde{n}_i &= 1 - h_i^\dag h_i = h_i h_i^\dag,
+	\end{aligned}
+\end{equation}
+where $a_i^\dag$ are bosonic creation operation at site $i$ denoting magnons and $h_i^\dag$ are fermionic creation operators at site $i$ denoting holons.
+Here magnons can be understood as deviations from the state that has all the spins pointing up after the applied sublattice rotation. In the end, the 1D $t$--$J$ model (up to a shift by a constant energy) reads:
+%
+\begin{align}
+	\mathcal{H} &= \mathcal{H}_{t} + \mathcal{H}_{J},
+\end{align}
+%
+where,
+%	
+\begin{equation}
+	\begin{split}
+	\mathcal{H}_{t} &= t \sum_{\mean{i,j}} \left\{h_i^\dag h_j \left[ a_i + a_j^\dag (1 -  a_i^\dag a_i) \right] + h_j^\dag h_i \left[ a_j + a_i^\dag (1 -  a_j^\dag a_j) \right]\right\},
+	\end{split}
+	\label{eq:ht}
+\end{equation}
+%
+\begin{equation}
+	\begin{aligned}
+	\mathcal{H}_{J} &= \frac{J}{2}\sum_{\mean{i,j}} h_i h_i^\dag \left[(1 - a_i^\dag a_i)(1 - a_j^\dag a_j)a_i a_j + a_i^\dag a_j^\dag (1 - a_i^\dag a_i)(1 - a_j^\dag a_j) \right] h_j h_j^\dag \\
+	&+ \frac{J}{2} \sum_{\mean{i,j}} h_i h_i^\dag \left(a_i^\dag a_i + a_j^\dag a_j - 2 a_i^\dag a_i a_j^\dag a_j - 1\right) h_j h_j^\dag.
+	\end{aligned}
+	\label{eq:hj}
+\end{equation}
+
+Now let us investigate the staggered magnetic field term given by Eq.~\eqref{eq:stag} above.
+%
+Performing the same set of transformations we obtain (up to a constant energy shift),
+%
+\begin{equation}
+	\mathcal{H}_{J_\perp} = \frac{J_\perp}{2} \sum_{\mean{i,j}} 
+	\left(a_i^\dag a_i h_i h_i^\dag + a_j^\dag a_j h_j h_j^\dag \right) \approx \frac{J_\perp}{2} \sum_{\mean{i,j}} 
+	h_i h_i^\dag \left(a_i^\dag a_i + a_j^\dag a_j \right) h_j h_j^\dag.
+\end{equation}
+%
+The omitted terms on the right hand side of the approximation modify the magnetic field only around the hole and they are $\propto J_\perp \left( a_i^\dag a_i h_j h_j^\dag + a_j^\dag a_j h_i h_i^\dag \right)$. In the end, we obtain for the spin part of the Hamiltonian [$\mathcal{H}_t$ is not affected, i.e. given by Eq.~\eqref{eq:ht} above]
+%
+\begin{equation}
+	\begin{aligned}
+	\mathcal{H}_{J+J_\perp} &\equiv \mathcal{H}_{J} + \mathcal{H}_{J_\perp} \\
+	&\approx \frac{J}{2}\sum_{\mean{i,j}} h_i h_i^\dag \left[(1 - a_i^\dag a_i)(1 - a_j^\dag a_j)a_i a_j + a_i^\dag a_j^\dag (1 - a_i^\dag a_i)(1 - a_j^\dag a_j) \right] h_j h_j^\dag \\
+	&+ \frac{J}{2} \sum_{\mean{i,j}} h_i h_i^\dag \left[\left(1+\frac{J_\perp}{J}\right)\left(a_i^\dag a_i + a_j^\dag a_j\right) - 2 a_i^\dag a_i a_j^\dag a_j - 1\right] h_j h_j^\dag.
+	\end{aligned}
+\end{equation}
+%
+Let us introduce the XXZ anisotropy 
+\begin{align}
+\Delta = \frac{J_\perp}{J} 
+\end{align}
+and the  rescaled magnon-magnon interaction parameter 
+\begin{align}
+\lambda = \frac{1} {1+\Delta}.
+\end{align}
+Then, in the single hole limit, we can write
+%
+\begin{equation}
+	\begin{aligned}
+	\mathcal{H}_{J+J_\perp} 
+	&\approx \frac{J}{2}\sum_{\mean{i,j}} h_i h_i^\dag \left[(1 - a_i^\dag a_i)(1 - a_j^\dag a_j)a_i a_j + a_i^\dag a_j^\dag (1 - a_i^\dag a_i)(1 - a_j^\dag a_j) \right] h_j h_j^\dag  \\
+	&+ (1+\Delta) \frac{J}{2} \sum_{\mean{i,j}} h_i h_i^\dag \left(a_i^\dag a_i + a_j^\dag a_j - 2\lambda a_i^\dag a_i a_j^\dag a_j \right) h_j h_j^\dag.
+	\end{aligned}
+\end{equation}
+%
+Thus, once  $J_\perp \neq 0$ the final model is the $t$--$J$ model with the XXZ anisotropy $\Delta$ 
+{\it and} rescaled magnon-magnon interaction $\lambda$. In TABLE~\ref{tab:params}. 
+we present the values of $\lambda$, $\Delta$ calculated for the corresponding values of $J_\perp$ 
+used in calculations for Fig.~4(b) and 4(d) in the main text."
+
+
+(17) Throught the paper, we introduce minor adjustments to the style of few sentences. These changes do not influence the message nor the scientific content of this report but they aim solely to improve its readability.

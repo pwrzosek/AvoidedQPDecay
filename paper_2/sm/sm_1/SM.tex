@@ -1,0 +1,259 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps, onecolumn,
+%%pra,
+prl,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage[colorlinks=true, citecolor=red, linkcolor=blue, urlcolor=black]{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\usepackage{pgffor}
+
+\usepackage{tikz}
+\newcommand{\tikzcircle}[2][red,fill=red]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}%
+\newcommand{\site}{\tikzcircle[fill=none]{2pt}}
+\newcommand{\magnon}{\tikzcircle[fill=red]{2pt}}
+\newcommand{\hole}{\tikzcircle[fill=blue]{2pt}}
+
+\def\d{{\textit{d}}}
+\newcommand*{\field}[1]{\mathbb{#1}}%
+
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\mean}[1]{\langle#1\rangle}
+
+\newcommand{\Bra}[1]{\left\langle#1\left\rvert}
+\newcommand{\Ket}[1]{\right\lvert#1\right\rangle}
+
+\newcommand{\AFA}{\ket{\downarrow\uparrow\downarrow\uparrow\downarrow\uparrow\hdots}}
+\newcommand{\AFB}{\ket{\uparrow\downarrow\uparrow\downarrow\uparrow\downarrow\hdots}}
+
+\newcommand{\FMA}{\ket{\uparrow\uparrow\uparrow\uparrow\uparrow\uparrow\hdots}}
+\newcommand{\FMB}{\ket{\downarrow\downarrow\downarrow\downarrow\downarrow\downarrow\hdots}}
+
+\def\tj{{$t$--$J$}}
+\def\tjz{{$t$--$J^z$}}
+\def\tjlam{{$t$--$J$--$\lambda$}}
+\def\square{{$\mathbb{Z}^2$}}
+
+\begin{document}
+
+%\preprint{APS/433-SAW}
+
+\title{The fate of the spin polaron in the 1D antiferromagnet: \\ supplementary materials
+}
+
+\author{Piotr Wrzosek$^1$}
+\email{Piotr.Wrzosek@fuw.edu.pl}
+\author{Adam K\l{}osi\'nski$^1$}
+\author{Yao Wang$^2$}
+\author{Mona Berciu$^3$}
+\author{Cli\`o Efthimia Agrapidis$^1$}
+\author{Krzysztof Wohlfeld$^1$}
+ 
+\affiliation{%
+$^1$Institute of Theoretical Physics, Faculty of Physics, University of Warsaw, Pasteura 5, PL-02093 Warsaw, Poland
+}%
+
+\affiliation{%
+$^2$Department of Physics and Astronomy, Clemson University, Clemson, South Carolina 29631, USA
+}%
+
+\affiliation{%
+$^3$Dept. of Physics \& Astronomy, University of British Columbia, Vancouver, BC, Canada
+and Quantum Matter Institute, University of British Columbia, Vancouver, BC, Canada
+}%
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+			 
+\maketitle
+
+\section{$t$--$J$ model in the staggered field in the magnon-holon language}
+The $t$-$J$ model Hamiltonian reads,
+\begin{equation}
+	H = -t\sum_{\mean{i,j}}\left(\tilde{c}_{i\sigma}^\dagger\tilde{c}_{j\sigma} + H.c\right)
+	+ J\sum_{\mean{i,j}}\left[\frac{1}{2}\left(S_i^+S_j^- + S_i^-S_j^+\right) + S_i^zS_j^z - \frac{1}{4}\tilde{n}_i\tilde{n}_j\right],
+\end{equation}
+where $\tilde{c}_{i\sigma}^\dagger = c_{i\sigma}^\dagger(1-n_{i\bar{\sigma}})$ can create electrons only on unoccupied sites. Let us consider a $t$--$J$ chain sandwiched between two Ising chains. The energy of this system is described by the stated below coupled chains Hamiltonian,
+\begin{equation}
+	H_{cc} = H + H_\parallel + H_\perp,
+\end{equation}
+where $H$ stands for $t$--$J$ Hamiltonian with $J = J_\parallel$ and,
+\begin{equation}
+	H_\parallel = J_\parallel \sum_{\mean{i,j}} \left( S_{i+\hat{y}}^z S_{j+\hat{y}}^z + S_{i-\hat{y}}^zS_{j-\hat{y}}^z \right),
+\end{equation}
+\begin{equation}
+	H_\perp = \frac{J_\perp}{2} \sum_{\mean{i,j}} \left( S_{i}^z S_{i+\hat{y}}^z + S_{j}^z S_{j+\hat{y}}^z + S_{i}^z S_{i-\hat{y}}^z + S_{j}^z S_{j-\hat{y}}^z \right).
+\end{equation}
+Assuming that the presence of $t$--$J$ chain does not perturb the perfect Ising ordering in the ground state of $H_\parallel$ we obtain,
+\begin{align}
+	H_\perp 
+	&= \frac{J_\perp}{2} \sum_{\mean{i,j}} \left( S_{i}^z \mean{S_{i+\hat{y}}^z} + S_{j}^z \mean{S_{j+\hat{y}}^z} + S_{i}^z \mean{S_{i-\hat{y}}^z} + S_{j}^z \mean{S_{j-\hat{y}}^z} \right) \\
+	&= \frac{J_\perp}{2} \sum_{\mean{i,j}} \left[(-1)^i S_{i}^z + (-1)^j S_{j}^z \right].
+\end{align}
+In the end, the $t$--$J$ chain feels an effective staggered field $B = J_\perp$ comming from additional chains in its proximity. Moreover, the above is in the same way valid also when there are more Ising chains weakly coupled to one another.
+
+Now let investigate how does the additional staggered field pronounce itself when we consider $t$--$J$ model in polaronic description. In order to introduce holes and magnons we start with rotation of spins in one sublattice of the system. This results in
+\begin{equation}
+	H_{\text{rot}} = -t\sum_{\mean{i,j}}\left(\tilde{c}_{i\sigma}^\dagger\tilde{c}_{j\bar{\sigma}} + H.c\right)
+	+ J\sum_{\mean{i,j}}\left[\frac{1}{2}\left(S_i^+S_j^+ + S_i^-S_j^-\right) - S_i^zS_j^z - \frac{1}{4}\tilde{n}_i\tilde{n}_j\right].
+\end{equation}
+This allows for introduction of holes and magnons accoridng to the following transformations
+\begin{equation}
+	\begin{aligned}
+	\tilde{c}_{i\uparrow}^\dag &= h_i, &\quad \tilde{c}_{i\uparrow} &= h_i^\dag (1 - a_i^\dag a_i), \\
+	\tilde{c}_{i\downarrow}^\dag &= h_i a_i^\dag, &\quad \tilde{c}_{i\downarrow} &= h_i^\dag a_i,
+	\end{aligned}
+\end{equation}
+\begin{equation}
+	\begin{aligned}
+		S_i^+ &= h_i h_i^\dag (1 - a_i^\dag a_i)a_i, &\quad S_i^z &= \left(\frac{1}{2} - a_i^\dag a_i \right) h_i h_i^\dag, \\
+		S_i^- &= a_i^\dag (1 - a_i^\dag a_i) h_i h_i^\dag, &\quad \tilde{n}_i &= 1 - h_i^\dag h_i = h_i h_i^\dag.
+	\end{aligned}
+\end{equation}
+Here magnons can be understood as deviations from state that after the rotation has all the spins pointing up. In the end the model (up to the shift by a constant energy) reads,
+\begin{align}
+	\mathcal{H} &= \mathcal{H}_{t} + \mathcal{H}_{J},
+\end{align}
+	where,
+\begin{equation}
+	\begin{split}
+	\mathcal{H}_{t} &= t \sum_{\mean{i,j}} \left[h_i^\dag h_j \left( a_i + a_j^\dag (1 -  a_i^\dag a_i) \right) + h_j^\dag h_i \left( a_j + a_i^\dag (1 -  a_j^\dag a_j) \right)\right],
+	\end{split}
+	\label{eq:ht}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+	\mathcal{H}_{J} &= \frac{J}{2}\sum_{\mean{i,j}} h_i h_i^\dag \left[(1 - a_i^\dag a_i)(1 - a_j^\dag a_j)a_i a_j + a_i^\dag a_j^\dag (1 - a_i^\dag a_i)(1 - a_j^\dag a_j) \right] h_j h_j^\dag \\
+	&+ \frac{J}{2} \sum_{\mean{i,j}} h_i h_i^\dag \left[a_i^\dag a_i + a_j^\dag a_j - 2 a_i^\dag a_i a_j^\dag a_j - 1\right] h_j h_j^\dag.
+	\end{aligned}
+	\label{eq:hj}
+\end{equation}
+
+Now let us investigate a staggered magnetic field term,
+\begin{equation}
+	H_{B} = \frac{B}{2} \sum_{\mean{i,j}} \left[(-1)^i S^z_i + (-1)^j S^z_j\right].
+\end{equation}
+Performing the same set of transformations as to the Hamiltonian we obtain (up to the constant energy shift),
+\begin{equation}
+	\mathcal{H}_{B} = \frac{B}{2} \sum_{\mean{i,j}} 
+	\left[a_i^\dag a_i h_i h_i^\dag + a_j^\dag a_j h_j h_j^\dag \right] \approx \frac{B}{2} \sum_{\mean{i,j}} 
+	h_i h_i^\dag \left[a_i^\dag a_i + a_j^\dag a_j \right] h_j h_j^\dag,
+\end{equation}
+where ommited terms on the righthandside of the approximation sign are modifying the magnetic field only around the hole and they are equal to $\frac{B}{2} \left[ a_i^\dag a_i h_j h_j^\dag + a_j^\dag a_j h_i h_i^\dag \right]$. In the end we obtain,
+\begin{equation}
+	\begin{aligned}
+	\mathcal{H}_{J+B} &= \mathcal{H}_{J} + \mathcal{H}_{B} \\
+	&\approx \frac{J}{2}\sum_{\mean{i,j}} h_i h_i^\dag \left[(1 - a_i^\dag a_i)(1 - a_j^\dag a_j)a_i a_j + a_i^\dag a_j^\dag (1 - a_i^\dag a_i)(1 - a_j^\dag a_j) \right] h_j h_j^\dag \\
+	&+ \frac{J}{2} \sum_{\mean{i,j}} h_i h_i^\dag \left[\left(1+\frac{B}{J}\right)\left(a_i^\dag a_i + a_j^\dag a_j\right) - 2 a_i^\dag a_i a_j^\dag a_j - 1\right] h_j h_j^\dag.
+	\end{aligned}
+\end{equation}
+Let us introduce a new coupling constant $J_z = J + B$ and parameter $\lambda = J / J_z$. Then, in the limit of a single hole, we can write,
+\begin{equation}
+	\begin{aligned}
+	\mathcal{H}_{J+B} 
+	&\approx \frac{J_z \lambda}{2}\sum_{\mean{i,j}} h_i h_i^\dag \left[(1 - a_i^\dag a_i)(1 - a_j^\dag a_j)a_i a_j + a_i^\dag a_j^\dag (1 - a_i^\dag a_i)(1 - a_j^\dag a_j) \right] h_j h_j^\dag  \\
+	&+ \frac{J_z}{2} \sum_{\mean{i,j}} h_i h_i^\dag \left[a_i^\dag a_i + a_j^\dag a_j - 2\lambda a_i^\dag a_i a_j^\dag a_j \right] h_j h_j^\dag.
+	\end{aligned}
+\end{equation}
+For $\lambda \neq 1$ coupling constants in $xy$ plane and in $z$ direction are different. In the end the resulting model can be undestood as the $t$--$J$ model with XY anisotropy {\it and} rescaled magnon-magnon interaction.
+
+In the end, we can relate the parameters of copuled chains to the parameters of the $t$--$J$ model with rescaled magnon-magnon interactions and XY anisotropy,
+\begin{align}
+	J_z &= J + B = J_\parallel + J_\perp, \\
+	\lambda &= \frac{J}{J_z} = \frac{1}{1 + \frac{J_\perp}{J_\parallel}}.
+\end{align}
+In the table below we present values used in the calculations for the Fig.~4b of the main text.
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|| c | c || c | c ||} 
+	\hline
+	~~$J_\parallel$~~ & ~~$J_\perp$~~ & ~~$J_z$~~ & ~~$\lambda$~~ \\
+	\hline\hline
+	~~$0.4t$~~ & ~~$0.004t$~~ & ~~$0.404t$~~ & ~~$\frac{100}{101}$~~ \\  
+	\hline
+	$0.4t$ & $0.04t$ & $0.44t$ & $\frac{10}{11}$ \\ 
+	\hline
+	$0.4t$ & $0.2t$ & $0.6t$ & $\frac{2}{3}$ \\
+	\hline
+\end{tabular}
+\end{center}
+\caption{Table presenting various values of parameters equivalent in coupled chains problem and $t$--$J$ model with rescaled magnon-magnon interactions and XY anisotropy.}
+\end{table}
+
+\section{SU(2) symmetry breaking in $t$--$J$ model \\ with tuneable magnon-magnon interactions}
+
+We start by expressing the magnon-magnon interaction term in the `standard' (i.e. spin) language,
+\begin{equation}
+    a_i^\dag a_i a_j^\dag a_j = -S_i^z S_j^z + \frac{1}{4}\tilde{n}_i\tilde{n}_j - \frac{1}{2}\left(\xi_i^\mathcal{A} S_i^z \ + \xi_j^\mathcal{A} S_j^z \right)\tilde{n}_i\tilde{n}_j,
+\end{equation}
+where $\xi_i^\mathcal{A}$ equals $-1$ for $i\in\mathcal{A}$ and equals $1$ otherwise, with $\mathcal{A},\mathcal{B}$ denoting sublattices of the bipartite lattice. Thus, Hamiltonian (2) of the main text (i.e. the $t$--$J$ model with tuneable magnon-magnon interactions) reads,
+\begin{equation}
+        \begin{aligned}
+    	&H = -t\sum_{\mean{i,j}}\left(\tilde{c}_{i\sigma}^\dagger\tilde{c}_{j\sigma} + \text{H.c.}\right)
+	+ J\sum_{\mean{i,j}}\left\{S_i S_j - \frac{1}{4}\tilde{n}_i\tilde{n}_j 
+	+ \left(\lambda-1\right) \left[S_i^z S_j^z - \frac{1}{4}\tilde{n}_i\tilde{n}_j + \frac{1}{2}\left(\xi_i^\mathcal{A} S_i^z \ + \xi_j^\mathcal{A} S_j^z \right)\tilde{n}_i\tilde{n}_j\right] \right\}.
+	\end{aligned}
+	\label{eq:lambda_spin_model}
+\end{equation}
+In the above Hamiltonian the term
+\begin{equation}
+    \frac{1}{2}\left(\xi_i^\mathcal{A} S_i^z \ + \xi_j^\mathcal{A} S_j^z \right)\tilde{n}_i\tilde{n}_j,
+    \label{eq:staggered_term}
+\end{equation}
+can be understood as a staggered field acting on all spins although it is halved for the neighbors of the hole. This term contributes to the Hamiltonian once $\lambda \neq 1$ and explicitly breaks the SU(2) symmetry.  
+	
+\bibliographystyle{apsrev4-1}
+\bibliography{saw}
+
+\end{document}

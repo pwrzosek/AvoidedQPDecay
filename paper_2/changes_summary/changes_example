@@ -1,0 +1,127 @@
+**********************************************************
+Summary of changes
+**********************************************************
+
+(1) We redraw Fig. 1 to provide a better intuitive picture of the role of the loop and tangential paths. Accordingly, we modify the caption of Fig. 1 which now reads:
+
+"Cartoon picture of the motion of a hole (due to tunneling of electrons) in the ground state of the Ising antiferromagnet on a square lattice. Two antiferromagnetic sublattices are colored in light blue and gray; electrons may jump over blue and green bonds; red arrows depict spins with unsatisfied bonds and misaligned w.r.t the ground state as a result of the hole motion. Top panels: creation of one misaligned spin at each hole hop. Middle and bottom panels: a partial or full reconstruction of the antiferromagnetic order {\it either} by moving along a path tangential to itself (subfigures $4A\rightarrow 5A \rightarrow 6A \rightarrow 7A$; as discussed in this paper) {\it or} by going around a loop (panels $4B\rightarrow 5B \rightarrow 6B \rightarrow 7B$; as discussed by Trugman in~\onlinecite{Tru88})"
+
+
+(2) We provide a strict definition of the tangential path:
+
+"Formally, the tangential path is a path which includes at least one {\it pair} of distinct lattice sites. These lattice sites fulfill the following conditions: (i) They are nearest neighbors; (ii) They belong to the path along which the hole has moved (i.e. they have been visited by the hole); (iii) The hole has not moved along the bond connecting the two sites forming the pair."
+
+(The above definition is presented in Sec. I where we first mention it.)
+
+
+(3) We emphasize the relation between tangential paths and paths with loops
+
+(a) in the full model:
+
+"As a side note, we stress that a set of paths containing loops and the set of paths containing tangents are {\it not} disjoint, i.e. there can be a path which contains loops and has also tangential segments."
+
+(b) once we restrict ourselves to self-avoiding walks:
+
+"To this end we solve the model using a self-avoiding walks approximation, a semi-analytic approach which neglects all walks with loops but otherwise is exact, i.e. in particular it properly includes all tangential paths without loop segments. Crucially, despite overlooking all loop paths, we show that such an approximation reproduces surprisingly well the ED spectrum."
+
+(The above discusses is located in Sec. I right after the definition of the tangential path.)
+
+
+(4) We add a comment pointing out that the `satellite' bonds/interactions do not account for any new physical processes but are solely defined by the approximation we use:
+
+"We note that, `physically', i.e. from the point of Hamiltonian \eqref{eq:H} defined on a square lattice, there is no difference between the `regular' vs. the `satellite' bonds (i.e. the red / blue solid vs. dashed bonds of Fig.~\ref{fig:2}). The distinction between these two types of bonds is due to  the self-avoiding walks approximation and thus it is this approximation which defines the `satellite' bonds."
+
+(This discussed is added in Sec III once we refer to Fig. 2 presenting both types of bonds.)
+
+
+(5) We extend Fig. 6 by introducing the spectral functions calculated for $J/t \in \{1.2, 1.6, 2.0\}$. Accordingly we update the caption, which now reads:
+
+"Spectral function $A(\omega)$ of a single hole in the $t$--$J_z$ model on the 2D square lattice calculated using self-avoiding walks approximation (blue) and ED (red) for $J=0.4t$ (top left), $J=0.6t$ (top middle), $J=0.8t$ (top right), $J=1.2t$ (bottom left), $J=1.6t$ (bottom middle), and $J=2.0t$ (bottom right). Self-avoiding walks approximation includes up to 20 magnons and ED calculations (red) are performed on a 26-site lattice with periodic boundary conditions. Broadening $\delta = 0.05t$."
+
+
+(6) We add a new paragraph introducing a measure of the overlap between the two spectral functions:
+
+"To even further substantiate the above claim, we calculate the following correlation function $\xi$ between the two spectra
+\begin{equation}
+    \xi(A, B) = \frac{\int_{-\infty}^{\infty}A(\omega)B(\omega)\d{\omega}}{\sqrt{\int_{-\infty}^{\infty}|A(\omega)|^2\d{\omega} \int_{-\infty}^{\infty}|B(\omega)|^2\d{\omega}}}.
+\end{equation}
+The dependence of $\xi$ on the value of the model parameters $J/t$ is shown in Fig.~\ref{fig:overlap}. We observe that indeed the spectrum calculated using the self-avoiding walks approximation on a square and the ED spectrum match very well, as the correlation is always above 95\%---we discuss in Appendix~\hyperref[appendixa]{A} the physical origin of this result.  On the other hand, it turns out that a correlation between the self-avoding walks approximation spectrum calculated on a Bethe lattice and the ED result is much worse---especially in the realistic regime of $J<t$. We will come back to the latter result in Sec.~\ref{sec:discussion} in which we explain the origin of the incoherent spectrum in the approximate result on the square lattice."
+
+(This paragraph is located in Sec. IV where we discuss the agreement between ED and self-avoiding walks approximation results.)
+
+
+(7) We introduce new figure (Fig. 7) which shows a comparison of the agreement of both the Bethe lattice approximation and the self-avoiding walks approximation with the ED results. We note that consequently the numeration of other figures appearing further in the text has changed.
+
+
+(8) We add a new Sec. V entitled:
+
+"DISCUSSION: ORIGIN OF THE AGREEMENT WITH ED"
+[The full text of this section is presented in the new version of the paper]
+
+Accordingly the numeration of sections appearing further in the text has changed.
+
+
+(9) We moved the last paragraph of Sec. IV:
+
+"We can address the quantitative difference between the approximate and the ED spectrum to the closed loop (Trugman) processes~\cite{Tru88} possible in the ED. In the latter case the spectrum is broader, due to the dispersion coming from the paths containing closed loops. As these differences are only quantitative {\it and} relatively small, we infer that the relative importance of the Trugman loops in the hole motion is small---at least for the considered here values of $J/t \in [0.4, 0.8]$."
+
+to the new Sec. V and modified it so that it can better fits its purpose. It now reads:
+
+"We can address the (surprisingly) small quantitative difference between the approximate spectrum, i.e. calculated on the square lattice using the self-avoiding walks approximation, and the ED spectrum to the loop (Trugman) processes~\cite{Tru88} possible in the ED. This is because the only difference between the self-avoding walks approximation and ED lies in neglecting the paths containing loops. Below we intend to explain in some detail why the loop processes give such a small contribution to the spectrum---in general this is because the number of such paths with loops is relatively small."
+
+(10) In new Sec. V we discuss the agreement of self-avoiding walks with the ED results. To this end we add the following new paragraphs:
+
+"Let us first concentrate on the results obtained for large $J/t \in [1, 2]$. In this case the spectrum calculated with ED and with the self-avoiding walks approximation on the square lattice match pretty well (see Fig.~\ref{fig:overlap}, showing the `correlation between the spectral functions' with / without the loops, as well as the spectra for $J/t>1$ of Fig.~\ref{fig:1}). Crucially, the best match is obtained for $J/t=2$ and then this agreement slightly decreases with decreasing $J/t \in [1, 2]$. Such behavior can be best understood by invoking that the lowest order loop corrections to the self-energy scale as $t^6/J^5$, cf. page 321 of~\cite{Mar91}. We stress here that such a simple lowest-order calculation should work in the regime of large $J/t$, since in this case the perturbation theory works~\cite{Mar91} and solely the lowest order corrections should suffice.
+
+On the other hand, the situation encountered for smaller $J/t$ is quite distinct. This is because for intermediate $J/t \in [0.4, 1]$, the agreement between the two methods is still relatively high, i.e. the correlation does {\it not} decrease with decreasing $J/t$ but instead, depending on the value of $J/t$, it oscillates around 95\%-97\% (see Fig.~\ref{fig:overlap}). Here, a note of caution may be in order: the considered correlation function is a very crude measure of the agreement between the two spectra and therefore the observed small changes in the correlation function for intermediate $J/t \in [0.4, 1]$ should rather not be interpreted as pointing towards important changes in the role played by the loops.
+
+We can rationalise the above observation, concerning the  $J/t \in [0.4, 1]$ case, in the following manner. Firstly, one should stress that once $J<t$ one ends up in the strong-coupling limit and hence we should {\it a priori} take into account higher-order corrections in $t/J$. For the paths without loops this means that a `large' number of magnons have to be taken into account in the self-avoiding walks approximation (e.g. for $J/t=0.4$ all states with up to 20 magnons have to be considered compared against 8 magnons for $J/t=2.0$) or that all the `rainbow' diagrams have to be summed over in the SCBA calculations. However, as far as the paths with the loops are concerned, it was suggested in the seminal paper by Trugman~\cite{Tru88}, that it is expected that solely the lowest-order loop correction should be considered---while the higher order loop corrections (i.e. which lead to longer loops) could be neglected, see p. 1599 of~\onlinecite{Tru88}. (While in principle such an important conjecture has to be checked, it requires including the loop processes e.g. in the SCBA calculations and thus is beyond the scope of this paper.) Thus, we encounter here a situation where the paths without loops should be summed to an (almost) infinite order to give reasonable results, though only one type of a path with a loop is {\it probably} relevant. Hence, we expect that, although the contribution of the lowest order loop correction to the self-energy is $\propto t^6/J^5$ and thus grows with decreasing $J/t$, due the relatively small number of loop paths (essentially one type) w.r.t the other paths (essentially infinite), the relevance of the loop paths should {\it not} substantially increase with decreasing $J/t$."
+
+
+(11) We add a new paragraph discussing the motion of the hole along the tangential path once J/t varies:
+
+"To even further understand the physics related to the motion of the hole along the tangential paths, we discuss how the importance of the tangential paths depends on the model parameters $J/t$. To this end we study the relative contribution of the tangential paths to the overall spectral weight, which can be obtained by subtracting the two correlation functions presented in the Fig.~\ref{fig:overlap}. We observe that, the role of the tangential processes is, in general, gradually suppressed with increasing $J/t$ (except for the small but non-monotonic changes in the correlation function for $J/t \in [0.8, 1.1]$---which, we believe, is largely due to the fact that the correlation function between the two spectra is a very crude measure of the relative role of the contribution of the particular processes to the spectra). Such behavior can be understood in the following way: With increasing $J/t$ the energy cost of a single magnon grows. This holds also for interacting magnons created by the hole moving in a square lattice. At the same time, the longer the hole path is the more energy it costs due to the higher number of magnons for longer paths (even once magnon interactions are included). Thus, with increasing $J/t$ the average length of a path in a particular eigenstate decreases and this pertains to every eigenstate of the problem. Next comes the crucial argument: the shorter the length of such a path is the lower the number of possibilities of the path to be classified as tangential (e.g. paths containing one or two magnons are never tangential). Consequently, the tangential paths should be suppressed with increasing $J/t$--as indeed inferred from Fig.~\ref{fig:overlap}."
+
+[This paragraph is added at the end of Sec. VI (previous Sec. V).]
+
+
+(12) We divide Sec. VII "CONCLUSIONS" into to subsections: "A Summary" and "B Outlook".
+
+
+(13) We slightly modify the first three paragraphs of the Sec. VII "CONCLUSIONS" to account for changes in the body of the paper. We put them in the new subsection "A Summary". They now read:
+
+"In summary, we compared the spectral function of a single hole in the Ising antiferromagnet on a square and Bethe lattices. Whereas the ground state energy and its spectral weight contribution are almost the same in both cases, the excited parts are qualitatively distinct: unlike for the Bethe lattice the local spectral function on a square lattice is not `ladder-like', i.e. it does not consist of the well-separated quasiparticle-like peaks for any energy. Instead, in the investigated range of $J/t \in [0.4, 2.0]$ the considered spectrum has an important incoherent part (which is substantial in the realistic regime of $J<t$, though it diminishes fast with increasing $J/t$ in the unrealistic limit of $J>t$). The replacement of the nicely-spaced peaks of the ladder-like spectral function by such an incoherent spectrum is due to the warping of an effective linear potential acting on the hole and is primarily attributed to the magnon-magnon interactions. [It is {\it not} related to the hole moving along the (Trugman) loops~\cite{Tru88} for the latter processes lead to a relatively smaller number of the allowed paths, give a much smaller contribution to the spectral function, and therefore, albeit non-negligible, can firstly be neglected, cf.~Sec.~\ref{sec:agr}.]
+ 
+The easiest way to understand this result is to consider that once the hole moves on a lattice the cost of the magnons created along the path of the hole can partially be lowered due to the magnon-magnon interactions (i.e. the local antiferromagnetic correlations can be reconstructed). Crucially, on the square lattice magnons interact not only along the hole path but also on the bonds connecting the tangential points of the path via the so-called `satellite' interactions (cf.~Fig~\ref{fig:square}). 
+
+By definition such `satellite' interactions cannot take place on a Bethe lattice, since in this case the hole creates magnons along an `isolated' chain and therefore the magnon-magnon interaction just leads to a shift in the energy of the created magnons. Consequently, unlike in the case of a square lattice, the magnon-magnon interactions on the Bethe lattice do not remove the degeneracy of the eigenstates of the $t$--$J_z$ model with a single hole and the exact spectral function is always ladder-like~\cite{Bul68, Kan89, Mar91, Shr88, Sta96, Che99, Bie19}."
+
+
+(14) In the subsection "B Outlook" of Sec. VII we extend the discussion of the relevance of the magnon-magnon interactions in realistic models. We replace the paragraph:
+
+"We are of course not sure what will be the impact of the magnon-magnon interactions in the doped $t$--$J$ model in 2D, as relevant for the studies of e.g. the doped copper oxides (although the extended \tjz~model might be enough for the cuprates~\cite{Ebr14}). Nevertheless, we suggest that also in that case some of the results obtained using the linear spin wave theory (i.e. when the magnons are noninteracting) might not hold once the magnon-magnon interactions are included."
+
+by
+
+"Naturally, it is interesting to ask what could be the impact of the magnon-magnon interactions for the motion of a single hole in the half-filled $t$--$J$ model in 2D, as relevant for the studies of e.g. the doped copper oxides (although, interestingly, the extended \tjz~model might be enough for the cuprates~\cite{Ebr14}). While a detailed understanding of this problem is beyond the scope of this work, we suggest that:
+
+(i) For the {\it Bethe lattice} the role of the magnon-magnon interactions in the motion of a hole in the $t$--$J$ model is probably only quantitative, since (as suggested by this paper) the magnon-magnon interactions would merely `rescale' the string potential---and the latter is anyway partially `erased' by the spin flip processes of the $t$--$J$ Hamiltonian, cf.~Ref.~\onlinecite{Manousakis2007}.
+
+(ii) For the {\it square lattice} adding the magnon-magnon interactions to the $t$--$J$ model problem treated on the linear spin wave approximation level might in principle lead to some qualitative differences. In fact, in this case it would be both the magnon-magnon interactions as well as the spin flip terms which should `help' in reducing the strings created by the hole. Thus, we expect that the hole should be able to move even `more easily' and that the spectrum should be even less ladder-like in this exact case than in the case of the 2D t-J model calculated using the linear spin wave approximation."
+
+
+(15) Appendix has been substantially rewritten including redrawing figures and shortening the title. It now reads:
+
+"\section{Momentum resolved spectral function}
+%
+In order to show that the obtained in ED {\it incoherent local} spectral function is {\it not} triggered by an apparent superposition of the {\it coherent momentum-dependent} spectral functions calculated for different momenta (which would sum up to an incoherent local spectral function), we calculate the momentum resolved spectral function $A_\sigma(k,\omega)$ of the single hole doped to the Ising antiferromagnet. The latter is defined as
+\begin{equation}
+    \begin{aligned}
+    &A_\sigma(k,\omega) = -\frac{1}{\pi}\lim_{\delta\to0^+} \text{Im}\{G_\sigma(k, \omega + i\delta)\}, \\
+    &G_\sigma(k, \omega) = \Bra{\textsc{gs}} \tilde{c}_{k,\sigma}^\dag \frac{1}{\omega - \mathcal{H} + E_\textsc{gs}} \tilde{c}_{k,\sigma} \Ket{\textsc{gs}},
+    \end{aligned}
+\end{equation}
+where $E_\textsc{gs}$ stands for the ground state energy (and otherwise the notation as in the main text of the paper). The results were obtained for the 20- and 26-sites square lattice using the ED (Lanczos) method. Crucially, for all momenta $k$ a continuum of states can be observed in the calculated spectral function, see Fig.~\ref{fig:6}. This suggests that indeed the incoherent spectrum obtained in ED is {\it not} formed by a superposition of the completely coherent (i.e. ladder-like) $A_\sigma(k,\omega)$. Moreover, these results also show the relatively small finite size effects of the 26-site cluster (as the differences between the spectrum obtained on 20 and 26-sites are merely quantitative and rather small). Finally, as a side note, we also confirm a rather low momentum dependence of the ground state originating in the Trugman processes~\cite{Tru88}, i.e. when the hole is allowed to walk along the loops"
+
+
+(16) A few minor modifications of the text were implemented in several other places in order to improve the reading, to remove some misprints, eliminate repetitions, and to make the presentation more transparent and self-contained. 

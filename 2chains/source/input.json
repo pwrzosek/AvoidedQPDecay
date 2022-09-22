@@ -1,0 +1,18 @@
+{
+  "system size" : 8,
+  "magnetization sector" : 1,
+  "momentum sector" : 2,
+  "coupling constant" : 0.4,
+  "primary coupling type" : 1,
+  "secondary coupling type" : 1,
+  "primary magnon interaction" : 1.0,
+  "secondary magnon interaction" : 1.0,
+  "primary proximity interaction" : 1.0,
+  "interchain coupling" : 0.4,
+  "interchain coupling type" : 1,
+  "interchain magnon interaction" : 1.0,
+  "interchain proximity interaction" : 1.0,
+  "hopping constant" : 1.0,
+  "periodic along Y" : 0,
+  "solver type" : 0
+}

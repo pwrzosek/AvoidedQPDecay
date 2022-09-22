@@ -84,7 +84,7 @@ function makeBasis(system::System)::Basis
     if isodd(system.size)
         error("Requested 'system.size' is odd! Only even sizes are supported.")
     end
-    if system.magnetization < 0 || 2 * system.magnetization > system.size
+    if (system.magnetization < 0) || (2 * system.magnetization > system.size)
         error("Wrong magnetization sector in the input file! Possible subspaces are denoted by integers from 0 to N/2.")
     end
 
