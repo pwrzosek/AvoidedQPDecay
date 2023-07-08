@@ -94,8 +94,8 @@ function getGreensFunctionTemplate(isRead = true, fileID = string(g_numberOfSite
         readLehmansRepresentation(fileID, directory)
     else
         calculateAchievableSubspace()
-        calculateGreensFunctionTemplate()
-        writeLehmansRepresentation(fileID, directory)
+        # calculateGreensFunctionTemplate()
+        # writeLehmansRepresentation(fileID, directory)
     end
 end
 
@@ -178,7 +178,7 @@ function getStateIndex(holePosition, stateConfiguration)
 end
 
 function getAdjacentStates(stateIndex)
-    result = zeros(Int64, g_coordinationNumber + g_secondCoordinationNumber)
+    result = zeros(Int64, g_coordinationNumber)# + g_secondCoordinationNumber)
     holePosition = getHolePosition(stateIndex)::Int64
     stateConfiguration = getStateConfiguration(stateIndex)::Tuple{Int64,Int64}
     # Nearest Neighbours
@@ -194,17 +194,17 @@ function getAdjacentStates(stateIndex)
         newStateConfiguration = (holeConfiguration, magneticConfiguration)
         result[bond] = getStateIndex(newHolePosition, newStateConfiguration)::Int64
     end
-    # Second Nearest Neighbours
-    for bond in 1 : g_secondCoordinationNumber::Int64
-        newHolePosition = g_secondNeighbours[bond, holePosition + 1]
-        holeConfiguration = 2^newHolePosition
-        magneticConfiguration = stateConfiguration[2]
-        if isParticle(2, newHolePosition, stateConfiguration)           # if magnon at new hole position
-            magneticConfiguration += 2^holePosition - 2^newHolePosition # move magnon to previous hole position
-        end
-        newStateConfiguration = (holeConfiguration, magneticConfiguration)
-        result[g_coordinationNumber + bond] = getStateIndex(newHolePosition, newStateConfiguration)::Int64
-    end
+    # # Second Nearest Neighbours
+    # for bond in 1 : g_secondCoordinationNumber::Int64
+    #     newHolePosition = g_secondNeighbours[bond, holePosition + 1]
+    #     holeConfiguration = 2^newHolePosition
+    #     magneticConfiguration = stateConfiguration[2]
+    #     if isParticle(2, newHolePosition, stateConfiguration)           # if magnon at new hole position
+    #         magneticConfiguration += 2^holePosition - 2^newHolePosition # move magnon to previous hole position
+    #     end
+    #     newStateConfiguration = (holeConfiguration, magneticConfiguration)
+    #     result[g_coordinationNumber + bond] = getStateIndex(newHolePosition, newStateConfiguration)::Int64
+    # end
     result # vector of size 8 (4 nearest neighbours + 4 second nearest neighbours)
 end
 
@@ -223,7 +223,7 @@ function getSelfAdjacency(stateIndex)
             #holeHoleTerms = isHoleAtSiteI & isHoleAtSiteJ # assumptions: single hole
             magnonMagnonTerms = isMagnonAtSiteI & isMagnonAtSiteJ
             holeMagnonTerms = (isHoleAtSiteI & isMagnonAtSiteJ) + (isHoleAtSiteJ & isMagnonAtSiteI)
-            result += holeTerms + magnonTerms #- 2 * magnonMagnonTerms - holeMagnonTerms #- holeHoleTerms # assumptions: single hole
+            result += holeTerms + magnonTerms - 2 * magnonMagnonTerms - holeMagnonTerms #- holeHoleTerms # assumptions: single hole
         end
     end
     .25 * g_j * result # half from the Hamiltonian, second half because of a bond double counting
@@ -248,7 +248,8 @@ function getAchievableStatesAndAdjacencyList(initialStateIndex)
             end
         end
     end
-    adjacencyList = reshape(adjacencyList, (g_coordinationNumber::Int64 + g_secondCoordinationNumber::Int64, div(length(adjacencyList), g_coordinationNumber::Int64 + g_secondCoordinationNumber::Int64)))
+    # adjacencyList = reshape(adjacencyList, (g_coordinationNumber::Int64 + g_secondCoordinationNumber::Int64, div(length(adjacencyList), g_coordinationNumber::Int64 + g_secondCoordinationNumber::Int64)))
+    adjacencyList = reshape(adjacencyList, (g_coordinationNumber::Int64, div(length(adjacencyList), g_coordinationNumber::Int64)))
     ascendingOrder = sortperm(achievableStates)
     achievableStates = achievableStates[ascendingOrder]
     adjacencyList = adjacencyList[:, ascendingOrder]
@@ -416,7 +417,7 @@ function printStates(fileName = "")
         println(file, "Configuration of S")
         for stateIndex in 0 : (g_numberOfStates::Int64 - 1)
             print(file, @sprintf "%13.0f | " stateIndex)
-            print(file, @sprintf "%6.1f   | " getSelfAdjacency(stateIndex))
+            print(file, @sprintf "%6.1f   | " (stateIndex))
             println(file, getStateConfiguration(stateIndex))
         end
         close(file)

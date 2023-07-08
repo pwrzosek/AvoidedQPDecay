@@ -15,7 +15,7 @@ include("declarations.jl")
             initialize()
 
             # k-dependent
-            getGreensFunctionTemplate()
+            getGreensFunctionTemplate(false)
 
             # local
             # calculateLocalSpectralFunctionTemplate()
