@@ -237,7 +237,7 @@ end
 t = 1.0
 J = 0.4
 nRange = [n for n in 16:2:16]
-βRange = [x for x in 0.0:0.1:1.0]
+βRange = [x for x in -1000:2000:1000]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

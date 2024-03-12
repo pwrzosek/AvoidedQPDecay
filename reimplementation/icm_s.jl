@@ -170,14 +170,16 @@ function saveData(data::Vector{SPC})
     JSON.print(file, spcData, 1)
     close(file)
 
+    println("Saved file: " * string("./data/spc", tail, ".json"))
+
     return nothing
 end
 
 ### System Parameters
 t = 1.0
 J = 0.4
-nRange = [n for n in 16:2:16]
-βRange = [Β for Β in 1.0:-0.1:0.0]
+nRange = [n for n in 24:2:24]
+βRange = [Β for Β in 1.0:0.2:1.0]
 
 if length(ARGS) > 0
     t = eval(Meta.parse(ARGS[1]))

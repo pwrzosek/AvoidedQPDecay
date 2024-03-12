@@ -19,6 +19,7 @@ struct System
     momentum::Int64
     magnetization::Int64
     coupling::Float64
+    anisotropy::Float64
     interaction::Float64
 end
 
@@ -53,6 +54,7 @@ function run(input::Union{Missing, OrderedDict} = missing)
             input["momentum sector"],
             input["magnetization sector"],
             input["coupling constant"],
+            input["anisotropy"],
             input["magnon interaction"]
         )
     end
@@ -71,6 +73,7 @@ function readInput()::System
         input["momentum sector"],
         input["magnetization sector"],
         input["coupling constant"],
+        input["anisotropy"],
         input["magnon interaction"]
     )
 end
@@ -359,10 +362,10 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                 end
             end
 
-            ## work out diagonal coefficient
+            ## work out diagonal coefficient (Sz Sz terms; comment out for XY model)
             ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
             iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
-            result.coefficient[1] -= 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
+            result.coefficient[1] -= (0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit) * system.anisotropy
         end
 
         ### multiply the result by coupling constant

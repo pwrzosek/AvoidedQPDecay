@@ -274,7 +274,7 @@ function hamiltonian(state::Int64, basis::Basis, system::System)::LinearCombinat
                 result.coefficient[i + 1] = coefficient
             end
 
-            #### diagonal coefficient
+            #### diagonal coefficient (Sz Sz; cooment out for XY model)
             ## comment: after rotation bits represent magnons (0 -> no magnon, 1 -> magnon present)
             iBit, jBit = div(state & iValue, iValue), div(state & jValue, jValue)
             result.coefficient[1] -= 0.25 - 0.5 * (iBit + jBit) + system.interaction * iBit * jBit
