@@ -1,4 +1,0 @@
-\lambda = 1.1 delta E and z and C(s,d)
-only k = 0.5pi
-
-(1- a_i^\dag a_i) ---> P_i
