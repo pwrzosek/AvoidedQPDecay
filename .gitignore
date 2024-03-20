@@ -1,9 +1,15 @@
 **/.DS_Store
-t-t\'-Jz_model/Mathematica/*
-t-t\'-Jz_model/Plots/*
+t-t\'-Jz_model/mathematica/*
+t-t\'-Jz_model/plots/*
 t-t\'-Jz_model/Julia_code/gftmp/*
 ARPES_1D_t-J_undoped/data/*
 ARPES_1D_t-J_undoped/mathematica/*
 ARPES_1D_t-J_undoped/plots/**
 ARPES_1D_t-J_undoped/heisenberg/code/julia/result.txt
 ARPES_1D_t-J_undoped/tJ_single_hole/code/julia/result.txt
+tJ_chain_in_staggered_field/data/*
+tJ_chain_in_staggered_field/mathematica/*
+tJ_chain_in_staggered_field/plots/*
+2_tJ_chains_interacting/data/*
+2_tJ_chains_interacting/mathematica/*
+2_tJ_chains_interacting/plots/*

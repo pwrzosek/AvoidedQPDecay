@@ -1,9 +1,0 @@
-{
- "system size": 2,
- "momentum sector": 0,
- "magnetization sector": 0,
- "coupling constant": 1.0,
- "magnon interaction": 1.0,
- "intrachain coupling" : 0.1,
- "intrachain isotropy" : 0.0
-}
